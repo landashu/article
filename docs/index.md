@@ -17,7 +17,7 @@ features: # 可选的
   details: easy-security，easy-manager-tool
   # link: /ui/
   # imgUrl: /img/ui.png
-- title: 理想
+- title: 理想就是赚钱
   details: 学那么多有什么用，赚钱才是硬道理，所以赚钱
   # link: /technology/
   # imgUrl: /img/other.png
