@@ -10,15 +10,15 @@ bannerBg: none
 
 features: # 可选的
 - title: 什么是全栈
-  details: 看右上方就知道，都有看都不精通
+  details: 看右上方就知道，都有但都不精通，别学我
   # link: /web/ # 可选
   # imgUrl: /img/web.png # 可选
 - title: 自己的项目
-  details: easy-security，easy-manager-tool
+  details: 开源项目 easy-security，收费项目 easy-manager-tool
   # link: /ui/
   # imgUrl: /img/ui.png
 - title: 理想就是赚钱
-  details: 学那么多有什么用，赚钱才是硬道理，所以赚钱
+  details: 学那么多有什么用，赚钱才是硬道理，研究研究
   # link: /technology/
   # imgUrl: /img/other.png
 
