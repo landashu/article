@@ -10,7 +10,7 @@ bannerBg: none
 
 features: # 可选的
 - title: 什么是全栈
-  details: 看右上方就知道
+  details: 看右上方就知道，都有看都不精通
   # link: /web/ # 可选
   # imgUrl: /img/web.png # 可选
 - title: 自己的项目
