@@ -8,8 +8,8 @@ import plugins from "./config/plugins";
 import head from "./config/head";
 
 export default defineConfig4CustomTheme<VdoingThemeConfig>({
-  title: "BigUncle技术文章", //站点标题, 建议修改
-  description: "技术文章", //描述, 建议修改
+  title: "BigUncle技术博客", //站点标题, 建议修改
+  description: "技术博客", //描述, 建议修改
   dest: "dist", //输出目录, 默认是 dist,无需修改
   // base: "/vdoing-template/", //部署站点的基础路径, 默认是 /, 不懂不要开启
   shouldPrefetch: () => false, //是否开启预加载, 建议不开启, 无需修改

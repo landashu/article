@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /assets/img/logo.png
-heroText: BigUncle技术文章
+heroText: BigUncle技术博客
 tagline: 靠技术怎么赚钱，一直在研究
 actionText: 快速开始 →
 actionLink: /guide/11/
