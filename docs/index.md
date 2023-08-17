@@ -2,9 +2,9 @@
 home: true
 heroImage: /assets/img/logo.png
 heroText: BigUncle技术博客
-tagline: 靠技术怎么赚钱，一直在研究
-actionText: 快速开始 →
-actionLink: /guide/11/
+tagline: 靠技术怎么赚钱，除了打工，一直在研究
+# actionText: 快速开始 →
+# actionLink: /guide/11/
 bannerBg: none
 
 
@@ -18,7 +18,7 @@ features: # 可选的
   # link: /ui/
   # imgUrl: /img/ui.png
 - title: 理想就是赚钱
-  details: 学那么多有什么用，赚钱才是硬道理，研究研究
+  details: 学那么多有什么用，赚钱才是硬道理，感兴趣加我研究
   # link: /technology/
   # imgUrl: /img/other.png
 
