@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>核心功能拆解 Plugin插件功能实现 | BigUncle技术博客</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="技术博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.f8da7e0c.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/25.e581e078.js" as="script">
+    <link rel="stylesheet" href="/assets/css/1.styles.7c5aa975.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="BigUncle技术博客" class="logo"> <span class="site-name can-hide">BigUncle技术博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title" style="display:;">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/100/" class="nav-link">Java</a></li><li class="dropdown-item"><!----> <a href="/spring/200/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/mybatis/300/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/maven/2300/" class="nav-link">Maven</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docker/400/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/jenkins/500/" class="nav-link">Jenkins</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/600/" class="nav-link">Kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hadoop/700/" class="nav-link">Hadoop</a></li><li class="dropdown-item"><!----> <a href="/clickhouse/800/" class="nav-link">ClickHouse</a></li><li class="dropdown-item"><!----> <a href="/hbase/900/" class="nav-link">Hbase</a></li><li class="dropdown-item"><!----> <a href="/hive/1000/" class="nav-link">Hive</a></li><li class="dropdown-item"><!----> <a href="/flume/1100/" class="nav-link">Flume</a></li><li class="dropdown-item"><!----> <a href="/flink/1200/" class="nav-link">Flink</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title" style="display:;">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/mysql/1300/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/mongodb/1800/" class="nav-link">MongoDB</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/kafka/1400/" class="nav-link">KAFKA</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/1500/" class="nav-link">RabbitMQ</a></li><li class="dropdown-item"><!----> <a href="/redis/1600/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/nginx/1700/" class="nav-link">Nginx</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue3/1900/" class="nav-link">VUE3</a></li><li class="dropdown-item"><!----> <a href="/wx/2000/" class="nav-link">微信小程序</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="作品" class="dropdown-title"><!----> <span class="title" style="display:;">作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/easy-security/2100/" class="nav-link">Easy-Security</a></li><li class="dropdown-item"><!----> <a href="/easy-manager-tool/2200/" class="nav-link">Easy-Manager-Tool</a></li></ul></div></div> <a href="https://github.com/landashu?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title" style="display:;">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/100/" class="nav-link">Java</a></li><li class="dropdown-item"><!----> <a href="/spring/200/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/mybatis/300/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/maven/2300/" class="nav-link">Maven</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docker/400/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/jenkins/500/" class="nav-link">Jenkins</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/600/" class="nav-link">Kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hadoop/700/" class="nav-link">Hadoop</a></li><li class="dropdown-item"><!----> <a href="/clickhouse/800/" class="nav-link">ClickHouse</a></li><li class="dropdown-item"><!----> <a href="/hbase/900/" class="nav-link">Hbase</a></li><li class="dropdown-item"><!----> <a href="/hive/1000/" class="nav-link">Hive</a></li><li class="dropdown-item"><!----> <a href="/flume/1100/" class="nav-link">Flume</a></li><li class="dropdown-item"><!----> <a href="/flink/1200/" class="nav-link">Flink</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title" style="display:;">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/mysql/1300/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/mongodb/1800/" class="nav-link">MongoDB</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/kafka/1400/" class="nav-link">KAFKA</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/1500/" class="nav-link">RabbitMQ</a></li><li class="dropdown-item"><!----> <a href="/redis/1600/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/nginx/1700/" class="nav-link">Nginx</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue3/1900/" class="nav-link">VUE3</a></li><li class="dropdown-item"><!----> <a href="/wx/2000/" class="nav-link">微信小程序</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="作品" class="dropdown-title"><!----> <span class="title" style="display:;">作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/easy-security/2100/" class="nav-link">Easy-Security</a></li><li class="dropdown-item"><!----> <a href="/easy-manager-tool/2200/" class="nav-link">Easy-Manager-Tool</a></li></ul></div></div> <a href="https://github.com/landashu?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>java</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/java/100/" class="sidebar-link">JVM</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Spring</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/spring/200/" class="sidebar-link">核心功能拆解 IOC</a></li><li><a href="/spring/201/" class="sidebar-link">核心功能拆解 AOP</a></li><li><a href="/spring/202/" class="sidebar-link">核心功能拆解 事件通知</a></li><li><a href="/spring/203/" class="sidebar-link">核心功能拆解 三级缓存</a></li><li><a href="/spring/204/" class="sidebar-link">核心功能拆解 FactoryBean</a></li><li><a href="/spring/205/" class="sidebar-link">注解替代Spring生命周期实现类</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Mybatis</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mybatis/300/" class="sidebar-link">核心功能拆解 工作流程</a></li><li><a href="/mybatis/301/" aria-current="page" class="active sidebar-link">核心功能拆解 Plugin插件功能实现</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/mybatis/301/#解析" class="sidebar-link">解析</a></li><li class="sidebar-sub-header level2"><a href="/mybatis/301/#注册" class="sidebar-link">注册</a></li><li class="sidebar-sub-header level2"><a href="/mybatis/301/#执行" class="sidebar-link">执行</a></li><li class="sidebar-sub-header level2"><a href="/mybatis/301/#自定义" class="sidebar-link">自定义</a></li></ul></li><li><a href="/mybatis/302/" class="sidebar-link">核心功能拆解 一二级缓存原理</a></li><li><a href="/mybatis/303/" class="sidebar-link">MyBatis Plus+Spring Boot 实现一二级缓存以及自定义缓存</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>maven</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/maven/2300/" class="sidebar-link">pom 文件介绍及 parent、properties 标签详解</a></li><li><a href="/maven/2301/" class="sidebar-link">dependencies 标签详解</a></li><li><a href="/maven/2302/" class="sidebar-link">使用 Nexus3.x 搭建私服</a></li></ul></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="placeholder"></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">核心功能拆解 Plugin插件功能实现<!----></h1> <!----> <div class="theme-vdoing-content content__default"><p>Mybatis Plugin 是随着 Mybatis 的工作流程一起被进行  <code>解析-&gt;注册-&gt;执行</code>  的，了解每个步骤才能更好的对 Mybatis 所提供的 Plugin 机制进行实现和扩展。在我们已知的 Mybatis 的插件有分页插件、缓存插件等，之所以可以能做到扩展是因为他在自己本身的 <code>Executor（生产执行器）</code> ， <code>StatementHandler（语句处理器）</code> ， <code>ParameterHandler（参数处理器）</code> ， <code>ResultSetHandler（结果集处理器）</code> 这四个地方做了拦截，当介绍到执行步骤的时候就可以看到具体实现。</p> <h2 id="解析"><a href="#解析" class="header-anchor">#</a> 解析</h2> <p>常规的 XML 配置</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;plugins&gt;
+    &lt;plugin interceptor=&quot;cn.mybatis.test.plugin.TestPlugin&quot;&gt;
+        &lt;property name=&quot;test00&quot; value=&quot;100&quot;/&gt;
+        &lt;property name=&quot;test01&quot; value=&quot;200&quot;/&gt;
+    &lt;/plugin&gt;
+&lt;/plugins&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>核心解析方法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>private void pluginElement(Element parent) throws Exception {
+    if (parent == null) return;
+    List&lt;Element&gt; elements = parent.elements();
+    for (Element element : elements) {
+        // 解析类路径
+        String interceptor = element.attributeValue(&quot;interceptor&quot;);
+        // 参数配置
+        Properties properties = new Properties();
+        List&lt;Element&gt; propertyElementList = element.elements(&quot;property&quot;);
+        for (Element property : propertyElementList) {
+            properties.setProperty(property.attributeValue(&quot;name&quot;), property.attributeValue(&quot;value&quot;));
+        }
+        // 获取插件实现类并实例化：cn.mybatis.test.plugin.TestPlugin 
+        // 通过 Resources.classForName(string) 获取实例
+        Interceptor interceptorInstance = (Interceptor) resolveClass(interceptor).newInstance();
+        // 设置配置属性
+        interceptorInstance.setProperties(properties);
+        // 注册到 configuration 中
+        configuration.addInterceptor(interceptorInstance);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h2 id="注册"><a href="#注册" class="header-anchor">#</a> 注册</h2> <p>解析的时候会在方法内部执行  <code>configuration.addInterceptor(interceptorInstance);</code>  这一步是把插件维护到  <code>Configuration</code>  全局配置中，但插件其实应该有很多各，所以提供的是一个  <code>InterceptorChain</code>  对象由   <code>Configuration</code>  维护</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Configuration {
+    // 插件拦截器链
+    protected final InterceptorChain interceptorChain = new InterceptorChain();
+    public void addInterceptor(Interceptor interceptorInstance) {
+        interceptorChain.addInterceptor(interceptorInstance);
+    }
+    // other 其他配置
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p><code>InterceptorChain</code>  里面维护的是一个集合，专门存放所有的  <code>Plugin</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class InterceptorChain {
+    // 插件拦截器容器
+    private final List&lt;Interceptor&gt; interceptors = new ArrayList&lt;&gt;();
+    //
+    public Object pluginAll(Object target) {
+        for (Interceptor interceptor : interceptors) {
+            target = interceptor.plugin(target);
+        }
+        return target;
+    }
+    // 添加到插件容器
+    public void addInterceptor(Interceptor interceptor) {
+        interceptors.add(interceptor);
+    }
+    public List&lt;Interceptor&gt; getInterceptors(){
+        return Collections.unmodifiableList(interceptors);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>从解析到注册这两步就可以看出，MyBatis 是把插件以拦截器的形式存放到一个拦截器容器里，这个容器是  <code>Configuration</code>  全局配置类来进行维护的</p> <h2 id="执行"><a href="#执行" class="header-anchor">#</a> 执行</h2> <p>执行是在调用具体的查询方法活其他在 Mybatis 里所描述的 SQL 方法时进行的触发，触发会在如下代码中的位置中触发。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>  // 创建参数处理器
+  public ParameterHandler newParameterHandler(MappedStatement mappedStatement, Object parameterObject, BoundSql boundSql) {
+    ParameterHandler parameterHandler = mappedStatement.getLang().createParameterHandler(mappedStatement, parameterObject, boundSql);
+    parameterHandler = (ParameterHandler) interceptorChain.pluginAll(parameterHandler);
+    return parameterHandler;
+  }
+ 
+  // 创建结果集处理器
+  public ResultSetHandler newResultSetHandler(Executor executor, MappedStatement mappedStatement, RowBounds rowBounds, ParameterHandler parameterHandler,
+      ResultHandler resultHandler, BoundSql boundSql) {
+    ResultSetHandler resultSetHandler = new DefaultResultSetHandler(executor, mappedStatement, parameterHandler, resultHandler, boundSql, rowBounds);
+    resultSetHandler = (ResultSetHandler) interceptorChain.pluginAll(resultSetHandler);
+    return resultSetHandler;
+  }
+ 
+  // 创建语句处理器
+  public StatementHandler newStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) {
+    StatementHandler statementHandler = new RoutingStatementHandler(executor, mappedStatement, parameterObject, rowBounds, resultHandler, boundSql);
+    statementHandler = (StatementHandler) interceptorChain.pluginAll(statementHandler);
+    return statementHandler;
+  }
+
+  // 生产执行器
+  public Executor newExecutor(Transaction transaction, ExecutorType executorType) {
+    executorType = executorType == null ? defaultExecutorType : executorType;
+    executorType = executorType == null ? ExecutorType.SIMPLE : executorType;
+    Executor executor;
+    if (ExecutorType.BATCH == executorType) {
+      // 批量处理器
+      executor = new BatchExecutor(this, transaction);
+    } else if (ExecutorType.REUSE == executorType) {
+      executor = new ReuseExecutor(this, transaction);
+    } else {
+      // 简单处理器
+      executor = new SimpleExecutor(this, transaction);
+    }
+    // 二级缓存处理器
+    if (cacheEnabled) {
+      executor = new CachingExecutor(executor);
+    }
+    executor = (Executor) interceptorChain.pluginAll(executor);
+    return executor;
+  }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br></div></div><p>会看到他会调用  <code>InterceptorChain#pluginAll</code>  方法，该类在注册步骤中有提及到，里面维护了所有的插件，那么在这里就会时循环所有的插件，每个插件调用  <code>Interceptor#plugin</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 循环调用
+public Object pluginAll(Object target) {
+    for (Interceptor interceptor : interceptors) {
+        target = interceptor.plugin(target);
+    }
+    return target;
+}
+
+// 执行wrap
+public interface Interceptor {
+    // 拦截，使用方实现
+    Object intercept(Invocation invocation) throws Throwable;
+    // 代理
+    default Object plugin(Object target) {
+        return Plugin.wrap(target, this);
+    }
+    // 设置属性
+    default void setProperties(Properties properties) {
+        // NOP
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p><code>Interceptor#plugin</code>  方法内部也就是调用  <code>Plugin#wrap</code>  静态方法，该方法通过获取自定义插件的注解，来观察你需要对哪个处理器，哪个方法以及参数类型去匹配拦截对象的具体方法，如果多一个参数都可能找不到要拦截的方法。找到方法后然后去动态代理这个方法。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 
+public class Plugin implements InvocationHandler {
+    private Object target;
+    private Interceptor interceptor;
+    private Map&lt;Class&lt;?&gt;, Set&lt;Method&gt;&gt; signatureMap;
+
+    private Plugin(Object target, Interceptor interceptor, Map&lt;Class&lt;?&gt;, Set&lt;Method&gt;&gt; signatureMap) {
+        this.target = target;
+        this.interceptor = interceptor;
+        this.signatureMap = signatureMap;
+    }
+    // 具体的代理实现
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        // 获取声明的方法列表
+        Set&lt;Method&gt; methods = signatureMap.get(method.getDeclaringClass());
+        // 过滤需要拦截的方法
+        if (methods != null &amp;&amp; methods.contains(method)) {
+            // 调用 Interceptor#intercept 插入自己的反射逻辑
+            return interceptor.intercept(new Invocation(target, method, args));
+        }
+        return method.invoke(target, args);
+    }
+    /**
+     * 用代理把自定义插件行为包裹到目标方法中，也就是 Plugin.invoke 的过滤调用
+     */
+    public static Object wrap(Object target, Interceptor interceptor) {
+        // 取得签名Map
+        Map&lt;Class&lt;?&gt;, Set&lt;Method&gt;&gt; signatureMap = getSignatureMap(interceptor);
+        // 取得要改变行为的类(ParameterHandler|ResultSetHandler|StatementHandler|Executor)
+        Class&lt;?&gt; type = target.getClass();
+        // 取得接口
+        Class&lt;?&gt;[] interfaces = getAllInterfaces(type, signatureMap);
+        // 创建代理(StatementHandler)
+        if (interfaces.length &gt; 0) {
+            // 代理
+            return Proxy.newProxyInstance(
+                    type.getClassLoader(),
+                    interfaces,
+                    new Plugin(target, interceptor, signatureMap));
+        }
+        return target;
+    }
+    /**
+     * 获取方法签名组 Map
+     */
+    private static Map&lt;Class&lt;?&gt;, Set&lt;Method&gt;&gt; getSignatureMap(Interceptor interceptor) {
+        // 取 Intercepts 注解
+        Intercepts interceptsAnnotation = interceptor.getClass().getAnnotation(Intercepts.class);
+        // 必须得有 Intercepts 注解，没有报错
+        if (interceptsAnnotation == null) {
+            throw new RuntimeException(&quot;No @Intercepts annotation was found in interceptor &quot; + interceptor.getClass().getName());
+        }
+        // value是数组型，Signature的数组
+        Signature[] sigs = interceptsAnnotation.value();
+        // 每个 class 类有多个可能有多个 Method 需要被拦截
+        Map&lt;Class&lt;?&gt;, Set&lt;Method&gt;&gt; signatureMap = new HashMap&lt;&gt;();
+        for (Signature sig : sigs) {
+            Set&lt;Method&gt; methods = signatureMap.computeIfAbsent(sig.type(), k -&gt; new HashSet&lt;&gt;());
+            try {
+                // 例如获取到方法；StatementHandler.prepare(Connection connection)、StatementHandler.parameterize(Statement statement)...
+                Method method = sig.type().getMethod(sig.method(), sig.args());
+                methods.add(method);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(&quot;Could not find method on &quot; + sig.type() + &quot; named &quot; + sig.method() + &quot;. Cause: &quot; + e, e);
+            }
+        }
+        return signatureMap;
+    }
+    /**
+     * 取得接口
+     */
+    private static Class&lt;?&gt;[] getAllInterfaces(Class&lt;?&gt; type, Map&lt;Class&lt;?&gt;, Set&lt;Method&gt;&gt; signatureMap) {
+        Set&lt;Class&lt;?&gt;&gt; interfaces = new HashSet&lt;Class&lt;?&gt;&gt;();
+        while (type != null) {
+            for (Class&lt;?&gt; c : type.getInterfaces()) {
+                // 拦截 ParameterHandler|ResultSetHandler|StatementHandler|Executor
+                if (signatureMap.containsKey(c)) {
+                    interfaces.add(c);
+                }
+            }
+            type = type.getSuperclass();
+        }
+        return interfaces.toArray(new Class&lt;?&gt;[interfaces.size()]);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br></div></div><h2 id="自定义"><a href="#自定义" class="header-anchor">#</a> 自定义</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>package cn.mybatis.test.plugin;
+
+import cn.mybatis.executor.statement.StatementHandler;
+import cn.mybatis.mapping.BoundSql;
+import cn..mybatis.plugin.Interceptor;
+import cn.mybatis.plugin.Intercepts;
+import cn.mybatis.plugin.Invocation;
+import cn.mybatis.plugin.Signature;
+
+import java.sql.Connection;
+import java.util.Properties;
+
+@Intercepts({@Signature(type = StatementHandler.class, method = &quot;prepare&quot;, args = {Connection.class})})
+public class TestPlugin implements Interceptor {
+
+    @Override
+    public Object intercept(Invocation invocation) throws Throwable {
+        // 获取StatementHandler
+        StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
+        // 获取SQL信息
+        BoundSql boundSql = statementHandler.getBoundSql();
+        String sql = boundSql.getSql();
+        // 输出SQL
+        System.out.println(&quot;拦截SQL：&quot; + sql);
+        // 放行
+        return invocation.proceed();
+    }
+
+    @Override
+    public void setProperties(Properties properties) {
+        System.out.println(&quot;参数输出：&quot; + properties.getProperty(&quot;test00&quot;));
+    }
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">8/18/2023, 1:51:50 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/mybatis/300/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">核心功能拆解 工作流程</div></a> <a href="/mybatis/302/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">核心功能拆解 一二级缓存原理</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/mybatis/300/" class="prev">核心功能拆解 工作流程</a></span> <span class="next"><a href="/mybatis/302/">核心功能拆解 一二级缓存原理</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2023
+    <span>
+<!--      <a href='https://doc.xugaoyi.com/' target='_blank'>Theme by Vdoing</a> | <a href='http://doc.aizuda.com/' rel='external nofollow' target='_blank'>Copyright © 2022-2023 AiZuDa</a>-->
+<!--      <br>-->
+<!--      <a href="http://beian.miit.gov.cn/" target="_blank">鲁ICP备2021041554号-1</a>-->
+    </span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.f8da7e0c.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/25.e581e078.js" defer></script>
+  </body>
+</html>

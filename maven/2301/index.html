@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>dependencies 标签详解 | BigUncle技术博客</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="技术博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.f8da7e0c.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/22.244801d1.js" as="script">
+    <link rel="stylesheet" href="/assets/css/1.styles.7c5aa975.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="BigUncle技术博客" class="logo"> <span class="site-name can-hide">BigUncle技术博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title" style="display:;">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/100/" class="nav-link">Java</a></li><li class="dropdown-item"><!----> <a href="/spring/200/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/mybatis/300/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/maven/2300/" class="nav-link">Maven</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docker/400/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/jenkins/500/" class="nav-link">Jenkins</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/600/" class="nav-link">Kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hadoop/700/" class="nav-link">Hadoop</a></li><li class="dropdown-item"><!----> <a href="/clickhouse/800/" class="nav-link">ClickHouse</a></li><li class="dropdown-item"><!----> <a href="/hbase/900/" class="nav-link">Hbase</a></li><li class="dropdown-item"><!----> <a href="/hive/1000/" class="nav-link">Hive</a></li><li class="dropdown-item"><!----> <a href="/flume/1100/" class="nav-link">Flume</a></li><li class="dropdown-item"><!----> <a href="/flink/1200/" class="nav-link">Flink</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title" style="display:;">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/mysql/1300/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/mongodb/1800/" class="nav-link">MongoDB</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/kafka/1400/" class="nav-link">KAFKA</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/1500/" class="nav-link">RabbitMQ</a></li><li class="dropdown-item"><!----> <a href="/redis/1600/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/nginx/1700/" class="nav-link">Nginx</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue3/1900/" class="nav-link">VUE3</a></li><li class="dropdown-item"><!----> <a href="/wx/2000/" class="nav-link">微信小程序</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="作品" class="dropdown-title"><!----> <span class="title" style="display:;">作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/easy-security/2100/" class="nav-link">Easy-Security</a></li><li class="dropdown-item"><!----> <a href="/easy-manager-tool/2200/" class="nav-link">Easy-Manager-Tool</a></li></ul></div></div> <a href="https://github.com/landashu?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title" style="display:;">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/100/" class="nav-link">Java</a></li><li class="dropdown-item"><!----> <a href="/spring/200/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/mybatis/300/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/maven/2300/" class="nav-link">Maven</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docker/400/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/jenkins/500/" class="nav-link">Jenkins</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/600/" class="nav-link">Kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hadoop/700/" class="nav-link">Hadoop</a></li><li class="dropdown-item"><!----> <a href="/clickhouse/800/" class="nav-link">ClickHouse</a></li><li class="dropdown-item"><!----> <a href="/hbase/900/" class="nav-link">Hbase</a></li><li class="dropdown-item"><!----> <a href="/hive/1000/" class="nav-link">Hive</a></li><li class="dropdown-item"><!----> <a href="/flume/1100/" class="nav-link">Flume</a></li><li class="dropdown-item"><!----> <a href="/flink/1200/" class="nav-link">Flink</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title" style="display:;">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/mysql/1300/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/mongodb/1800/" class="nav-link">MongoDB</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/kafka/1400/" class="nav-link">KAFKA</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/1500/" class="nav-link">RabbitMQ</a></li><li class="dropdown-item"><!----> <a href="/redis/1600/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/nginx/1700/" class="nav-link">Nginx</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue3/1900/" class="nav-link">VUE3</a></li><li class="dropdown-item"><!----> <a href="/wx/2000/" class="nav-link">微信小程序</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="作品" class="dropdown-title"><!----> <span class="title" style="display:;">作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/easy-security/2100/" class="nav-link">Easy-Security</a></li><li class="dropdown-item"><!----> <a href="/easy-manager-tool/2200/" class="nav-link">Easy-Manager-Tool</a></li></ul></div></div> <a href="https://github.com/landashu?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>java</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/java/100/" class="sidebar-link">JVM</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Spring</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/spring/200/" class="sidebar-link">核心功能拆解 IOC</a></li><li><a href="/spring/201/" class="sidebar-link">核心功能拆解 AOP</a></li><li><a href="/spring/202/" class="sidebar-link">核心功能拆解 事件通知</a></li><li><a href="/spring/203/" class="sidebar-link">核心功能拆解 三级缓存</a></li><li><a href="/spring/204/" class="sidebar-link">核心功能拆解 FactoryBean</a></li><li><a href="/spring/205/" class="sidebar-link">注解替代Spring生命周期实现类</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Mybatis</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mybatis/300/" class="sidebar-link">核心功能拆解 工作流程</a></li><li><a href="/mybatis/301/" class="sidebar-link">核心功能拆解 Plugin插件功能实现</a></li><li><a href="/mybatis/302/" class="sidebar-link">核心功能拆解 一二级缓存原理</a></li><li><a href="/mybatis/303/" class="sidebar-link">MyBatis Plus+Spring Boot 实现一二级缓存以及自定义缓存</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>maven</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/maven/2300/" class="sidebar-link">pom 文件介绍及 parent、properties 标签详解</a></li><li><a href="/maven/2301/" aria-current="page" class="active sidebar-link">dependencies 标签详解</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/maven/2301/#scop" class="sidebar-link">scop</a></li><li class="sidebar-sub-header level2"><a href="/maven/2301/#optional" class="sidebar-link">optional</a></li><li class="sidebar-sub-header level2"><a href="/maven/2301/#exclusions" class="sidebar-link">exclusions</a></li></ul></li><li><a href="/maven/2302/" class="sidebar-link">使用 Nexus3.x 搭建私服</a></li></ul></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="placeholder"></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">dependencies 标签详解<!----></h1> <!----> <div class="theme-vdoing-content content__default"><p>dependencies 标签下只会有一个 dependency，dependency 作用于我们引用哪些 jar 来给我们提供更多的技术支持。一般用法:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-pool2&lt;/artifactId&gt;
+            &lt;version&gt;2.7.0&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="scop"><a href="#scop" class="header-anchor">#</a> scop</h2> <p>控制 dependency (依赖) 的使用范围。通俗的讲，就是控制 Jar 包在哪些范围被加载和使用。使用方式如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.giant&lt;/groupId&gt;
+    &lt;artifactId&gt;giant-core-security&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>scop 一共有 6 个值可以使用：</p> <ul><li><p>compile（默认值）<br>
+如果没有指定 scope 值，该元素的默认值为 compile。被依赖（giant-core-securit）jar 需要参与到当前项目的编译，测试，打包，运行等阶段。打包的时候通常会包含被依赖（giant-core-securit）jar。</p></li> <li><p>provided<br>
+ 被依赖 jar 理论上可以参与编译、测试、运行等阶段，相当于 compile，但是在打包阶段做了 exclude（排除） 的动作。例如， 如果我们在开发一个应用，在编译时我们需要依赖 xxxx.jar，但是在运行时我们不需要该 jar 包，因为这个 jar 包已由应用服务器或项目本身提供该依赖，此时我们需要使用 provided 进行范围修饰。</p></li> <li><p>runtime<br>
+ 表示被依赖 jar 无需参与项目的编译阶段，但是会参与到项目的测试和运行阶段。与 compile 相比，被依赖 jar 无需参与项目的编译。适用场景：例如，在编译的时候我们不需要 JDBC API 的 jar 包，而在运行的时候我们才需要 JDBC 驱动包。</p></li> <li><p>test<br>
+ 表示被依赖项目仅仅参与测试相关的工作，包括测试代码的编译，执行。适用场景：例如，Junit 测试。</p></li> <li><p>system<br>
+system 元素与 provided 元素类似，但是被依赖 jar 不会从 maven 仓库中查找，而是从本地系统中获取，systemPath 元素用于制定本地系统中 jar 文件的路径。例如：</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;dependency&gt;
+    &lt;groupId&gt;sleepycat&lt;/groupId&gt;
+    &lt;artifactId&gt;je&lt;/artifactId&gt;
+    &lt;version&gt;7.0.6&lt;/version&gt;
+    &lt;scope&gt;system&lt;/scope&gt;
+    &lt;systemPath&gt;${project.basedir}/lib/je-7.0.6.jar&lt;/systemPath&gt;
+&lt;/dependency&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>import<br>
+ 它只使用在  <code>&lt;dependencyManagement&gt;</code>  中，表示从其它的 pom 中导入 dependency 的配置，例如（B 项目导入 A 项目中的包配置）。众所周知，当我们创建一个 SpringBoot 项目时，我们一定会写一个  <code>&lt;parent&gt;</code>  来继承 spring 所提供的所有依赖，但如果我又想使用 spring 提供的依赖，又想继承我自己的项目，此时 import 就有了用武之地</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 普通 SpringBoot 依赖
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.2.6.RELEASE&lt;/version&gt;
+        &lt;relativePath/&gt;
+    &lt;/parent&gt;
+
+    &lt;groupId&gt;com.giant&lt;/groupId&gt;
+    &lt;artifactId&gt;station&lt;/artifactId&gt;
+    &lt;version&gt;${project-version}&lt;/version&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+
+    &lt;properties&gt;
+        &lt;project-version&gt;1.0.0&lt;/project-version&gt;
+    &lt;/properties&gt;
+
+&lt;/project&gt;
+
+## 更换继承项目，并使用springboot 依赖
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;!-- 变为我自己的父项目 --&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;com.giant.parent&lt;/groupId&gt;
+        &lt;artifactId&gt;boot-parent&lt;/artifactId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;relativePath/&gt;
+    &lt;/parent&gt;
+
+    &lt;groupId&gt;com.giant&lt;/groupId&gt;
+    &lt;artifactId&gt;station&lt;/artifactId&gt;
+    &lt;version&gt;${project-version}&lt;/version&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+
+    &lt;properties&gt;
+        &lt;project-version&gt;1.0.0&lt;/project-version&gt;
+    &lt;/properties&gt;
+
+    &lt;!-- spring boot 依赖 --&gt;
+    &lt;dependencyManagement&gt;
+        &lt;dependencies&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+                &lt;version&gt;2.2.6.RELEASE&lt;/version&gt;
+                &lt;!-- 需要指明时pom还是jar --&gt;
+                &lt;type&gt;pom&lt;/type&gt;
+                &lt;scope&gt;import&lt;/scope&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+    &lt;/dependencyManagement&gt;
+
+&lt;/project&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br></div></div><h2 id="optional"><a href="#optional" class="header-anchor">#</a> optional</h2> <p>optional 是 maven 依赖 jar 时的一个选项，表示该依赖是可选的，不会被依赖传递。例如：B 依赖了日志框架 logback、log4j、apache commons log，这时候 A 引用 B 的 jar，因为 maven 有依赖传递机制，那么 A 项目就会有 3 个 jar 包，logback、log4j、apache commons log。实际上我们一般只会在项目中使用一种日志框架，那么我们项目中就会有多余的依赖，当这种情况时越来越多时，最后整个项目的 jar 包就有很多的多余依赖，导致项目很臃肿。</p> <p>对于这种情况，我们只要在 B 项目中把 logback、log4j、apache commons log 设置成 <code>&lt;optional&gt;true&lt;/optional&gt;</code>  的即可。这时候 A 项目依赖 B 的时候，项目中不会有 logback、log4j、apache commons log 相关 jar 包，可以根据情况自行选择一个即可。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;optional&gt;true&lt;/optional&gt;
+&lt;/dependency&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="exclusions"><a href="#exclusions" class="header-anchor">#</a> exclusions</h2> <p>用于排除依赖项中，不需要添加的 jar，或者使用自己版本的 jar 而不适用其他人所提供的 jar。如：引用的 spring-boot-starter-data-redis 会帮我们依赖 slf4j-api，但它使用的版本被爆出了 bug，那我要升级到更高版本，引入自己选中的版本。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+    &lt;version&gt;2.2.6.RELEASE&lt;/version&gt;
+    &lt;exclusions&gt;
+        &lt;!-- 排除spring-boot-starter-data-redis自带的 slf4j --&gt;
+        &lt;exclusion&gt;
+            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+            &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+
+&lt;!-- 引用更改版本的slf4j --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+    &lt;version&gt;1.7.36&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">8/18/2023, 1:51:50 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/maven/2300/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">pom 文件介绍及 parent、properties 标签详解</div></a> <a href="/maven/2302/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">使用 Nexus3.x 搭建私服</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/maven/2300/" class="prev">pom 文件介绍及 parent、properties 标签详解</a></span> <span class="next"><a href="/maven/2302/">使用 Nexus3.x 搭建私服</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2023
+    <span>
+<!--      <a href='https://doc.xugaoyi.com/' target='_blank'>Theme by Vdoing</a> | <a href='http://doc.aizuda.com/' rel='external nofollow' target='_blank'>Copyright © 2022-2023 AiZuDa</a>-->
+<!--      <br>-->
+<!--      <a href="http://beian.miit.gov.cn/" target="_blank">鲁ICP备2021041554号-1</a>-->
+    </span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.f8da7e0c.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/22.244801d1.js" defer></script>
+  </body>
+</html>
