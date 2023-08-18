@@ -11,6 +11,7 @@ export default <Array<NavItem>>[
       {text: 'Java', link: '/java/100/',},
       {text: 'Spring', link: '/spring/200/',},
       {text: 'Mybatis', link: '/mybatis/300/',},
+      {text: 'Maven', link: '/maven/2300/',},
     ],
   },
   {
