@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Jenkins(六) Jenkins项目构建细节 | BigUncle技术博客</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="技术博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.223af033.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/40.55bba6a6.js" as="script">
+    <link rel="stylesheet" href="/assets/css/1.styles.7c5aa975.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="BigUncle技术博客" class="logo"> <span class="site-name can-hide">BigUncle技术博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title" style="display:;">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/100/" class="nav-link">Java</a></li><li class="dropdown-item"><!----> <a href="/spring/200/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/mybatis/300/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/maven/2300/" class="nav-link">Maven</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/linux/2300/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/docker/400/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/jenkins/500/" class="nav-link">Jenkins</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/600/" class="nav-link">Kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hadoop/700/" class="nav-link">Hadoop</a></li><li class="dropdown-item"><!----> <a href="/clickhouse/800/" class="nav-link">ClickHouse</a></li><li class="dropdown-item"><!----> <a href="/hbase/900/" class="nav-link">Hbase</a></li><li class="dropdown-item"><!----> <a href="/hive/1000/" class="nav-link">Hive</a></li><li class="dropdown-item"><!----> <a href="/flume/1100/" class="nav-link">Flume</a></li><li class="dropdown-item"><!----> <a href="/flink/1200/" class="nav-link">Flink</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title" style="display:;">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/mysql/1300/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/mongodb/1800/" class="nav-link">MongoDB</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/kafka/1400/" class="nav-link">KAFKA</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/1500/" class="nav-link">RabbitMQ</a></li><li class="dropdown-item"><!----> <a href="/redis/1600/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/nginx/1700/" class="nav-link">Nginx</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue3/1900/" class="nav-link">VUE3</a></li><li class="dropdown-item"><!----> <a href="/wx/2000/" class="nav-link">微信小程序</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="作品" class="dropdown-title"><!----> <span class="title" style="display:;">作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/easy-security/2100/" class="nav-link">Easy-Security</a></li><li class="dropdown-item"><!----> <a href="/easy-manager-tool/2200/" class="nav-link">Easy-Manager-Tool</a></li></ul></div></div> <a href="https://github.com/landashu?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title" style="display:;">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/100/" class="nav-link">Java</a></li><li class="dropdown-item"><!----> <a href="/spring/200/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/mybatis/300/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/maven/2300/" class="nav-link">Maven</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/linux/2300/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/docker/400/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/jenkins/500/" class="nav-link">Jenkins</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/600/" class="nav-link">Kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hadoop/700/" class="nav-link">Hadoop</a></li><li class="dropdown-item"><!----> <a href="/clickhouse/800/" class="nav-link">ClickHouse</a></li><li class="dropdown-item"><!----> <a href="/hbase/900/" class="nav-link">Hbase</a></li><li class="dropdown-item"><!----> <a href="/hive/1000/" class="nav-link">Hive</a></li><li class="dropdown-item"><!----> <a href="/flume/1100/" class="nav-link">Flume</a></li><li class="dropdown-item"><!----> <a href="/flink/1200/" class="nav-link">Flink</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title" style="display:;">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/mysql/1300/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/mongodb/1800/" class="nav-link">MongoDB</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/kafka/1400/" class="nav-link">KAFKA</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/1500/" class="nav-link">RabbitMQ</a></li><li class="dropdown-item"><!----> <a href="/redis/1600/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/nginx/1700/" class="nav-link">Nginx</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue3/1900/" class="nav-link">VUE3</a></li><li class="dropdown-item"><!----> <a href="/wx/2000/" class="nav-link">微信小程序</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="作品" class="dropdown-title"><!----> <span class="title" style="display:;">作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/easy-security/2100/" class="nav-link">Easy-Security</a></li><li class="dropdown-item"><!----> <a href="/easy-manager-tool/2200/" class="nav-link">Easy-Manager-Tool</a></li></ul></div></div> <a href="https://github.com/landashu?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Docker</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docker/400/" class="sidebar-link">Docker 概念、命令及Dockerfile介绍</a></li><li><a href="/docker/401/" class="sidebar-link">Docker-Compose 命令及基本使用</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Jenkins</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/jenkins/500/" class="sidebar-link">Jenkins(一) 持续集成及Jenkins介绍</a></li><li><a href="/jenkins/501/" class="sidebar-link">Jenkins(二) Jenkins安装和环境配置</a></li><li><a href="/jenkins/502/" class="sidebar-link">Jenkins(三) Jenkins用户管理及凭证</a></li><li><a href="/jenkins/503/" class="sidebar-link">Jenkins(四) Maven安装和配置</a></li><li><a href="/jenkins/504/" class="sidebar-link">Jenkins(五) Jenkins构建Maven项目</a></li><li><a href="/jenkins/505/" aria-current="page" class="active sidebar-link">Jenkins(六) Jenkins项目构建细节</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/jenkins/505/#内置触发器" class="sidebar-link">内置触发器</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/jenkins/505/#远程构建" class="sidebar-link">远程构建</a></li><li class="sidebar-sub-header level3"><a href="/jenkins/505/#其他工程构建后触发" class="sidebar-link">其他工程构建后触发</a></li><li class="sidebar-sub-header level3"><a href="/jenkins/505/#定时构建" class="sidebar-link">定时构建</a></li><li class="sidebar-sub-header level3"><a href="/jenkins/505/#轮询scm" class="sidebar-link">轮询SCM</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/jenkins/505/#git-hook自动触发构建" class="sidebar-link">Git hook自动触发构建</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/jenkins/505/#安装gitlab-hook插件" class="sidebar-link">安装Gitlab Hook插件</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/jenkins/505/#jenkins的参数化构建" class="sidebar-link">Jenkins的参数化构建</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/jenkins/505/#string-parameter" class="sidebar-link">String Parameter</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/jenkins/505/#配置邮箱服务器发送构建结果" class="sidebar-link">配置邮箱服务器发送构建结果</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/jenkins/505/#安装-email-extension-插件" class="sidebar-link">安装 Email Extension 插件</a></li><li class="sidebar-sub-header level3"><a href="/jenkins/505/#准备邮件内容" class="sidebar-link">准备邮件内容</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/jenkins/505/#jenkins-配置-sonarqube-代码审查" class="sidebar-link">jenkins 配置 SonarQube（代码审查）</a></li></ul></li><li><a href="/jenkins/506/" class="sidebar-link">Jenkins(七) Jenkins+Docker+SpringCloud微服务持续集成（上）</a></li><li><a href="/jenkins/507/" class="sidebar-link">Jenkins(八) Jenkins+Docker+SpringCloud微服务持续集成（下）</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Kubernetes</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/kubernetes/600/" class="sidebar-link">kubernetes(一) 概念及介绍</a></li><li><a href="/kubernetes/601/" class="sidebar-link">kubernetes(二) 集群环境搭建</a></li><li><a href="/kubernetes/602/" class="sidebar-link">kubernetes(三) 资源管理</a></li><li><a href="/kubernetes/603/" class="sidebar-link">kubernetes(四) Namespace、Pod、Lable、Deployment、Service 的资源介绍</a></li><li><a href="/kubernetes/604/" class="sidebar-link">kubernetes(五) Pod 介绍及配置</a></li><li><a href="/kubernetes/605/" class="sidebar-link">kubernetes(六) Pod 生命周期</a></li><li><a href="/kubernetes/606/" class="sidebar-link">kubernetes(七) Pod 调度</a></li><li><a href="/kubernetes/607/" class="sidebar-link">kubernetes(八) Pod 控制器详解</a></li><li><a href="/kubernetes/608/" class="sidebar-link">kubernetes(九) Service介绍、类型及使用</a></li><li><a href="/kubernetes/609/" class="sidebar-link">kubernetes(十) Ingress介绍及使用</a></li><li><a href="/kubernetes/610/" class="sidebar-link">kubernetes(十一) 数据存储（挂载卷管理）</a></li><li><a href="/kubernetes/611/" class="sidebar-link">kubernetes(十二) 安全认证</a></li><li><a href="/kubernetes/612/" class="sidebar-link">kubernetes(十三) DashBoard</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>linux</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/linux/2300/" class="sidebar-link">linux 创建用户及权限操作</a></li><li><a href="/linux/2301/" class="sidebar-link">Linux 磁盘操作相关命令</a></li><li><a href="/linux/2302/" class="sidebar-link">Linux 文本数据处理工具awk命令</a></li><li><a href="/linux/2303/" class="sidebar-link">Linux 定时任务</a></li><li><a href="/linux/2304/" class="sidebar-link">Linux 命令总结</a></li></ul></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="placeholder"></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">Jenkins(六) Jenkins项目构建细节<!----></h1> <!----> <div class="theme-vdoing-content content__default"><h2 id="内置触发器"><a href="#内置触发器" class="header-anchor">#</a> 内置触发器</h2> <p>Jenkins 内置 4 种构建触发器：</p> <ul><li>触发远程构建，通过一个远程地址触发项目的执行</li> <li>其他工程构建后触发（Build after other projects are build），就是需要前面一个项目构建完成后触发我的项目构建</li> <li>定时构建（Build periodically），顾名思义就是 类似于 corn 表达式，定时执行</li> <li>轮询 SCM（Poll SCM），会定时扫描本地代码仓库是否有变更，如果代码有变更就触发项目构建</li></ul> <h3 id="远程构建"><a href="#远程构建" class="header-anchor">#</a> 远程构建</h3> <p>在项目中的配置中，构建触发器选中远程构建。</p> <p><img src="/assets/img/jenkins/505/img.png" alt=""></p> <p>通过浏览器访问 http://192.168.81.102:7777/job/test01/build?token=6666 进行项目构建</p> <h3 id="其他工程构建后触发"><a href="#其他工程构建后触发" class="header-anchor">#</a> 其他工程构建后触发</h3> <p><img src="/assets/img/jenkins/505/img_1.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_2.png" alt=""></p> <p>应用保存后，就可以构建 maven_project 了。</p> <h3 id="定时构建"><a href="#定时构建" class="header-anchor">#</a> 定时构建</h3> <p>定时字符串从左往右分别为： 分 时 日 月 周<br>
+一些定时表达式的例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>每30分钟构建一次：H代表形参(代表小时，测试用 *)
+H/30 * * * * 10:02 10:32
+每2个小时构建一次: 
+H H/2 * * *
+每天的8点，12点，22点，一天构建3次： (多个时间点中间用逗号隔开) 
+0 8,12,22 * * *
+每天中午12点定时构建一次 
+H 12 * * *
+每天下午18点定时构建一次 
+H 18 * * *
+在每个小时的前半个小时内的每10分钟 H(0-29)/10 * * * *
+每两小时一次，每个工作日上午9点到下午5点(也许是上午10:38，下午12:38，下午2:38，下午4:38) H H(9-16)/2 * * 1-5
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p><img src="/assets/img/jenkins/505/img_3.png" alt=""></p> <h3 id="轮询scm"><a href="#轮询scm" class="header-anchor">#</a> 轮询 SCM</h3> <p>该构建触发器，Jenkins 会定时扫描本地整个项目的代码，增大系统的开销，不建议使用。</p> <p><img src="/assets/img/jenkins/505/img_4.png" alt=""></p> <h2 id="git-hook自动触发构建"><a href="#git-hook自动触发构建" class="header-anchor">#</a> Git hook 自动触发构建</h2> <p>在 Jenkins 的内置构建触发器中，轮询 SCM 可以实现 Gitlab 代码更新，项目自动构建，但是该方案的性能不佳。那有没有更好的方案呢？ 有的。就是利用 Gitlab 的 webhook 实现代码 push 到仓库，立即触发项目自动构建。</p> <p><img src="/assets/img/jenkins/505/img_5.png" alt=""></p> <h3 id="安装gitlab-hook插件"><a href="#安装gitlab-hook插件" class="header-anchor">#</a> 安装 Gitlab Hook 插件</h3> <p>需要安装两个插件：Gitlab Hook 和 GitLab，安装好后在项目配置的构建触发器中，会多一个选项</p> <p><img src="/assets/img/jenkins/505/img_6.png" alt=""></p> <p>关于 Gitlab 之后的操作请百度，我这里使用的是 gitea。</p> <p>gitea 需要下载 Generic Webhook Trigger 插件，安装后到项目配置</p> <p><img src="/assets/img/jenkins/505/img_7.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_8.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_9.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_10.png" alt=""></p> <p>配置完成后就可以测试了，只要提交了代码就会构建项目。</p> <h2 id="jenkins的参数化构建"><a href="#jenkins的参数化构建" class="header-anchor">#</a> Jenkins 的参数化构建</h2> <p>有时在项目构建的过程中，我们需要根据用户的输入动态传入一些参数，从而影响整个构建结果，这时我们可以使用参数化构建。</p> <p>Jenkins 支持非常丰富的参数类型</p> <p><img src="/assets/img/jenkins/505/img_11.png" alt=""></p> <h3 id="string-parameter"><a href="#string-parameter" class="header-anchor">#</a> String Parameter</h3> <p>这样的方式只能适用于 pipeline 项目</p> <p><img src="/assets/img/jenkins/505/img_12.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_13.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_14.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_15.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_16.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_17.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_18.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_19.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_20.png" alt=""></p> <p>这种方式输入哪个分支，就构建哪个分支</p> <h2 id="配置邮箱服务器发送构建结果"><a href="#配置邮箱服务器发送构建结果" class="header-anchor">#</a> 配置邮箱服务器发送构建结果</h2> <h3 id="安装-email-extension-插件"><a href="#安装-email-extension-插件" class="header-anchor">#</a> 安装 Email Extension 插件</h3> <p><img src="/assets/img/jenkins/505/img_21.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_22.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_23.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_24.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_25.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_26.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_27.png" alt=""></p> <p>可以测试发送</p> <blockquote><p>如果 jenkins 报错： Can't send command to SMTP host; 有可能是管理员的邮箱没有填写或者和认证者的邮箱不相同。</p></blockquote> <h3 id="准备邮件内容"><a href="#准备邮件内容" class="header-anchor">#</a> 准备邮件内容</h3> <p>在项目根目录编写 email.html，并把文件推送 git</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;${ENV, var=&quot;JOB_NAME&quot;}-第${BUILD_NUMBER}次构建日志&lt;/title&gt;
+&lt;/head&gt;
+&lt;body leftmargin=&quot;8&quot; marginwidth=&quot;0&quot; topmargin=&quot;8&quot; marginheight=&quot;4&quot; offset=&quot;0&quot;&gt;
+&lt;table width=&quot;95%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sansserif&quot;&gt;
+    &lt;tr&gt;
+        &lt;td&gt;(本邮件是程序自动下发的，请勿回复！)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;h2&gt;
+            &lt;font color=&quot;#0000FF&quot;&gt;构建结果 - ${BUILD_STATUS}&lt;/font&gt;
+        &lt;/h2&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;br/&gt;
+            &lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;构建信息&lt;/font&gt;&lt;/b&gt;
+            &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;ul&gt;
+                &lt;li&gt;项目名称&amp;nbsp;：&amp;nbsp;${PROJECT_NAME}&lt;/li&gt;
+                &lt;li&gt;构建编号&amp;nbsp;：&amp;nbsp;第${BUILD_NUMBER}次构建&lt;/li&gt;
+                &lt;li&gt;触发原因：&amp;nbsp;${CAUSE}&lt;/li&gt;
+                &lt;li&gt;构建日志：&amp;nbsp;
+                    &lt;a href=&quot;${BUILD_URL}console&quot;&gt;${BUILD_URL}console&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;构建&amp;nbsp;&amp;nbsp;Url&amp;nbsp;：&amp;nbsp;
+                    &lt;a href=&quot;${BUILD_URL}&quot;&gt;${BUILD_URL}&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;工作目录&amp;nbsp;：&amp;nbsp;
+                    &lt;a href=&quot;${PROJECT_URL}ws&quot;&gt;${PROJECT_URL}ws&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;项目&amp;nbsp;&amp;nbsp;Url&amp;nbsp;：&amp;nbsp;
+                    &lt;a href=&quot;${PROJECT_URL}&quot;&gt;${PROJECT_URL}&lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;Changes Since Last Successful Build:&lt;/font&gt;&lt;/b&gt;
+            &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;ul&gt;
+                &lt;li&gt;历史变更记录 : &lt;a href=&quot;${PROJECT_URL}changes&quot;&gt;${PROJECT_URL}changes&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            ${CHANGES_SINCE_LAST_SUCCESS,reverse=true, format=&quot;Changes for Build #%n:&lt;br/&gt;%c&lt;br/&gt;&quot;,showPaths=true,changesFormat=&quot;&lt;pre&gt;[%a]&lt;br/&gt;%m&lt;/pre&gt;&quot;,pathFormat=&quot;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;%p&quot;}
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;b&gt;Failed Test Results&lt;/b&gt;
+            &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;pre style=&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica,sans-serif&quot;&gt;
+                $FAILED_TESTS
+            &lt;/pre&gt;
+            &lt;br/&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;构建日志 (最后 100行):&lt;/font&gt;&lt;/b&gt;
+            &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;textarea cols=&quot;80&quot; rows=&quot;30&quot; readonly=&quot;readonly&quot;
+                      style=&quot;font-family: Courier New&quot;&gt;
+                ${BUILD_LOG,maxLines=100}
+            &lt;/textarea&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br></div></div><p>这里的参数都为 Jenkins 的参数，具体参数在 Jenkins 系统配置里可以看到，点击如下的问号就行。</p> <p><img src="/assets/img/jenkins/505/img_28.png" alt=""></p> <p><img src="/assets/img/jenkins/505/img_29.png" alt=""></p> <p>添加 post，post 意思是构建后操作，post 可以根据 stage 的结果执行不同的逻辑，比如 stages 里面都执行完成，他会走 post 里的 success 代码，如果失败会走 failure 代码。而 post 的语法该如何写，可以到 流水线语法 中看到。</p> <p><img src="/assets/img/jenkins/505/img_30.png" alt=""></p> <ul><li>Always run, regardless of build status 无论构建的结果如何都会执行</li> <li>Run if the build status is &quot;Failure&quot; 构建失败运行</li> <li>Run if the build status is &quot;Success&quot; or hasnt been set yet 构建成功运行</li></ul> <p>至于，邮件的内容，可以在片段生成器中查出来</p> <p><img src="/assets/img/jenkins/505/img_31.png" alt=""></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    post {
+        always {
+            emailext(
+                # 可以使用 jenkins 里面的参数
+                subject: '构建通知：${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!',
+                # 读取 email.html 文件
+                body: '${FILE,path=&quot;email.html&quot;}',
+                # 邮件的收件人
+                to: 'xxxxxx@qq.com'
+            )
+        }
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>${FILE,path=&quot;PATH&quot;} 可以在系统配置中了解</p> <p><img src="/assets/img/jenkins/505/img_32.png" alt=""></p> <p>然后去构建你的项目，就可以收到 构建项目的邮件了。</p> <h2 id="jenkins-配置-sonarqube-代码审查"><a href="#jenkins-配置-sonarqube-代码审查" class="header-anchor">#</a> jenkins 配置 SonarQube（代码审查）</h2> <p>SonarQube 是一个用于管理代码质量的开放平台，可以快速的定位代码中潜在的或者明显的错误。目前支持 java,C#,C/C++,Python,PL/SQL,Cobol,JavaScrip,Groovy 等二十几种编程语言的代码质量管理与检测。官网：https://www.sonarqube.org/</p> <table><thead><tr><th>软件</th> <th>版本</th></tr></thead> <tbody><tr><td>JDK</td> <td>1.8</td></tr> <tr><td>mysql</td> <td>8.0</td></tr> <tr><td>SonarQube</td> <td>6.7.4</td></tr></tbody></table> <p>下载 sonar 压缩包：https://www.sonarqube.org/downloads/</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 解压 
+unzip sonarqube-6.7.4.zip
+# 创建sonar用户，必须sonar用于启动，否则报错
+useradd sonar 
+# 更改sonar目录及文件权限
+chown -R sonar. /opt/software/sonar
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>修改 sonar 配置文件</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>vim /opt/software/sonar/conf/sonar.properties
+sonar.jdbc.username=xxxx
+sonar.jdbc.password=xxxxxx
+jdbc:mysql://xxxxxxxxxxx:3306/sonar?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;useSSL=false&amp;zeroDateTimeBehavior=convertToNull&amp;&amp;serverTimezone=Asia/Shanghai&amp;rewriteBatchedStatements=true&amp;useConfigs=maxPerformance
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>启动 sonar</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>cd /opt/software/sonar/
+# 启动
+su sonar ./bin/linux-x86-64/sonar.sh start 
+# 查看状态
+su sonar ./bin/linux-x86-64/sonar.sh status 
+# 停止
+su sonar ./bin/linux-x86-64/sonar.sh stop 
+# 查看日志
+tail -f logs/sonar.log
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><blockquote><p>7.9 以后不支持 mysql，只支持 h2、mssql、postgresql ，7.9 以下也只支持 mysql5.7，所以这里就不在继续了，大致说清楚就好，当安装好后访问 web 页面，默认 9000 端口，得到一个 token 记录下来。</p></blockquote> <p><img src="/assets/img/jenkins/505/img_33.png" alt=""></p> <p>1. 在 Jenkins 中安装 SonarQube Scanner 插件<br>
+ 2. 在 Jenkins-&gt;Manager Jenkins-&gt;Global Tool Configuration-&gt;SonarQube Scanner-&gt; 新增 SonarQube Scanner</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 填入 Name，名字可以自己随便起
+2. 勾选 Install automatically
+3. 选择安装的版本
+4. 点击应用并保存
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>3. 在 Jenkins-&gt;Manager Jenkins-&gt;Configure System-&gt;SonarQube servers-&gt;Add SonarQube</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 填入 Name，该名字可以随便起
+2. 填写安装 SonarQube 的 web 地址 IP:PORT
+3. 添加证书，该证书就是访问 SonarQube 获取到的token，也可以在Jenkins的全局凭证里去添加这个证书，但类型需要是 Secret text
+4. 应用并保存
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>4. 非结构性项目检查，到项目配置中找到构建，在正常的构建项目名录后可以增加构建步骤，然后再下拉选项中找到 Execute SonarQube Scanner</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 填写Task to run，执行 SonarQube 的命令，输入 scan（触发代码扫描以及检测）
+2. 代码需要的JDK环境，这个JDK环境是在全局配置中配置得到的
+3. 在 Analysis properties 填如内容
+
+# must be unique in a given SonarQube instance，项目标记
+sonar.projectKey=web_demo
+# this is the name and version displayed in the SonarQube UI. Was mandatoryprior to SonarQube 6.1.，项目名称
+sonar.projectName=web_demo
+# 版本
+sonar.projectVersion=1.0
+# Path is relative to the sonar-project.properties file. Replace &quot;\&quot; by &quot;/&quot; on
+Windows.
+# This property is optional if sonar.modules is set. 扫描代码的路径 . 代表当前项目根目录下扫描所有代码及文件，也可以直接扫描指定包代码，如 /src/main/**
+sonar.sources=.
+# 排除的一些文件不扫描
+sonar.exclusions=**/test/**,**/target/**
+# jdk版本
+sonar.java.source=1.8
+sonar.java.target=1.8
+# Encoding of the source code. Default is default system encoding，编码格式
+sonar.sourceEncoding=UTF-8
+
+4.应用并保存后构建项目
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>5. 流水线项目添加 SonarQube 功能，可以把内容添加到项目中，防止 jenkins 意外的崩溃，导致配置丢失</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 在项目中根路径下新建 sonar-project.properties，并把内容复制过来
+2. 到项目中的 Jenkinsfile 中编写内容
+
+pipeline {
+    agent any
+
+    stages {
+        stage('pull code') {
+            steps {
+                echo 'master 分支的事情 参数是=${branch}'
+                checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], extensions: [], userRemoteConfigs: [[credentialsId: '80dfe5c5-1684-47b1-a410-6f53ceb3c543', url: 'http://192.168.81.15:3000/biguncle/test.git']]])
+            }
+        }
+        # 代码检查，可以把该步骤添加到任意位置
+        stage('code checking') {
+            steps {
+                script {
+                    # '' 这里写的是在jenkins-&gt;Global Tool Configuration-&gt;SonarQube Scanner-&gt;新增的SonarQube Scanner的Name
+                    scannerHome = tool 'sonar-scanner'
+                }
+                # () 里的内容是在 jenkins-&gt;Configure System-&gt;SonarQube servers-&gt;里的 Name
+                withSonarQubeEnv('sonarqube6.7.4') {
+                    # 这里是 jenkins 在配置 SonarQube Scanner的时候安装的工具，他自己安装的不需要我们管
+                    sh &quot;${scannerHome}/bin/sonar-scanner&quot;
+                }
+            }
+        }
+        stage('build project') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+    }
+    post {
+        always {
+            emailext(
+                subject: '构建通知：${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!',
+                body: '${FILE,path=&quot;email.html&quot;}',
+                to: '875730567@qq.com'
+            )
+        }
+    }
+}
+
+3. 提交后就可以到 jenkins 去构建项目，结果要去 SonarQube web 去看
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">8/30/2023, 3:06:17 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/jenkins/504/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Jenkins(五) Jenkins构建Maven项目</div></a> <a href="/jenkins/506/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Jenkins(七) Jenkins+Docker+SpringCloud微服务持续集成（上）</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/jenkins/504/" class="prev">Jenkins(五) Jenkins构建Maven项目</a></span> <span class="next"><a href="/jenkins/506/">Jenkins(七) Jenkins+Docker+SpringCloud微服务持续集成（上）</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2023
+    <span>
+<!--      <a href='https://doc.xugaoyi.com/' target='_blank'>Theme by Vdoing</a> | <a href='http://doc.aizuda.com/' rel='external nofollow' target='_blank'>Copyright © 2022-2023 AiZuDa</a>-->
+<!--      <br>-->
+<!--      <a href="http://beian.miit.gov.cn/" target="_blank">鲁ICP备2021041554号-1</a>-->
+    </span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.223af033.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/40.55bba6a6.js" defer></script>
+  </body>
+</html>

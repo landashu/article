@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>kubernetes(五) Pod 介绍及配置 | BigUncle技术博客</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="技术博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.223af033.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/47.77f1ab09.js" as="script">
+    <link rel="stylesheet" href="/assets/css/1.styles.7c5aa975.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="BigUncle技术博客" class="logo"> <span class="site-name can-hide">BigUncle技术博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title" style="display:;">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/100/" class="nav-link">Java</a></li><li class="dropdown-item"><!----> <a href="/spring/200/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/mybatis/300/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/maven/2300/" class="nav-link">Maven</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/linux/2300/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/docker/400/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/jenkins/500/" class="nav-link">Jenkins</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/600/" class="nav-link">Kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hadoop/700/" class="nav-link">Hadoop</a></li><li class="dropdown-item"><!----> <a href="/clickhouse/800/" class="nav-link">ClickHouse</a></li><li class="dropdown-item"><!----> <a href="/hbase/900/" class="nav-link">Hbase</a></li><li class="dropdown-item"><!----> <a href="/hive/1000/" class="nav-link">Hive</a></li><li class="dropdown-item"><!----> <a href="/flume/1100/" class="nav-link">Flume</a></li><li class="dropdown-item"><!----> <a href="/flink/1200/" class="nav-link">Flink</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title" style="display:;">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/mysql/1300/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/mongodb/1800/" class="nav-link">MongoDB</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/kafka/1400/" class="nav-link">KAFKA</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/1500/" class="nav-link">RabbitMQ</a></li><li class="dropdown-item"><!----> <a href="/redis/1600/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/nginx/1700/" class="nav-link">Nginx</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue3/1900/" class="nav-link">VUE3</a></li><li class="dropdown-item"><!----> <a href="/wx/2000/" class="nav-link">微信小程序</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="作品" class="dropdown-title"><!----> <span class="title" style="display:;">作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/easy-security/2100/" class="nav-link">Easy-Security</a></li><li class="dropdown-item"><!----> <a href="/easy-manager-tool/2200/" class="nav-link">Easy-Manager-Tool</a></li></ul></div></div> <a href="https://github.com/landashu?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title" style="display:;">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/100/" class="nav-link">Java</a></li><li class="dropdown-item"><!----> <a href="/spring/200/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/mybatis/300/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/maven/2300/" class="nav-link">Maven</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/linux/2300/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/docker/400/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/jenkins/500/" class="nav-link">Jenkins</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/600/" class="nav-link">Kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hadoop/700/" class="nav-link">Hadoop</a></li><li class="dropdown-item"><!----> <a href="/clickhouse/800/" class="nav-link">ClickHouse</a></li><li class="dropdown-item"><!----> <a href="/hbase/900/" class="nav-link">Hbase</a></li><li class="dropdown-item"><!----> <a href="/hive/1000/" class="nav-link">Hive</a></li><li class="dropdown-item"><!----> <a href="/flume/1100/" class="nav-link">Flume</a></li><li class="dropdown-item"><!----> <a href="/flink/1200/" class="nav-link">Flink</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title" style="display:;">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/mysql/1300/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/mongodb/1800/" class="nav-link">MongoDB</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/kafka/1400/" class="nav-link">KAFKA</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/1500/" class="nav-link">RabbitMQ</a></li><li class="dropdown-item"><!----> <a href="/redis/1600/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/nginx/1700/" class="nav-link">Nginx</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue3/1900/" class="nav-link">VUE3</a></li><li class="dropdown-item"><!----> <a href="/wx/2000/" class="nav-link">微信小程序</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="作品" class="dropdown-title"><!----> <span class="title" style="display:;">作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/easy-security/2100/" class="nav-link">Easy-Security</a></li><li class="dropdown-item"><!----> <a href="/easy-manager-tool/2200/" class="nav-link">Easy-Manager-Tool</a></li></ul></div></div> <a href="https://github.com/landashu?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Docker</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docker/400/" class="sidebar-link">Docker 概念、命令及Dockerfile介绍</a></li><li><a href="/docker/401/" class="sidebar-link">Docker-Compose 命令及基本使用</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Jenkins</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/jenkins/500/" class="sidebar-link">Jenkins(一) 持续集成及Jenkins介绍</a></li><li><a href="/jenkins/501/" class="sidebar-link">Jenkins(二) Jenkins安装和环境配置</a></li><li><a href="/jenkins/502/" class="sidebar-link">Jenkins(三) Jenkins用户管理及凭证</a></li><li><a href="/jenkins/503/" class="sidebar-link">Jenkins(四) Maven安装和配置</a></li><li><a href="/jenkins/504/" class="sidebar-link">Jenkins(五) Jenkins构建Maven项目</a></li><li><a href="/jenkins/505/" class="sidebar-link">Jenkins(六) Jenkins项目构建细节</a></li><li><a href="/jenkins/506/" class="sidebar-link">Jenkins(七) Jenkins+Docker+SpringCloud微服务持续集成（上）</a></li><li><a href="/jenkins/507/" class="sidebar-link">Jenkins(八) Jenkins+Docker+SpringCloud微服务持续集成（下）</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Kubernetes</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/kubernetes/600/" class="sidebar-link">kubernetes(一) 概念及介绍</a></li><li><a href="/kubernetes/601/" class="sidebar-link">kubernetes(二) 集群环境搭建</a></li><li><a href="/kubernetes/602/" class="sidebar-link">kubernetes(三) 资源管理</a></li><li><a href="/kubernetes/603/" class="sidebar-link">kubernetes(四) Namespace、Pod、Lable、Deployment、Service 的资源介绍</a></li><li><a href="/kubernetes/604/" aria-current="page" class="active sidebar-link">kubernetes(五) Pod 介绍及配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/kubernetes/604/#介绍" class="sidebar-link">介绍</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/kubernetes/604/#pod结构" class="sidebar-link">Pod结构</a></li><li class="sidebar-sub-header level3"><a href="/kubernetes/604/#pod定义" class="sidebar-link">Pod定义</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/kubernetes/604/#pod配置" class="sidebar-link">Pod配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/kubernetes/604/#基本配置" class="sidebar-link">基本配置</a></li><li class="sidebar-sub-header level3"><a href="/kubernetes/604/#镜像拉取" class="sidebar-link">镜像拉取</a></li><li class="sidebar-sub-header level3"><a href="/kubernetes/604/#启动命令" class="sidebar-link">启动命令</a></li><li class="sidebar-sub-header level3"><a href="/kubernetes/604/#环境变量" class="sidebar-link">环境变量</a></li><li class="sidebar-sub-header level3"><a href="/kubernetes/604/#端口设置" class="sidebar-link">端口设置</a></li><li class="sidebar-sub-header level3"><a href="/kubernetes/604/#资源配额" class="sidebar-link">资源配额</a></li></ul></li></ul></li><li><a href="/kubernetes/605/" class="sidebar-link">kubernetes(六) Pod 生命周期</a></li><li><a href="/kubernetes/606/" class="sidebar-link">kubernetes(七) Pod 调度</a></li><li><a href="/kubernetes/607/" class="sidebar-link">kubernetes(八) Pod 控制器详解</a></li><li><a href="/kubernetes/608/" class="sidebar-link">kubernetes(九) Service介绍、类型及使用</a></li><li><a href="/kubernetes/609/" class="sidebar-link">kubernetes(十) Ingress介绍及使用</a></li><li><a href="/kubernetes/610/" class="sidebar-link">kubernetes(十一) 数据存储（挂载卷管理）</a></li><li><a href="/kubernetes/611/" class="sidebar-link">kubernetes(十二) 安全认证</a></li><li><a href="/kubernetes/612/" class="sidebar-link">kubernetes(十三) DashBoard</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>linux</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/linux/2300/" class="sidebar-link">linux 创建用户及权限操作</a></li><li><a href="/linux/2301/" class="sidebar-link">Linux 磁盘操作相关命令</a></li><li><a href="/linux/2302/" class="sidebar-link">Linux 文本数据处理工具awk命令</a></li><li><a href="/linux/2303/" class="sidebar-link">Linux 定时任务</a></li><li><a href="/linux/2304/" class="sidebar-link">Linux 命令总结</a></li></ul></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="placeholder"></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">kubernetes(五) Pod 介绍及配置<!----></h1> <!----> <div class="theme-vdoing-content content__default"><h2 id="介绍"><a href="#介绍" class="header-anchor">#</a> 介绍</h2> <h3 id="pod结构"><a href="#pod结构" class="header-anchor">#</a> Pod 结构</h3> <p><img src="/assets/img/kubernetes/604/img.png" alt=""></p> <p>每个 Pod 中都可以包含一个或者多个容器，这些容器可以分为两类：</p> <ul><li>用户程序所在的容器，数量可多可少</li> <li>Pause 容器，这是每个 Pod 都会有的一个<strong>根容器</strong>，它的作用有两个：
+<ul><li>可以以它为依据，评估整个 Pod 的健康状态</li> <li>可以在根容器上设置 Ip 地址，其它容器都此 Ip（Pod IP），以实现 Pod 内部的网路通信<br> <code>这里是Pod内部的通讯，Pod的之间的通讯采用虚拟二层网络技术来实现，我们当前环境用的是Flannel</code></li></ul></li></ul> <h3 id="pod定义"><a href="#pod定义" class="header-anchor">#</a> Pod 定义</h3> <p>下面是 Pod 的资源清单：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>apiVersion: v1     #必选，版本号，例如v1
+kind: Pod       　 #必选，资源类型，例如 Pod
+metadata:       　 #必选，元数据
+  name: string     #必选，Pod名称
+  namespace: string  #Pod所属的命名空间,默认为&quot;default&quot;
+  labels:       　　  #自定义标签列表
+    - name: string      　          
+spec:  #必选，Pod中容器的详细定义
+  containers:  #必选，Pod中容器列表
+  - name: string   #必选，容器名称
+    image: string  #必选，容器的镜像名称
+    imagePullPolicy: [ Always|Never|IfNotPresent ]  #获取镜像的策略 
+    command: [string]   #容器的启动命令列表，如不指定，使用打包时使用的启动命令
+    args: [string]      #容器的启动命令参数列表
+    workingDir: string  #容器的工作目录
+    volumeMounts:       #挂载到容器内部的存储卷配置
+    - name: string      #引用pod定义的共享存储卷的名称，需用volumes[]部分定义的的卷名
+      mountPath: string #存储卷在容器内mount的绝对路径，应少于512字符
+      readOnly: boolean #是否为只读模式
+    ports: #需要暴露的端口库号列表
+    - name: string        #端口的名称
+      containerPort: int  #容器需要监听的端口号
+      hostPort: int       #容器所在主机需要监听的端口号，默认与Container相同
+      protocol: string    #端口协议，支持TCP和UDP，默认TCP
+    env:   #容器运行前需设置的环境变量列表
+    - name: string  #环境变量名称
+      value: string #环境变量的值
+    resources: #资源限制和请求的设置
+      limits:  #资源限制的设置
+        cpu: string     #Cpu的限制，单位为core数，将用于docker run --cpu-shares参数
+        memory: string  #内存限制，单位可以为Mib/Gib，将用于docker run --memory参数
+      requests: #资源请求的设置
+        cpu: string    #Cpu请求，容器启动的初始可用数量
+        memory: string #内存请求,容器启动的初始可用数量
+    lifecycle: #生命周期钩子
+        postStart: #容器启动后立即执行此钩子,如果执行失败,会根据重启策略进行重启
+        preStop: #容器终止前执行此钩子,无论结果如何,容器都会终止
+    livenessProbe:  #对Pod内各容器健康检查的设置，当探测无响应几次后将自动重启该容器
+      exec:       　 #对Pod容器内检查方式设置为exec方式
+        command: [string]  #exec方式需要制定的命令或脚本
+      httpGet:       #对Pod内个容器健康检查方法设置为HttpGet，需要制定Path、port
+        path: string
+        port: number
+        host: string
+        scheme: string
+        HttpHeaders:
+        - name: string
+          value: string
+      tcpSocket:     #对Pod内个容器健康检查方式设置为tcpSocket方式
+         port: number
+       initialDelaySeconds: 0       #容器启动完成后首次探测的时间，单位为秒
+       timeoutSeconds: 0    　　    #对容器健康检查探测等待响应的超时时间，单位秒，默认1秒
+       periodSeconds: 0     　　    #对容器监控检查的定期探测时间设置，单位秒，默认10秒一次
+       successThreshold: 0
+       failureThreshold: 0
+       securityContext:
+         privileged: false
+  restartPolicy: [Always | Never | OnFailure]  #Pod的重启策略
+  nodeName: &lt;string&gt; #设置NodeName表示将该Pod调度到指定到名称的node节点上
+  nodeSelector: obeject #设置NodeSelector表示将该Pod调度到包含这个label的node上
+  imagePullSecrets: #Pull镜像时使用的secret名称，以key：secretkey格式指定
+  - name: string
+  hostNetwork: false   #是否使用主机网络模式，默认为false，如果设置为true，表示使用宿主机网络
+  volumes:   #在该pod上定义共享存储卷列表
+  - name: string    #共享存储卷名称 （volumes类型有很多种）
+    emptyDir: {}       #类型为emtyDir的存储卷，与Pod同生命周期的一个临时目录。为空值
+    hostPath: string   #类型为hostPath的存储卷，表示挂载Pod所在宿主机的目录
+      path: string      　　        #Pod所在宿主机的目录，将被用于同期中mount的目录
+    secret:       　　　#类型为secret的存储卷，挂载集群与定义的secret对象到容器内部
+      scretname: string  
+      items:     
+      - key: string
+        path: string
+    configMap:         #类型为configMap的存储卷，挂载预定义的configMap对象到容器内部
+      name: string
+      items:
+      - key: string
+        path: string
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br></div></div><p>不知道相关的 type 有什么资源类型可写，可以通过一个命令来查看每种资源的可配置项</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>#   kubectl explain 资源类型         查看某种资源可以配置的一级属性
+#   kubectl explain 资源类型.属性     查看属性的子属性
+[root@k8s-master01 ~]# kubectl explain pod
+KIND:     Pod
+VERSION:  v1
+FIELDS:
+   apiVersion   &lt;string&gt;
+   kind &lt;string&gt;
+   metadata     &lt;Object&gt;
+   spec &lt;Object&gt;
+   status       &lt;Object&gt;
+
+[root@k8s-master01 ~]# kubectl explain pod.metadata
+KIND:     Pod
+VERSION:  v1
+RESOURCE: metadata &lt;Object&gt;
+FIELDS:
+   annotations  &lt;map[string]string&gt;
+   clusterName  &lt;string&gt;
+   creationTimestamp    &lt;string&gt;
+   deletionGracePeriodSeconds   &lt;integer&gt;
+   deletionTimestamp    &lt;string&gt;
+   finalizers   &lt;[]string&gt;
+   generateName &lt;string&gt;
+   generation   &lt;integer&gt;
+   labels       &lt;map[string]string&gt;
+   managedFields        &lt;[]Object&gt;
+   name &lt;string&gt;
+   namespace    &lt;string&gt;
+   ownerReferences      &lt;[]Object&gt;
+   resourceVersion      &lt;string&gt;
+   selfLink     &lt;string&gt;
+   uid  &lt;string&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><p>在 kubernetes 中基本所有资源的一级属性都是一样的，主要包含 5 部分：</p> <ul><li>apiVersion <string> 版本，由 kubernetes 内部定义，版本号必须可以用 kubectl api-versions 查询到</string></li> <li>kind <string> 类型，由 kubernetes 内部定义，版本号必须可以用 kubectl api-resources 查询到</string></li> <li>metadata <Object> 元数据，主要是资源标识和说明，常用的有 name、namespace、labels 等</Object></li> <li>spec <Object> 描述，这是配置中最重要的一部分，里面是对各种资源配置的详细描述</Object></li> <li>status <Object> 状态信息，里面的内容不需要定义，由 kubernetes 自动生成</Object></li></ul> <p>在上面的属性中，spec 是接下来研究的重点，继续看下它的常见子属性:</p> <ul><li>containers &lt;[] Object&gt; 容器列表，用于定义容器的详细信息</li> <li>nodeName <String> 根据 nodeName 的值将 pod 调度到指定的 Node 节点上</String></li> <li>nodeSelector &lt;map []&gt; 根据 NodeSelector 中定义的信息选择将该 Pod 调度到包含这些 label 的 Node 上</li> <li>hostNetwork <boolean> 是否使用主机网络模式，默认为 false，如果设置为 true，表示使用宿主机网络</boolean></li> <li>volumes &lt;[] Object&gt; 存储卷，用于定义 Pod 上面挂在的存储信息</li> <li>restartPolicy <string> 重启策略，表示 Pod 在遇到故障的时候的处理策略</string></li></ul> <h2 id="pod配置"><a href="#pod配置" class="header-anchor">#</a> Pod 配置</h2> <p>主要来研究 <code>pod.spec.containers</code>  属性，这也是 pod 配置中最为关键的一项配置。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@k8s-master01 ~]# kubectl explain pod.spec.containers
+KIND:     Pod
+VERSION:  v1
+RESOURCE: containers &lt;[]Object&gt;   # 数组，代表可以有多个容器
+FIELDS:
+   name  &lt;string&gt;     # 容器名称
+   image &lt;string&gt;     # 容器需要的镜像地址
+   imagePullPolicy  &lt;string&gt; # 镜像拉取策略 
+   command  &lt;[]string&gt; # 容器的启动命令列表，如不指定，使用打包时使用的启动命令
+   args     &lt;[]string&gt; # 容器的启动命令需要的参数列表
+   env      &lt;[]Object&gt; # 容器环境变量的配置
+   ports    &lt;[]Object&gt;     # 容器需要暴露的端口号列表
+   resources &lt;Object&gt;      # 资源限制和资源请求的设置
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="基本配置"><a href="#基本配置" class="header-anchor">#</a> 基本配置</h3> <p>创建 pod-base.yaml 文件，内容如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-base
+  namespace: dev
+  labels:
+    user: heima
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.17.1
+  - name: busybox
+    image: busybox:1.30
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>上面定义了一个比较简单 Pod 的配置，里面有两个容器：</p> <ul><li>nginx：用 1.17.1 版本的 nginx 镜像创建，（nginx 是一个轻量级 web 容器）</li> <li>busybox：用 1.30 版本的 busybox 镜像创建，（busybox 是一个小巧的 linux 命令集合）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 创建Pod
+[root@k8s-master01 pod]# kubectl apply -f pod-base.yaml
+pod/pod-base created
+
+# 查看Pod状况
+# READY 1/2 : 表示当前Pod中有2个容器，其中1个准备就绪，1个未就绪
+# RESTARTS  : 重启次数，因为有1个容器故障了，Pod一直在重启试图恢复它
+[root@k8s-master01 pod]# kubectl get pod -n dev
+NAME       READY   STATUS    RESTARTS   AGE
+pod-base   1/2     Running   4          95s
+
+# 可以通过describe查看内部的详情
+# 此时已经运行起来了一个基本的Pod，所以它暂时有问题
+[root@k8s-master01 pod]# kubectl describe pod pod-base -n dev
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h3 id="镜像拉取"><a href="#镜像拉取" class="header-anchor">#</a> 镜像拉取</h3> <p>当我们的 Pod 已经拉取镜像并启动容器，其他 Pod 也需要此镜像，那么此时其他 Pod 拉取相同镜像是从镜像源拉取，还是直接使用已经拉取过的镜像？这就由 imagepullpolicy 来决定。</p> <p>创建 pod-imagepullpolicy.yaml 文件，内容如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-imagepullpolicy
+  namespace: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.17.1
+    imagePullPolicy: Never # 用于设置镜像拉取策略
+  - name: busybox
+    image: busybox:1.30
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>imagePullPolicy，用于设置镜像拉取策略，kubernetes 支持配置三种拉取策略：</p> <ul><li>Always：总是从远程仓库拉取镜像（一直远程下载）</li> <li>IfNotPresent：本地有则使用本地镜像，本地没有则从远程仓库拉取镜像（本地有就本地 本地没远程下载）</li> <li>Never：只使用本地镜像，从不去远程仓库拉取，本地没有就报错 （一直使用本地）</li></ul> <blockquote><p>默认值说明:<br>
+ 如果镜像 tag 为具体版本号， 默认策略是：IfNotPresent<br>
+ 如果镜像 tag 为：latest（最终版本） ，默认策略是 always</p></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code># 创建Pod
+[root@k8s-master01 pod]# kubectl create -f pod-imagepullpolicy.yaml
+pod/pod-imagepullpolicy created
+
+# 查看Pod详情
+# 此时明显可以看到nginx镜像有一步Pulling image &quot;nginx:1.17.1&quot;的过程
+[root@k8s-master01 pod]# kubectl describe pod pod-imagepullpolicy -n dev
+......
+Events:
+  Type     Reason     Age               From               Message
+  ----     ------     ----              ----               -------
+  Normal   Scheduled  &lt;unknown&gt;         default-scheduler  Successfully assigned dev/pod-imagePullPolicy to node1
+  Normal   Pulling    32s               kubelet, node1     Pulling image &quot;nginx:1.17.1&quot;
+  Normal   Pulled     26s               kubelet, node1     Successfully pulled image &quot;nginx:1.17.1&quot;
+  Normal   Created    26s               kubelet, node1     Created container nginx
+  Normal   Started    25s               kubelet, node1     Started container nginx
+  Normal   Pulled     7s (x3 over 25s)  kubelet, node1     Container image &quot;busybox:1.30&quot; already present on machine
+  Normal   Created    7s (x3 over 25s)  kubelet, node1     Created container busybox
+  Normal   Started    7s (x3 over 25s)  kubelet, node1     Started container busybox
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h3 id="启动命令"><a href="#启动命令" class="header-anchor">#</a> 启动命令</h3> <p>在 <strong>基本配置</strong> 的案例中，有一个问题没有解决，就是 busybox 容器一直没有成功运行，那么到底是什么原因导致这个容器的故障呢？</p> <p>busybox 并不是一个程序，而是类似于一个工具类的集合，kubernetes 集群启动管理后，它会自动关闭。解决方法就是让其一直在运行，这就用到了 command 配置。</p> <p>创建 pod-command.yaml 文件，内容如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-command
+  namespace: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.17.1
+  - name: busybox
+    image: busybox:1.30
+    # 容器启动成功，执行死循环
+    command: [&quot;/bin/sh&quot;,&quot;-c&quot;,&quot;touch /tmp/hello.txt;while true;do /bin/echo $(date +%T) &gt;&gt; /tmp/hello.txt; sleep 3; done;&quot;]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>command，用于在 pod 中的容器初始化完毕之后运行一个命令。</p> <blockquote><p>稍微解释下上面命令的意思：<br>
+&quot;/bin/sh&quot;,&quot;-c&quot;, 使用 sh 执行命令<br>
+ touch /tmp/hello.txt; 创建一个 /tmp/hello.txt 文件<br>
+ while true;do /bin/echo $(date +% T) &gt;&gt; /tmp/hello.txt; sleep 3; done; 每隔 3 秒向文件中写入当前时间</p></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code># 创建Pod
+[root@k8s-master01 pod]# kubectl create  -f pod-command.yaml
+pod/pod-command created
+
+# 查看Pod状态
+# 此时发现两个pod都正常运行了
+[root@k8s-master01 pod]# kubectl get pods pod-command -n dev
+NAME          READY   STATUS   RESTARTS   AGE
+pod-command   2/2     Runing   0          2s
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>进入 pod 中的 busybox 容器，查看文件内容，命令如下</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>kubectl exec  pod名称 -n 命名空间 -it -c 容器名称 /bin/sh
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>使用这个命令就可以进入某个容器的内部，然后进行相关操作了，比如，可以查看 txt 文件的内容。演示：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@k8s-master01 pod]# kubectl exec pod-command -n dev -it -c busybox /bin/sh
+/ # tail -f /tmp/hello.txt
+14:44:19
+14:44:22
+14:44:25
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><blockquote><p>特别说明：<br>
+通过上面发现 command 已经可以完成启动命令和传递参数的功能，为什么这里还要提供一个 args 选项，用于传递参数呢？这其实跟 docker 有点关系，kubernetes 中的 command、args 两项其实是实现覆盖 Dockerfile 中 ENTRYPOINT 的功能。<br>
+1 如果 command 和 args 均没有写，那么用 Dockerfile 的配置。<br>
+2 如果 command 写了，但 args 没有写，那么 Dockerfile 默认的配置会被忽略，执行输入的 command<br>
+3 如果 command 没写，但 args 写了，那么 Dockerfile 中配置的 ENTRYPOINT 的命令会被执行，使用当前 args 的参数<br>
+ 4 如果 command 和 args 都写了，那么 Dockerfile 的配置被忽略，执行 command 并追加上 args 参数</p></blockquote> <h3 id="环境变量"><a href="#环境变量" class="header-anchor">#</a> 环境变量</h3> <p>创建 pod-env.yaml 文件，内容如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-env
+  namespace: dev
+spec:
+  containers:
+  - name: busybox
+    image: busybox:1.30
+    command: [&quot;/bin/sh&quot;,&quot;-c&quot;,&quot;while true;do /bin/echo $(date +%T);sleep 60; done;&quot;]
+    env: # 设置环境变量列表
+    - name: &quot;username&quot;
+      value: &quot;admin&quot;
+    - name: &quot;password&quot;
+      value: &quot;123456&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>env，环境变量，用于在 pod 中的容器设置环境变量。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 创建Pod
+[root@k8s-master01 ~]# kubectl create -f pod-env.yaml
+pod/pod-env created
+
+# 进入容器，输出环境变量
+[root@k8s-master01 ~]# kubectl exec pod-env -n dev -c busybox -it /bin/sh
+/ # echo $username
+admin
+/ # echo $password
+123456
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>这种方式不是很推荐，推荐将这些配置单独存储在配置文件中，这种方式将在后面介绍。</p> <h3 id="端口设置"><a href="#端口设置" class="header-anchor">#</a> 端口设置</h3> <p>本小节来介绍容器的端口设置，也就是 containers 的 ports 选项。</p> <p>首先看下 ports 支持的子选项：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@k8s-master01 ~]# kubectl explain pod.spec.containers.ports
+KIND:     Pod
+VERSION:  v1
+RESOURCE: ports &lt;[]Object&gt;
+FIELDS:
+   name         &lt;string&gt;  # 端口名称，如果指定，必须保证name在pod中是唯一的		
+   containerPort&lt;integer&gt; # 容器要监听的端口(0&lt;x&lt;65536)
+   hostPort     &lt;integer&gt; # 容器要在主机上公开的端口，如果设置，主机上只能运行容器的一个副本(一般省略) 
+   hostIP       &lt;string&gt;  # 要将外部端口绑定到的主机IP(一般省略)
+   protocol     &lt;string&gt;  # 端口协议。必须是UDP、TCP或SCTP。默认为“TCP”。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>接下来，编写一个测试案例，创建 pod-ports.yaml</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-ports
+  namespace: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.17.1
+    ports: # 设置容器暴露的端口列表
+    - name: nginx-port
+      containerPort: 80
+      protocol: TCP
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code># 创建Pod
+[root@k8s-master01 ~]# kubectl create -f pod-ports.yaml
+pod/pod-ports created
+
+# 查看pod
+# 在下面可以明显看到配置信息
+[root@k8s-master01 ~]# kubectl get pod pod-ports -n dev -o yaml
+......
+spec:
+  containers:
+  - image: nginx:1.17.1
+    imagePullPolicy: IfNotPresent
+    name: nginx
+    ports:
+    - containerPort: 80
+      name: nginx-port
+      protocol: TCP
+......
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>访问容器中的程序需要使用的是 <code>podip:containerPort</code></p> <h3 id="资源配额"><a href="#资源配额" class="header-anchor">#</a> 资源配额</h3> <p>容器中的程序要运行，肯定是要占用一定资源的，比如 cpu 和内存等，如果不对某个容器的资源做限制，那么它就可能吃掉大量资源，导致其它容器无法运行。针对这种情况，kubernetes 提供了对内存和 cpu 的资源进行配额的机制，这种机制主要通过 resources 选项实现，他有两个子选项：</p> <ul><li>limits：用于限制运行时容器的最大占用资源，当容器占用资源超过 limits 时会被终止，并进行重启</li> <li>requests ：用于设置容器需要的最小资源，如果环境资源不够，容器将无法启动</li></ul> <p>可以通过上面两个选项设置资源的上下限。当配置了后，会自动去找合适的主机资源来启动 Pod</p> <p>接下来，编写一个测试案例，创建 pod-resources.yaml</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-resources
+  namespace: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.17.1
+    resources: # 资源配额
+      limits:  # 限制资源（上限）
+        cpu: &quot;2&quot; # CPU限制，单位是core数
+        memory: &quot;10Gi&quot; # 内存限制
+      requests: # 请求资源（下限）
+        cpu: &quot;1&quot;  # CPU限制，单位是core数
+        memory: &quot;10Mi&quot;  # 内存限制
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>在这对 cpu 和 memory 的单位做一个说明：</p> <ul><li>cpu：core 数，可以为整数或小数</li> <li>memory： 内存大小，可以使用 Gi、Mi、G、M 等形式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 运行Pod
+[root@k8s-master01 ~]# kubectl create  -f pod-resources.yaml
+pod/pod-resources created
+
+# 查看发现pod运行正常
+[root@k8s-master01 ~]# kubectl get pod pod-resources -n dev
+NAME            READY   STATUS    RESTARTS   AGE  
+pod-resources   1/1     Running   0          39s   
+
+# 接下来，停止Pod
+[root@k8s-master01 ~]# kubectl delete  -f pod-resources.yaml
+pod &quot;pod-resources&quot; deleted
+
+# 编辑pod，修改resources.requests.memory的值为10Gi
+[root@k8s-master01 ~]# vim pod-resources.yaml
+
+# 再次启动pod
+[root@k8s-master01 ~]# kubectl create  -f pod-resources.yaml
+pod/pod-resources created
+
+# 查看Pod状态，发现Pod启动失败
+[root@k8s-master01 ~]# kubectl get pod pod-resources -n dev -o wide
+NAME            READY   STATUS    RESTARTS   AGE          
+pod-resources   0/1     Pending   0          20s    
+
+# 查看pod详情会发现，如下提示
+[root@k8s-master01 ~]# kubectl describe pod pod-resources -n dev
+......
+Warning  FailedScheduling  35s   default-scheduler  0/3 nodes are available: 1 node(s) had taint {node-role.kubernetes.io/master: }, that the pod didn't tolerate, 2 Insufficient memory.(内存不足)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">8/30/2023, 3:06:17 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/kubernetes/603/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">kubernetes(四) Namespace、Pod、Lable、Deployment、Service 的资源介绍</div></a> <a href="/kubernetes/605/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">kubernetes(六) Pod 生命周期</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/kubernetes/603/" class="prev">kubernetes(四) Namespace、Pod、Lable、Deployment、Service 的资源介绍</a></span> <span class="next"><a href="/kubernetes/605/">kubernetes(六) Pod 生命周期</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2023
+    <span>
+<!--      <a href='https://doc.xugaoyi.com/' target='_blank'>Theme by Vdoing</a> | <a href='http://doc.aizuda.com/' rel='external nofollow' target='_blank'>Copyright © 2022-2023 AiZuDa</a>-->
+<!--      <br>-->
+<!--      <a href="http://beian.miit.gov.cn/" target="_blank">鲁ICP备2021041554号-1</a>-->
+    </span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.223af033.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/47.77f1ab09.js" defer></script>
+  </body>
+</html>
