@@ -9,7 +9,7 @@
     <meta name="description" content="技术博客">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.1bbb313a.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/35.b118e999.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.03534e28.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/35.5a9e8f37.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.7c5aa975.css">
   </head>
   <body class="theme-mode-light">
@@ -23,7 +23,7 @@
   &quot;insecure-registries&quot;: [&quot;127.0.0.1:5000&quot;]
 }
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>配置完成后需要重新启动 Docker</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo systemctl restart docker
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="4"><li>启动 Registry 容器：使用以下命令在本地启动 Registry 容器：</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker run -d -p 5000:5000 --restart=always --name registry -v /opt/software/dockerRegistry:/var/lib/registry -v /opt/software/dockerRegistry/config.yml:/etc/docker/registry/config.yml registry:2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="4"><li>启动 Registry 容器：使用以下命令在本地启动 Registry 容器，官方文档 https://docs.docker.com/registry/deploying/?_gl=1<em>1ytdheb</em>_ga<em>ODY2NTEyNi4xNjkyMDAxODU2</em>_ga_XJWPQMJYHQ*MTY5Mzk5NzEyNy4yNS4xLjE2OTM5OTcyMTAuNTMuMC4w#native-basic-auth</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker run -d -p 5000:5000 --restart=always --name registry -v /opt/software/dockerRegistry:/var/lib/registry -v /opt/software/dockerRegistry/config.yml:/etc/docker/registry/config.yml registry:2
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这个命令将在本地启动一个名为 registry 的容器，并将本地的 /var/lib/registry 目录挂载到容器的 /var/lib/registry 目录，以保存 Registry 的数据。<br>
 5. 测试 Registry：现在，您的私有 Docker Registry 应该已经在本地成功搭建。您可以使用以下命令来测试 Registry 是否正常工作：</p> <ul><li>从 Docker Hub 拉取一个镜像：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker pull ubuntu
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>标记该镜像为私有 Registry 的地址：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker tag ubuntu 127.0.0.1:5000/my-ubuntu
@@ -34,29 +34,36 @@ yum install -y httpd-tools
 # 创建一个 htpasswd 文件，并添加用户名和密码
 htpasswd -Bbn user1 password1 &gt; /opt/software/dockerRegistry/htpasswd
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>配置 config.xml</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 指定配置文件的版本。目前可用的版本为0.1。
-version: 0.1
-  # 指定日志位置和级别
-  log:
-    level: debug
-    accesslog: /var/log/registry/access.log
-    errorlog: /var/log/registry/error.log
-  # 用于配置Registry的存储选项。
-  storage:
-    filesystem:
-      # 指定存储镜像数据的目录路径。
-      rootdirectory: /opt/software/dockerRegistry
-    delete:
-      enabled: true
-  http:
-    addr: 5000
-    headers:
-      X-Content-Type-Options: [nosniff]
-  # 基本认证，还可以使用Bearer Token认证、AWS认证、LDAP认证
-  auth:
-    htpasswd
-      realm: registry
-       path: /opt/software/dockerRegistry/htpasswd
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>如果已经启动容器，修改后需要重新启动容器</p> <h2 id="使用-docker-registry"><a href="#使用-docker-registry" class="header-anchor">#</a> 使用 Docker Registry</h2> <p>接下来先登录我们的私有库，如果是本机，使用 127.0.0.1，如果没设置账号密码，则默认是宿主机本身 SSH 连接的账号密码</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker login &lt;registry_host&gt;
+version: 0.1                                                                                                                                                                           
+log:                                                                                                                                                                                   
+  fields:                                                                                                                                                                              
+    service: registry                                                                                                                                                                  
+storage:                                                                                                                                                                               
+  cache:                                                                                                                                                                               
+    blobdescriptor: inmemory                                                                                                                                                           
+  filesystem:         
+    # 指定存储镜像数据的目录路径。                                                                                                                                                                 
+    rootdirectory: /var/lib/registry
+  # 可执行删除操作，不能省                                                                                                                                                   
+  delete:                                                                                                                                                                              
+    enabled: true
+# 暴漏端口                                                                                                                                                                      
+http:                                                                                                                                                                                  
+  addr: :5000                                                                                                                                                                          
+  headers:                                                                                                                                                                             
+    X-Content-Type-Options: [nosniff]    
+# 心跳                                                                                                                                              
+health:                                                                                                                                                                                
+  storagedriver:                                                                                                                                                                       
+    enabled: true                                                                                                                                                                      
+    interval: 10s                                                                                                                                                                      
+    threshold: 3     
+# 基本认证(Basic Auth)，还可以使用Bearer Token认证、AWS认证、LDAP认证
+auth:
+  htpasswd: 
+    realm: registry
+    path: /opt/software/dockerRegistry/htpasswd 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><p>如果已经启动容器，修改后需要重新启动容器</p> <h2 id="使用-docker-registry"><a href="#使用-docker-registry" class="header-anchor">#</a> 使用 Docker Registry</h2> <p>接下来先登录我们的私有库，如果是本机，使用 127.0.0.1，如果没设置账号密码，则默认是宿主机本身 SSH 连接的账号密码</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker login &lt;registry_host&gt;
 # 可以使用快捷命令
 docker login 127.0.0.1:5000 --username=xxx --password=xxxx
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>登出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker logout &lt;registry_host&gt;
@@ -77,7 +84,7 @@ GET /v2/_catalog
 // 分页获取
 GET /v2/_catalog?n=&lt;integer&gt;
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>列出镜像 tags</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>/v2/&lt;ImagesName&gt;/tags/list
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/6/2023, 6:24:36 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/docker/401/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Docker-Compose 命令及基本使用</div></a> <a href="/jenkins/500/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Jenkins(一) 持续集成及Jenkins介绍</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/6/2023, 7:41:24 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/docker/401/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Docker-Compose 命令及基本使用</div></a> <a href="/jenkins/500/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Jenkins(一) 持续集成及Jenkins介绍</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/docker/401/" class="prev">Docker-Compose 命令及基本使用</a></span> <span class="next"><a href="/jenkins/500/">Jenkins(一) 持续集成及Jenkins介绍</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
@@ -97,6 +104,6 @@ GET /v2/_catalog?n=&lt;integer&gt;
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.1bbb313a.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/35.b118e999.js" defer></script>
+    <script src="/assets/js/app.03534e28.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/35.5a9e8f37.js" defer></script>
   </body>
 </html>
