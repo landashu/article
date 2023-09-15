@@ -9,7 +9,7 @@
     <meta name="description" content="技术博客">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.f459b431.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/27.257350d2.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.5f7cb11d.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/27.257350d2.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.7c5aa975.css">
   </head>
   <body class="theme-mode-light">
@@ -144,7 +144,7 @@ public interface CacheThreeMapper extends BaseMapper&lt;UserBean&gt; {
     @Select(&quot;select * from user where id = 1&quot;)
     UserBean testOne();
 }
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><blockquote><p>我们还可以在 mapper 接口上加  @CacheNamespaceRef 注解，当我们在一个 Mapper 接口中需要使用其他 Mapper 接口所定义的缓存时，可以通过 @CacheNamespaceRef 注解来实现。该注解用于指定另一个 Mapper 接口的 Class 对象，表示当前 Mapper 接口需要引用该接口所定义的缓存命名空间。@CacheNamespaceRef (XXXXXMapper.class)</p></blockquote></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/12/2023, 9:10:46 AM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/mybatis/302/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">核心功能拆解 一二级缓存原理</div></a> <a href="/maven/2300/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">pom 文件介绍及 parent、properties 标签详解</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><blockquote><p>我们还可以在 mapper 接口上加  @CacheNamespaceRef 注解，当我们在一个 Mapper 接口中需要使用其他 Mapper 接口所定义的缓存时，可以通过 @CacheNamespaceRef 注解来实现。该注解用于指定另一个 Mapper 接口的 Class 对象，表示当前 Mapper 接口需要引用该接口所定义的缓存命名空间。@CacheNamespaceRef (XXXXXMapper.class)</p></blockquote></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/15/2023, 9:27:38 AM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/mybatis/302/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">核心功能拆解 一二级缓存原理</div></a> <a href="/maven/2300/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">pom 文件介绍及 parent、properties 标签详解</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/mybatis/302/" class="prev">核心功能拆解 一二级缓存原理</a></span> <span class="next"><a href="/maven/2300/">pom 文件介绍及 parent、properties 标签详解</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
@@ -164,6 +164,6 @@ public interface CacheThreeMapper extends BaseMapper&lt;UserBean&gt; {
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.f459b431.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/27.257350d2.js" defer></script>
+    <script src="/assets/js/app.5f7cb11d.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/27.257350d2.js" defer></script>
   </body>
 </html>
