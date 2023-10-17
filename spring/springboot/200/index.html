@@ -9,7 +9,7 @@
     <meta name="description" content="技术博客">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.a4d1c408.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/21.e7287de2.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.e67fe4b8.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/21.162bde74.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.7c5aa975.css">
   </head>
   <body class="theme-mode-light">
@@ -148,11 +148,11 @@
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyAspect</span> <span class="token punctuation">{</span>
 
 <span class="token comment">//    @Before(&quot;execution(* com.wt.cloud.web.HelloWeb.*(..))&quot;)</span>
-<span class="token comment">//    public void Before(ProceedingJoinPoint point){</span>
+<span class="token comment">//    public void Before(JoinPoint point){</span>
 <span class="token comment">//        log.info(&quot;执行前&quot;);</span>
 <span class="token comment">//    }</span>
 <span class="token comment">//    @After(&quot;execution(* com.wt.cloud.web.HelloWeb.*(..))&quot;)</span>
-<span class="token comment">//    public void After(ProceedingJoinPoint point){</span>
+<span class="token comment">//    public void After(JoinPoint point){</span>
 <span class="token comment">//        log.info(&quot;执行后&quot;);</span>
 <span class="token comment">//    }</span>
 <span class="token comment">//    @AfterThrowing(&quot;execution(* com.wt.cloud.web.HelloWeb.*(..))&quot;)</span>
@@ -169,7 +169,7 @@
         <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">10/17/2023, 11:42:27 AM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/spring/spring/205/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">注解替代Spring生命周期实现类</div></a> <a href="/spring/springboot/201/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">SpringBoot 之 Starter</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">10/17/2023, 1:42:25 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/spring/spring/205/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">注解替代Spring生命周期实现类</div></a> <a href="/spring/springboot/201/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">SpringBoot 之 Starter</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/spring/spring/205/" class="prev">注解替代Spring生命周期实现类</a></span> <span class="next"><a href="/spring/springboot/201/">SpringBoot 之 Starter</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
@@ -189,6 +189,6 @@
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.a4d1c408.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/21.e7287de2.js" defer></script>
+    <script src="/assets/js/app.e67fe4b8.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/21.162bde74.js" defer></script>
   </body>
 </html>
