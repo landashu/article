@@ -65,12 +65,4 @@ export default <Array<NavItem>>[
       {text: '微信小程序', link: '/wx/2000/',},
     ],
   },
-  {
-    text: '作品',
-    items: [
-      // 说明：以下所有link的值只是在相应md文件头部定义的永久链接（不是什么特殊编码）。另外，注意结尾是有斜杠的
-      {text: 'Easy-Security', link: '/easy-security/2100/',},
-      {text: 'Easy-Manager-Tool', link: '/easy-manager-tool/2200/',},
-    ],
-  },
 ];
