@@ -9,12 +9,17 @@ export default <Array<NavItem>>[
     items: [
       // 说明：以下所有link的值只是在相应md文件头部定义的永久链接（不是什么特殊编码）。另外，注意结尾是有斜杠的
       {text: 'Java', link: '/java/100/',},
+      {text: 'Maven', link: '/maven/2300/',},
       {text: 'Spring', items:[
           {text: 'Spring核心内容', link: '/spring/spring/200/'},
-          {text: 'SpringBoot',link: '/spring/springboot/200/'},
+          {text: 'SpringMVC',link: '/spring/spring-mvc/200/'},
+          {text: 'SpringBoot',link: '/spring/spring-boot/200/'},
+          {text: 'SpringCloud',link: '/spring/spring-cloud/200/'},
       ]},
-      {text: 'Mybatis', link: '/mybatis/300/',},
-      {text: 'Maven', link: '/maven/2300/',},
+      {text: 'Mybatis', items:[
+          {text: 'Mybatis原生', link: '/mybatis/mybatis/300/'},
+          {text: 'Mybatis-Plus',link: '/mybatis/mybatis-plus/300/'},
+        ]},
     ],
   },
   {
