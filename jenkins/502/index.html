@@ -9,7 +9,7 @@
     <meta name="description" content="技术博客">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.d03bf6df.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/50.43ad7861.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.7c5aa975.css" as="style"><link rel="preload" href="/assets/js/app.a387c072.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/50.bbd24ec9.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.7c5aa975.css">
   </head>
   <body class="theme-mode-light">
@@ -30,7 +30,7 @@ git --version
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="添加凭证-username-password"><a href="#添加凭证-username-password" class="header-anchor">#</a> 添加凭证（username &amp; password）</h3> <p>把你在 git 上的账号密码加入到凭证中。</p> <p><img src="/assets/img/jenkins/502/img_24.png" alt=""></p> <p>回到我们在 jenkins 的项目中，来配置这个项目。</p> <p><img src="/assets/img/jenkins/502/img_25.png" alt=""></p> <p><img src="/assets/img/jenkins/502/img_26.png" alt=""></p> <p>应用，然后保存。保存后我们构建这个项目</p> <p><img src="/assets/img/jenkins/502/img_27.png" alt=""></p> <p><img src="/assets/img/jenkins/502/img_28.png" alt=""></p> <p>构建成功后，可以看到 jenkins 会把项目在服务器中的  /var/lib/jenkins/workspace/test01 路径构建一个项目，通过这种方式代表我们配置 git 的凭证是成功的。</p> <h3 id="ssh-密钥类型"><a href="#ssh-密钥类型" class="header-anchor">#</a> SSH 密钥类型</h3> <p>SSH 免密登录示意图</p> <p><img src="/assets/img/jenkins/502/img_29.png" alt=""></p> <p>1. 使用 root 用户生成公钥和私钥</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>ssh-keygen -t rsa
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>在 /root/.ssh/ 目录保存了公钥和使用</p> <p><img src="/assets/img/jenkins/502/img_30.png" alt=""></p> <p>id_rsa：私钥文件<br>
  id_rsa.pub：公钥文件</p> <p>2. 把生成的公钥的内容放在 Gitlab 中，我的是 Gitea</p> <p><img src="/assets/img/jenkins/502/img_a.png" alt=""></p> <p>3. 在 Jenkins 中添加凭证，配置私钥<br>
-在 Jenkins 添加一个新的凭证，类型为 &quot;SSH Username with private key&quot;，把刚才生成私有文件内容复制过来</p> <p><img src="/assets/img/jenkins/502/img_31.png" alt=""></p> <p>这个 root，是你在 服务器，root 目录下生成的，所以填写 root，最后依然是在项目中配置一下 git 即可</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">12/18/2023, 4:49:56 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/jenkins/501/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Jenkins(二) Jenkins安装和环境配置</div></a> <a href="/jenkins/503/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Jenkins(四) Maven安装和配置</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+在 Jenkins 添加一个新的凭证，类型为 &quot;SSH Username with private key&quot;，把刚才生成私有文件内容复制过来</p> <p><img src="/assets/img/jenkins/502/img_31.png" alt=""></p> <p>这个 root，是你在 服务器，root 目录下生成的，所以填写 root，最后依然是在项目中配置一下 git 即可</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">12/22/2023, 11:15:19 AM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/jenkins/501/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Jenkins(二) Jenkins安装和环境配置</div></a> <a href="/jenkins/503/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Jenkins(四) Maven安装和配置</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/jenkins/501/" class="prev">Jenkins(二) Jenkins安装和环境配置</a></span> <span class="next"><a href="/jenkins/503/">Jenkins(四) Maven安装和配置</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
@@ -50,6 +50,6 @@ git --version
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.d03bf6df.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/50.43ad7861.js" defer></script>
+    <script src="/assets/js/app.a387c072.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/50.bbd24ec9.js" defer></script>
   </body>
 </html>
