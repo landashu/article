@@ -9,7 +9,7 @@
     <meta name="description" content="技术博客">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.ef8b8e3c.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/54.b703baf4.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.aafabd39.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/54.b90dfb15.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -26,336 +26,336 @@
 传输的对象。</li> <li>提供 WEB 界面，优化用户体验 只用镜像的名字来进行上传下载显然很不方便，需要有一个用户界<br>
 面可以支持登陆、搜索功能，包括区分公有、私有镜像。</li> <li>支持水平扩展集群 当有用户对镜像的上传下载操作集中在某服务器，需要对相应的访问压力作分<br>
 解。</li> <li>良好的安全机制 企业中的开发团队有很多不同的职位，对于不同的职位人员，分配不同的权限，<br>
-具有更好的安全性。</li></ol> <h3 id="harbor-安装"><a href="#harbor-安装" class="header-anchor">#</a> Harbor 安装</h3> <ol><li>除了 docker 以外，还要安装 dockers-compose，<a href="https://www.jianshu.com/p/d6a670aa90a3" target="_blank" rel="noopener noreferrer">Docker Compose 命令及使用<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 你可以看这篇博客</li> <li>下载 Harbor 的压缩包，<a href="https://github.com/goharbor/harbor/releases" target="_blank" rel="noopener noreferrer">地址<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，需要科式上网，下载完成开始解压</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>tar -xzf harbor-offline-installer-v1.9.2.tgz
-mv harbor /opt/software/
-# 修改配置文件内容
-vim /opt/software/harbor/harbor.yml 
-# 修改hostname
+具有更好的安全性。</li></ol> <h3 id="harbor-安装"><a href="#harbor-安装" class="header-anchor">#</a> Harbor 安装</h3> <ol><li>除了 docker 以外，还要安装 dockers-compose，<a href="https://www.jianshu.com/p/d6a670aa90a3" target="_blank" rel="noopener noreferrer">Docker Compose 命令及使用<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 你可以看这篇博客</li> <li>下载 Harbor 的压缩包，<a href="https://github.com/goharbor/harbor/releases" target="_blank" rel="noopener noreferrer">地址<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，需要科式上网，下载完成开始解压</li></ol> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">tar</span> -xzf harbor-offline-installer-v1.9.2.tgz
+<span class="token function">mv</span> harbor /opt/software/
+<span class="token comment"># 修改配置文件内容</span>
+<span class="token function">vim</span> /opt/software/harbor/harbor.yml 
+<span class="token comment"># 修改hostname</span>
 hostname: 你自己机器的IP
-# 修改端口
-port: 85
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ol start="3"><li>安装 Harbor</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>cd /opt/software/harbor
+<span class="token comment"># 修改端口</span>
+port: <span class="token number">85</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ol start="3"><li>安装 Harbor</li></ol> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token builtin class-name">cd</span> /opt/software/harbor
 ./prepare
 ./install.sh
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ol start="4"><li>启动 Harbor</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker-compose up -d 启动
-docker-compose stop 停止
-docker-compose restart 重新启动
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ol start="4"><li>启动 Harbor</li></ol> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">docker-compose</span> up -d 启动
+<span class="token function">docker-compose</span> stop 停止
+<span class="token function">docker-compose</span> restart 重新启动
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ol start="5"><li>访问 Harbor http://IP:85，默认账户密码：admin/Harbor12345</li></ol> <h3 id="harbor-使用"><a href="#harbor-使用" class="header-anchor">#</a> Harbor 使用</h3> <p>1. 创建项目<br>
- Harbor 的项目分为公开和私有的：</p> <ul><li>公开项目：所有用户都可以访问，通常存放公共的镜像，默认有一个 library 公开项目。</li> <li>私有项目：只有授权用户才可以访问，通常存放项目本身的镜像。</li></ul> <p>我们可以为微服务项目创建一个新的项目：</p> <p><img src="/assets/img/jenkins/506/img_1.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_2.png" alt=""></p> <p>2. 用户创建</p> <p><img src="/assets/img/jenkins/506/img_3.png" alt=""></p> <p>3. 为用户分配项目</p> <p><img src="/assets/img/jenkins/506/img_4.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_5.png" alt=""></p> <h3 id="推送到镜像仓库"><a href="#推送到镜像仓库" class="header-anchor">#</a> 推送到镜像仓库</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 打标签，命令 docker tag nginx:1.17.1 Harbor的IP:端口/Harbor项目的名称/镜像名字
-docker tag nginx:1.17.1 192.168.81.102:85/test/nginx:1.17.1
-# 查看
-docker images
-# 会多一条镜像数据
-192.168.81.102:85/test/nginx         1.17.1                          98ebf73aba75        2 years ago         109MB
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>把 Harbor 地址加入到 Docker 信任列表</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 编辑docker文件
-vim /etc/docker/daemon.json
-# 加入这句话
-&quot;insecure-registries&quot;:[&quot;192.168.81.102:85&quot;],
-# 重启配置和docker
-systemctl restart docker
-# Harbor  的 test 项目是私有的，需要登录
-docker login -u admin -p Harbor12345 192.168.81.102:85
-# 推送到Harbor仓库里
-docker push 192.168.81.102:85/test/nginx
+ Harbor 的项目分为公开和私有的：</p> <ul><li>公开项目：所有用户都可以访问，通常存放公共的镜像，默认有一个 library 公开项目。</li> <li>私有项目：只有授权用户才可以访问，通常存放项目本身的镜像。</li></ul> <p>我们可以为微服务项目创建一个新的项目：</p> <p><img src="/assets/img/jenkins/506/img_1.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_2.png" alt=""></p> <p>2. 用户创建</p> <p><img src="/assets/img/jenkins/506/img_3.png" alt=""></p> <p>3. 为用户分配项目</p> <p><img src="/assets/img/jenkins/506/img_4.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_5.png" alt=""></p> <h3 id="推送到镜像仓库"><a href="#推送到镜像仓库" class="header-anchor">#</a> 推送到镜像仓库</h3> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 打标签，命令 docker tag nginx:1.17.1 Harbor的IP:端口/Harbor项目的名称/镜像名字</span>
+<span class="token function">docker</span> tag nginx:1.17.1 <span class="token number">192.168</span>.81.102:85/test/nginx:1.17.1
+<span class="token comment"># 查看</span>
+<span class="token function">docker</span> images
+<span class="token comment"># 会多一条镜像数据</span>
+<span class="token number">192.168</span>.81.102:85/test/nginx         <span class="token number">1.17</span>.1                          98ebf73aba75        <span class="token number">2</span> years ago         109MB
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>把 Harbor 地址加入到 Docker 信任列表</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 编辑docker文件</span>
+<span class="token function">vim</span> /etc/docker/daemon.json
+<span class="token comment"># 加入这句话</span>
+<span class="token string">&quot;insecure-registries&quot;</span>:<span class="token punctuation">[</span><span class="token string">&quot;192.168.81.102:85&quot;</span><span class="token punctuation">]</span>,
+<span class="token comment"># 重启配置和docker</span>
+systemctl restart <span class="token function">docker</span>
+<span class="token comment"># Harbor  的 test 项目是私有的，需要登录</span>
+<span class="token function">docker</span> login -u admin -p Harbor12345 <span class="token number">192.168</span>.81.102:85
+<span class="token comment"># 推送到Harbor仓库里</span>
+<span class="token function">docker</span> push <span class="token number">192.168</span>.81.102:85/test/nginx
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p><img src="/assets/img/jenkins/506/img_6.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_7.png" alt=""></p> <p>其他服务下载镜像也需要把地址添加到 docker 的配置文件中，并且也需要使用 docker login 进行登录。复制以下的命令，到其他服务器下执行即可。</p> <p><img src="/assets/img/jenkins/506/img_8.png" alt=""></p> <h2 id="微服务构建到docker镜像"><a href="#微服务构建到docker镜像" class="header-anchor">#</a> 微服务构建到 docker 镜像</h2> <p>1. 把微服务提交到 SVN<br>
 2. 在 jenkins 上创建一个 Pipelin 类型的 item（项目）<br>
-3. 配置 Pipelin item 的构建时参数</p> <p><img src="/assets/img/jenkins/506/img_9.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_10.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_11.png" alt=""></p> <blockquote><p>这里讲一点，项目中很多的 jar 是有依赖关系的，如果单独打某个服务可能会包找不到依赖，所以建议第一次对根目录进行打包，会把依赖全部加载到 maven 库中，后期单个服务打包即可。</p></blockquote> <p>4. 在每个服务的 pom 文件中添加 plugin</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!-- 帮助读取项目中的dockerfile文件，帮我们构建docker镜像 --&gt;
-&lt;plugin&gt;
-    &lt;groupId&gt;com.spotify&lt;/groupId&gt;
-    &lt;artifactId&gt;dockerfile-maven-plugin&lt;/artifactId&gt;
-    &lt;version&gt;1.3.6&lt;/version&gt;
-    &lt;configuration&gt;
-        &lt;repository&gt;${project.artifactId}&lt;/repository&gt;
-        &lt;!-- 定义dockerfile 文件的参数 --&gt;
-        &lt;buildArgs&gt;
-            &lt;!-- 定义一个 JAVA_FILE 参数,指为我们项目的名称 --&gt;
-            &lt;JAR_FILE&gt;target/${project.build.finalName}.jar&lt;/JAR_FILE&gt;
-        &lt;/buildArgs&gt;
-    &lt;/configuration&gt;
-&lt;/plugin&gt;
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>5. 在每个服务的根目录下编写 Dockerfile 文件</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>FROM openjdk:8-jdk-alpine
-# 这个会读取在pom中声明的变量
+3. 配置 Pipelin item 的构建时参数</p> <p><img src="/assets/img/jenkins/506/img_9.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_10.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_11.png" alt=""></p> <blockquote><p>这里讲一点，项目中很多的 jar 是有依赖关系的，如果单独打某个服务可能会包找不到依赖，所以建议第一次对根目录进行打包，会把依赖全部加载到 maven 库中，后期单个服务打包即可。</p></blockquote> <p>4. 在每个服务的 pom 文件中添加 plugin</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token comment">&lt;!-- 帮助读取项目中的dockerfile文件，帮我们构建docker镜像 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.spotify<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>dockerfile-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.3.6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repository</span><span class="token punctuation">&gt;</span></span>${project.artifactId}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repository</span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment">&lt;!-- 定义dockerfile 文件的参数 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>buildArgs</span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment">&lt;!-- 定义一个 JAVA_FILE 参数,指为我们项目的名称 --&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>JAR_FILE</span><span class="token punctuation">&gt;</span></span>target/${project.build.finalName}.jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>JAR_FILE</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>buildArgs</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>5. 在每个服务的根目录下编写 Dockerfile 文件</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>FROM openjdk:8-jdk-alpine
+<span class="token comment"># 这个会读取在pom中声明的变量</span>
 ARG JAR_FILE
-COPY ${JAR_FILE} app.jar
-# 对外端口
-EXPOSE 10086
-ENTRYPOINT [&quot;java&quot;,&quot;-jar&quot;,&quot;/app.jar&quot;]
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>6. 设置构建后镜像推至镜像仓库</p> <p><img src="/assets/img/jenkins/506/img_12.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_13.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_14.png" alt=""></p> <p>7. 在项目的根目录中编写 Jenkinsfile</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>node {
+COPY <span class="token variable">${JAR_FILE}</span> app.jar
+<span class="token comment"># 对外端口</span>
+EXPOSE <span class="token number">10086</span>
+ENTRYPOINT <span class="token punctuation">[</span><span class="token string">&quot;java&quot;</span>,<span class="token string">&quot;-jar&quot;</span>,<span class="token string">&quot;/app.jar&quot;</span><span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>6. 设置构建后镜像推至镜像仓库</p> <p><img src="/assets/img/jenkins/506/img_12.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_13.png" alt=""></p> <p><img src="/assets/img/jenkins/506/img_14.png" alt=""></p> <p>7. 在项目的根目录中编写 Jenkinsfile</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">node</span> <span class="token punctuation">{</span>
     // 版本
-    def tag = &quot;1.0&quot;
+    def tag <span class="token operator">=</span> <span class="token string">&quot;1.0&quot;</span>
     // 镜像仓库的地址
-    def harbor_url = &quot;192.168.81.102:85&quot;
+    def harbor_url <span class="token operator">=</span> <span class="token string">&quot;192.168.81.102:85&quot;</span>
     // 镜像仓库的项目,这里建议项目名称和jenkins的item项目名称、以及harbor的项目名称保持一致，否则用一下脚本会出问题
-    def harbor_project = &quot;demo&quot;
+    def harbor_project <span class="token operator">=</span> <span class="token string">&quot;demo&quot;</span>
 
     // 拉取代码
-    stage('pull code') {
-        checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], extensions: [], userRemoteConfigs: [[credentialsId: '80dfe5c5-1684-47b1-a410-6f53ceb3c543', url: 'http://192.168.81.15:3000/biguncle/test.git']]])
-    }
+    stage<span class="token punctuation">(</span><span class="token string">'pull code'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        checkout<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token variable">$class</span><span class="token builtin class-name">:</span> <span class="token string">'GitSCM'</span>, branches: <span class="token punctuation">[</span><span class="token punctuation">[</span>name: <span class="token string">'*/${branch}'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>, extensions: <span class="token punctuation">[</span><span class="token punctuation">]</span>, userRemoteConfigs: <span class="token punctuation">[</span><span class="token punctuation">[</span>credentialsId: <span class="token string">'80dfe5c5-1684-47b1-a410-6f53ceb3c543'</span>, url: <span class="token string">'http://192.168.81.15:3000/biguncle/test.git'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
     // 编译并推送镜像仓库
-    stage('build project') {
-        if  (&quot;${project_name}&quot; ==  'demo' ) {
-            echo '打包根目录'
-            sh 'mvn clean package dockerfile:build'
-        } else {
-            echo  &quot;打包子目录 ${project_name}&quot;
-            sh &quot;mvn -f ${project_name} clean package dockerfile:build&quot;
-        }
-        echo &quot;把jar上传镜像仓库&quot;
-        def oldImageName = &quot;${project_name}:latest&quot;
-        def newImageName = &quot;${harbor_url}/${harbor_project}/${project_name}:${tag}&quot;
+    stage<span class="token punctuation">(</span><span class="token string">'build project'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span>  <span class="token punctuation">(</span><span class="token string">&quot;<span class="token variable">${project_name}</span>&quot;</span> <span class="token operator">==</span>  <span class="token string">'demo'</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">'打包根目录'</span>
+            <span class="token function">sh</span> <span class="token string">'mvn clean package dockerfile:build'</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token builtin class-name">echo</span>  <span class="token string">&quot;打包子目录 <span class="token variable">${project_name}</span>&quot;</span>
+            <span class="token function">sh</span> <span class="token string">&quot;mvn -f <span class="token variable">${project_name}</span> clean package dockerfile:build&quot;</span>
+        <span class="token punctuation">}</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;把jar上传镜像仓库&quot;</span>
+        def oldImageName <span class="token operator">=</span> <span class="token string">&quot;<span class="token variable">${project_name}</span>:latest&quot;</span>
+        def newImageName <span class="token operator">=</span> <span class="token string">&quot;<span class="token variable">${harbor_url}</span>/<span class="token variable">${harbor_project}</span>/<span class="token variable">${project_name}</span>:<span class="token variable">${tag}</span>&quot;</span>
         // 改名称 做规范
-        sh &quot;docker tag ${oldImageName} ${newImageName}&quot;
+        <span class="token function">sh</span> <span class="token string">&quot;docker tag <span class="token variable">${oldImageName}</span> <span class="token variable">${newImageName}</span>&quot;</span>
         // 删除之前的 镜像
-        sh &quot;docker rmi ${oldImageName}&quot;
+        <span class="token function">sh</span> <span class="token string">&quot;docker rmi <span class="token variable">${oldImageName}</span>&quot;</span>
         // 推送到 dockers仓库
-        withCredentials([usernamePassword(credentialsId: '8a3d7ab1-4cd6-482c-86c9-a12aa6404d98', passwordVariable: 'harbor_password', usernameVariable: 'harbor_account')]) {
+        withCredentials<span class="token punctuation">(</span><span class="token punctuation">[</span>usernamePassword<span class="token punctuation">(</span>credentialsId: <span class="token string">'8a3d7ab1-4cd6-482c-86c9-a12aa6404d98'</span>, passwordVariable: <span class="token string">'harbor_password'</span>, usernameVariable: <span class="token string">'harbor_account'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             // 登录
-            sh &quot;docker login -u ${harbor_account} -p ${harbor_password} ${harbor_url}&quot;
+            <span class="token function">sh</span> <span class="token string">&quot;docker login -u <span class="token variable">${harbor_account}</span> -p <span class="token variable">${harbor_password}</span> <span class="token variable">${harbor_url}</span>&quot;</span>
             // 上传
-            sh &quot;docker push ${newImageName}&quot;
-            echo &quot;镜像推送成功&quot;
-        }
-    }
+            <span class="token function">sh</span> <span class="token string">&quot;docker push <span class="token variable">${newImageName}</span>&quot;</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">&quot;镜像推送成功&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
     // 发送邮件
-    stage('send email') {
-        emailext body: '''&lt;!DOCTYPE html&gt;
-        &lt;html&gt;
-        &lt;head&gt;
-            &lt;meta charset=&quot;UTF-8&quot;&gt;
-            &lt;title&gt;${ENV, var=&quot;JOB_NAME&quot;}-第${BUILD_NUMBER}次构建日志&lt;/title&gt;
-        &lt;/head&gt;
-        &lt;body leftmargin=&quot;8&quot; marginwidth=&quot;0&quot; topmargin=&quot;8&quot; marginheight=&quot;4&quot; offset=&quot;0&quot;&gt;
-        &lt;table width=&quot;95%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sansserif&quot;&gt;
-            &lt;tr&gt;
-                &lt;td&gt;(本邮件是程序自动下发的，请勿回复！)&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;h2&gt;
-                    &lt;font color=&quot;#0000FF&quot;&gt;构建结果 - ${BUILD_STATUS}&lt;/font&gt;
-                &lt;/h2&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;br/&gt;
-                    &lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;构建信息&lt;/font&gt;&lt;/b&gt;
-                    &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;ul&gt;
-                        &lt;li&gt;项目名称&amp;nbsp;：&amp;nbsp;${PROJECT_NAME}&lt;/li&gt;
-                        &lt;li&gt;构建编号&amp;nbsp;：&amp;nbsp;第${BUILD_NUMBER}次构建&lt;/li&gt;
-                        &lt;li&gt;触发原因：&amp;nbsp;${CAUSE}&lt;/li&gt;
-                        &lt;li&gt;构建日志：&amp;nbsp;
-                            &lt;a href=&quot;${BUILD_URL}console&quot;&gt;${BUILD_URL}console&lt;/a&gt;
-                        &lt;/li&gt;
-                        &lt;li&gt;构建&amp;nbsp;&amp;nbsp;Url&amp;nbsp;：&amp;nbsp;
-                            &lt;a href=&quot;${BUILD_URL}&quot;&gt;${BUILD_URL}&lt;/a&gt;
-                        &lt;/li&gt;
-                        &lt;li&gt;工作目录&amp;nbsp;：&amp;nbsp;
-                            &lt;a href=&quot;${PROJECT_URL}ws&quot;&gt;${PROJECT_URL}ws&lt;/a&gt;
-                        &lt;/li&gt;
-                        &lt;li&gt;项目&amp;nbsp;&amp;nbsp;Url&amp;nbsp;：&amp;nbsp;
-                            &lt;a href=&quot;${PROJECT_URL}&quot;&gt;${PROJECT_URL}&lt;/a&gt;
-                        &lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;Changes Since Last Successful Build:&lt;/font&gt;&lt;/b&gt;
-                    &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;ul&gt;
-                        &lt;li&gt;历史变更记录 : &lt;a href=&quot;${PROJECT_URL}changes&quot;&gt;${PROJECT_URL}changes&lt;/a&gt;&lt;/li&gt;
-                    &lt;/ul&gt;
-                    ${CHANGES_SINCE_LAST_SUCCESS,reverse=true, format=&quot;Changes for Build #%n:&lt;br/&gt;%c&lt;br/&gt;&quot;,showPaths=true,changesFormat=&quot;&lt;pre&gt;[%a]&lt;br/&gt;%m&lt;/pre&gt;&quot;,pathFormat=&quot;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;%p&quot;}
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;b&gt;Failed Test Results&lt;/b&gt;
-                    &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;pre style=&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica,sans-serif&quot;&gt;
-                        $FAILED_TESTS
-                    &lt;/pre&gt;
-                    &lt;br/&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;构建日志 (最后 100行):&lt;/font&gt;&lt;/b&gt;
-                    &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;textarea cols=&quot;80&quot; rows=&quot;30&quot; readonly=&quot;readonly&quot;
-                              style=&quot;font-family: Courier New&quot;&gt;
-                        ${BUILD_LOG,maxLines=100}
-                    &lt;/textarea&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/table&gt;
-        &lt;/body&gt;
-        &lt;/html&gt;''', mimeType: 'text/html', subject: '43243214321', to: '875730567@qq.com'
-    }
-}
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br></div></div><h2 id="jenkins自动化服务拉取镜像并启动"><a href="#jenkins自动化服务拉取镜像并启动" class="header-anchor">#</a> jenkins 自动化服务拉取镜像并启动</h2> <p>这部操作需要安装一个 Publish Over SSH 插件，安装好后在 Manager Jenkins -&gt; Configure System 进行配置</p> <p><img src="/assets/img/jenkins/506/img_15.png" alt=""></p> <p>更改 Jenkinsfile 脚本，添加远程机器拉取镜像并启动容器，具体语法怎么使用，可以到 流水线语法中查看</p> <p><img src="/assets/img/jenkins/506/img_16.png" alt=""></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>node {
+    stage<span class="token punctuation">(</span><span class="token string">'send email'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        emailext body: <span class="token string">''</span>'<span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>html<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>head<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>meta <span class="token assign-left variable">charset</span><span class="token operator">=</span><span class="token string">&quot;UTF-8&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>title<span class="token operator">&gt;</span><span class="token variable">${ENV<span class="token operator">,</span> var=&quot;JOB_NAME&quot;}</span>-第<span class="token variable">${BUILD_NUMBER}</span>次构建日志<span class="token operator">&lt;</span>/title<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>/head<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>body <span class="token assign-left variable">leftmargin</span><span class="token operator">=</span><span class="token string">&quot;8&quot;</span> <span class="token assign-left variable">marginwidth</span><span class="token operator">=</span><span class="token string">&quot;0&quot;</span> <span class="token assign-left variable">topmargin</span><span class="token operator">=</span><span class="token string">&quot;8&quot;</span> <span class="token assign-left variable">marginheight</span><span class="token operator">=</span><span class="token string">&quot;4&quot;</span> <span class="token assign-left variable">offset</span><span class="token operator">=</span><span class="token string">&quot;0&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>table <span class="token assign-left variable">width</span><span class="token operator">=</span><span class="token string">&quot;95%&quot;</span> <span class="token assign-left variable">cellpadding</span><span class="token operator">=</span><span class="token string">&quot;0&quot;</span> <span class="token assign-left variable">cellspacing</span><span class="token operator">=</span><span class="token string">&quot;0&quot;</span> <span class="token assign-left variable">style</span><span class="token operator">=</span><span class="token string">&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sansserif&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token punctuation">(</span>本邮件是程序自动下发的，请勿回复！<span class="token punctuation">)</span><span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token operator">&lt;</span>h<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>
+                    <span class="token operator">&lt;</span>font <span class="token assign-left variable">color</span><span class="token operator">=</span><span class="token string">&quot;#0000FF&quot;</span><span class="token operator">&gt;</span>构建结果 - <span class="token variable">${BUILD_STATUS}</span><span class="token operator">&lt;</span>/font<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/h<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token operator">&lt;</span>br/<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>b<span class="token operator">&gt;</span><span class="token operator">&lt;</span>font <span class="token assign-left variable">color</span><span class="token operator">=</span><span class="token string">&quot;#0B610B&quot;</span><span class="token operator">&gt;</span>构建信息<span class="token operator">&lt;</span>/font<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/b<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>hr <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token string">&quot;2&quot;</span> <span class="token assign-left variable">width</span><span class="token operator">=</span><span class="token string">&quot;100%&quot;</span> <span class="token assign-left variable">align</span><span class="token operator">=</span><span class="token string">&quot;center&quot;</span>/<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>ul<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>项目名称<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token variable">${PROJECT_NAME}</span><span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>构建编号<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>第<span class="token variable">${BUILD_NUMBER}</span>次构建<span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>触发原因：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token variable">${CAUSE}</span><span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>构建日志：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>
+                            <span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${BUILD_URL}</span>console&quot;</span><span class="token operator">&gt;</span><span class="token variable">${BUILD_URL}</span>console<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>构建<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>Url<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>
+                            <span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${BUILD_URL}</span>&quot;</span><span class="token operator">&gt;</span><span class="token variable">${BUILD_URL}</span><span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>工作目录<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>
+                            <span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${PROJECT_URL}</span>ws&quot;</span><span class="token operator">&gt;</span><span class="token variable">${PROJECT_URL}</span>ws<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>项目<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>Url<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>
+                            <span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${PROJECT_URL}</span>&quot;</span><span class="token operator">&gt;</span><span class="token variable">${PROJECT_URL}</span><span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>/ul<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token operator">&lt;</span>b<span class="token operator">&gt;</span><span class="token operator">&lt;</span>font <span class="token assign-left variable">color</span><span class="token operator">=</span><span class="token string">&quot;#0B610B&quot;</span><span class="token operator">&gt;</span>Changes Since Last Successful Build:<span class="token operator">&lt;</span>/font<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/b<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>hr <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token string">&quot;2&quot;</span> <span class="token assign-left variable">width</span><span class="token operator">=</span><span class="token string">&quot;100%&quot;</span> <span class="token assign-left variable">align</span><span class="token operator">=</span><span class="token string">&quot;center&quot;</span>/<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>ul<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>历史变更记录 <span class="token builtin class-name">:</span> <span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${PROJECT_URL}</span>changes&quot;</span><span class="token operator">&gt;</span><span class="token variable">${PROJECT_URL}</span>changes<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>/ul<span class="token operator">&gt;</span>
+                    <span class="token variable">${CHANGES_SINCE_LAST_SUCCESS<span class="token operator">,</span>reverse=true<span class="token operator">,</span> format=&quot;Changes for Build <span class="token operator">#</span><span class="token operator">%</span>n<span class="token operator">:</span>&lt;br<span class="token operator">/</span>&gt;<span class="token operator">%</span>c&lt;br<span class="token operator">/</span>&gt;&quot;<span class="token operator">,</span>showPaths=true<span class="token operator">,</span>changesFormat=&quot;&lt;pre&gt;<span class="token punctuation">[</span><span class="token operator">%</span>a<span class="token punctuation">]</span>&lt;br<span class="token operator">/</span>&gt;<span class="token operator">%</span>m&lt;<span class="token operator">/</span>pre&gt;&quot;<span class="token operator">,</span>pathFormat=&quot;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<span class="token operator">%</span>p&quot;}</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token operator">&lt;</span>b<span class="token operator">&gt;</span>Failed Test Results<span class="token operator">&lt;</span>/b<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>hr <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token string">&quot;2&quot;</span> <span class="token assign-left variable">width</span><span class="token operator">=</span><span class="token string">&quot;100%&quot;</span> <span class="token assign-left variable">align</span><span class="token operator">=</span><span class="token string">&quot;center&quot;</span>/<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>pre <span class="token assign-left variable">style</span><span class="token operator">=</span><span class="token string">&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica,sans-serif&quot;</span><span class="token operator">&gt;</span>
+                        <span class="token variable">$FAILED_TESTS</span>
+                    <span class="token operator">&lt;</span>/pre<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>br/<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token operator">&lt;</span>b<span class="token operator">&gt;</span><span class="token operator">&lt;</span>font <span class="token assign-left variable">color</span><span class="token operator">=</span><span class="token string">&quot;#0B610B&quot;</span><span class="token operator">&gt;</span>构建日志 <span class="token punctuation">(</span>最后 <span class="token number">100</span>行<span class="token punctuation">)</span>:<span class="token operator">&lt;</span>/font<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/b<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>hr <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token string">&quot;2&quot;</span> <span class="token assign-left variable">width</span><span class="token operator">=</span><span class="token string">&quot;100%&quot;</span> <span class="token assign-left variable">align</span><span class="token operator">=</span><span class="token string">&quot;center&quot;</span>/<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>textarea <span class="token assign-left variable">cols</span><span class="token operator">=</span><span class="token string">&quot;80&quot;</span> <span class="token assign-left variable">rows</span><span class="token operator">=</span><span class="token string">&quot;30&quot;</span> <span class="token assign-left variable">readonly</span><span class="token operator">=</span><span class="token string">&quot;readonly&quot;</span>
+                              <span class="token assign-left variable">style</span><span class="token operator">=</span><span class="token string">&quot;font-family: Courier New&quot;</span><span class="token operator">&gt;</span>
+                        <span class="token variable">${BUILD_LOG<span class="token operator">,</span>maxLines=100}</span>
+                    <span class="token operator">&lt;</span>/textarea<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>/table<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>/body<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>/html<span class="token operator">&gt;</span><span class="token string">''</span>', mimeType: <span class="token string">'text/html'</span>, subject: <span class="token string">'43243214321'</span>, to: <span class="token string">'875730567@qq.com'</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br></div></div><h2 id="jenkins自动化服务拉取镜像并启动"><a href="#jenkins自动化服务拉取镜像并启动" class="header-anchor">#</a> jenkins 自动化服务拉取镜像并启动</h2> <p>这部操作需要安装一个 Publish Over SSH 插件，安装好后在 Manager Jenkins -&gt; Configure System 进行配置</p> <p><img src="/assets/img/jenkins/506/img_15.png" alt=""></p> <p>更改 Jenkinsfile 脚本，添加远程机器拉取镜像并启动容器，具体语法怎么使用，可以到 流水线语法中查看</p> <p><img src="/assets/img/jenkins/506/img_16.png" alt=""></p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">node</span> <span class="token punctuation">{</span>
     // 版本
-    def tag = &quot;1.0&quot;
+    def tag <span class="token operator">=</span> <span class="token string">&quot;1.0&quot;</span>
     // 镜像仓库的地址
-    def harbor_url = &quot;192.168.81.102:85&quot;
+    def harbor_url <span class="token operator">=</span> <span class="token string">&quot;192.168.81.102:85&quot;</span>
     // 镜像仓库的项目,这里建议项目名称和jenkins的item项目名称、以及harbor的项目名称保持一致，否则用一下脚本会出问题
-    def harbor_project = &quot;demo&quot;
+    def harbor_project <span class="token operator">=</span> <span class="token string">&quot;demo&quot;</span>
 
     // 拉取代码
-    stage('pull code') {
-        checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], extensions: [], userRemoteConfigs: [[credentialsId: '80dfe5c5-1684-47b1-a410-6f53ceb3c543', url: 'http://192.168.81.15:3000/biguncle/test.git']]])
-    }
+    stage<span class="token punctuation">(</span><span class="token string">'pull code'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        checkout<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token variable">$class</span><span class="token builtin class-name">:</span> <span class="token string">'GitSCM'</span>, branches: <span class="token punctuation">[</span><span class="token punctuation">[</span>name: <span class="token string">'*/${branch}'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>, extensions: <span class="token punctuation">[</span><span class="token punctuation">]</span>, userRemoteConfigs: <span class="token punctuation">[</span><span class="token punctuation">[</span>credentialsId: <span class="token string">'80dfe5c5-1684-47b1-a410-6f53ceb3c543'</span>, url: <span class="token string">'http://192.168.81.15:3000/biguncle/test.git'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
     // 编译并推送镜像仓库
-    stage('build project') {
-        if  (&quot;${project_name}&quot; ==  'demo' ) {
-            echo '打包根目录'
-            sh 'mvn clean package dockerfile:build'
-        } else {
-            echo  &quot;打包子目录 ${project_name}&quot;
-            sh &quot;mvn -f ${project_name} clean package dockerfile:build&quot;
-        }
-        echo &quot;把jar上传镜像仓库&quot;
-        def oldImageName = &quot;${project_name}:latest&quot;
-        def newImageName = &quot;${harbor_url}/${harbor_project}/${project_name}:${tag}&quot;
+    stage<span class="token punctuation">(</span><span class="token string">'build project'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span>  <span class="token punctuation">(</span><span class="token string">&quot;<span class="token variable">${project_name}</span>&quot;</span> <span class="token operator">==</span>  <span class="token string">'demo'</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">'打包根目录'</span>
+            <span class="token function">sh</span> <span class="token string">'mvn clean package dockerfile:build'</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token builtin class-name">echo</span>  <span class="token string">&quot;打包子目录 <span class="token variable">${project_name}</span>&quot;</span>
+            <span class="token function">sh</span> <span class="token string">&quot;mvn -f <span class="token variable">${project_name}</span> clean package dockerfile:build&quot;</span>
+        <span class="token punctuation">}</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;把jar上传镜像仓库&quot;</span>
+        def oldImageName <span class="token operator">=</span> <span class="token string">&quot;<span class="token variable">${project_name}</span>:latest&quot;</span>
+        def newImageName <span class="token operator">=</span> <span class="token string">&quot;<span class="token variable">${harbor_url}</span>/<span class="token variable">${harbor_project}</span>/<span class="token variable">${project_name}</span>:<span class="token variable">${tag}</span>&quot;</span>
         // 改名称 做规范
-        sh &quot;docker tag ${oldImageName} ${newImageName}&quot;
+        <span class="token function">sh</span> <span class="token string">&quot;docker tag <span class="token variable">${oldImageName}</span> <span class="token variable">${newImageName}</span>&quot;</span>
         // 删除之前的 镜像
-        sh &quot;docker rmi ${oldImageName}&quot;
+        <span class="token function">sh</span> <span class="token string">&quot;docker rmi <span class="token variable">${oldImageName}</span>&quot;</span>
         // 推送到 dockers仓库
-        withCredentials([usernamePassword(credentialsId: '8a3d7ab1-4cd6-482c-86c9-a12aa6404d98', passwordVariable: 'harbor_password', usernameVariable: 'harbor_account')]) {
+        withCredentials<span class="token punctuation">(</span><span class="token punctuation">[</span>usernamePassword<span class="token punctuation">(</span>credentialsId: <span class="token string">'8a3d7ab1-4cd6-482c-86c9-a12aa6404d98'</span>, passwordVariable: <span class="token string">'harbor_password'</span>, usernameVariable: <span class="token string">'harbor_account'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             // 登录
-            sh &quot;docker login -u ${harbor_account} -p ${harbor_password} ${harbor_url}&quot;
+            <span class="token function">sh</span> <span class="token string">&quot;docker login -u <span class="token variable">${harbor_account}</span> -p <span class="token variable">${harbor_password}</span> <span class="token variable">${harbor_url}</span>&quot;</span>
             // 上传
-            sh &quot;docker push ${newImageName}&quot;
-            echo &quot;镜像推送成功&quot;
-        }
+            <span class="token function">sh</span> <span class="token string">&quot;docker push <span class="token variable">${newImageName}</span>&quot;</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">&quot;镜像推送成功&quot;</span>
+        <span class="token punctuation">}</span>
 
         // 远程调用脚本,port 最好也添加 jenkins项目配置里的参数配置，作为参数传进来
-        echo &quot;执行远程命令 /home/server/deploy.sh ${harbor_url} ${harbor_project} ${project_name} ${tag} ${port}&quot;
-        sshPublisher(publishers: [sshPublisherDesc(configName: 'test_103', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: &quot;/home/server/deploy.sh ${harbor_url} ${harbor_project} ${project_name} ${tag} ${port}&quot;, execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;执行远程命令 /home/server/deploy.sh <span class="token variable">${harbor_url}</span> <span class="token variable">${harbor_project}</span> <span class="token variable">${project_name}</span> <span class="token variable">${tag}</span> <span class="token variable">${port}</span>&quot;</span>
+        sshPublisher<span class="token punctuation">(</span>publishers: <span class="token punctuation">[</span>sshPublisherDesc<span class="token punctuation">(</span>configName: <span class="token string">'test_103'</span>, transfers: <span class="token punctuation">[</span>sshTransfer<span class="token punctuation">(</span>cleanRemote: false, excludes: <span class="token string">''</span>, execCommand: <span class="token string">&quot;/home/server/deploy.sh <span class="token variable">${harbor_url}</span> <span class="token variable">${harbor_project}</span> <span class="token variable">${project_name}</span> <span class="token variable">${tag}</span> <span class="token variable">${port}</span>&quot;</span>, execTimeout: <span class="token number">120000</span>, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: <span class="token string">'[, ]+'</span>, remoteDirectory: <span class="token string">''</span>, remoteDirectorySDF: false, removePrefix: <span class="token string">''</span>, sourceFiles: <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">]</span>, usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    }
+    <span class="token punctuation">}</span>
     // 发送邮件
-    stage('send email') {
-        emailext body: '''&lt;!DOCTYPE html&gt;
-        &lt;html&gt;
-        &lt;head&gt;
-            &lt;meta charset=&quot;UTF-8&quot;&gt;
-            &lt;title&gt;${ENV, var=&quot;JOB_NAME&quot;}-第${BUILD_NUMBER}次构建日志&lt;/title&gt;
-        &lt;/head&gt;
-        &lt;body leftmargin=&quot;8&quot; marginwidth=&quot;0&quot; topmargin=&quot;8&quot; marginheight=&quot;4&quot; offset=&quot;0&quot;&gt;
-        &lt;table width=&quot;95%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sansserif&quot;&gt;
-            &lt;tr&gt;
-                &lt;td&gt;(本邮件是程序自动下发的，请勿回复！)&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;h2&gt;
-                    &lt;font color=&quot;#0000FF&quot;&gt;构建结果 - ${BUILD_STATUS}&lt;/font&gt;
-                &lt;/h2&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;br/&gt;
-                    &lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;构建信息&lt;/font&gt;&lt;/b&gt;
-                    &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;ul&gt;
-                        &lt;li&gt;项目名称&amp;nbsp;：&amp;nbsp;${PROJECT_NAME}&lt;/li&gt;
-                        &lt;li&gt;构建编号&amp;nbsp;：&amp;nbsp;第${BUILD_NUMBER}次构建&lt;/li&gt;
-                        &lt;li&gt;触发原因：&amp;nbsp;${CAUSE}&lt;/li&gt;
-                        &lt;li&gt;构建日志：&amp;nbsp;
-                            &lt;a href=&quot;${BUILD_URL}console&quot;&gt;${BUILD_URL}console&lt;/a&gt;
-                        &lt;/li&gt;
-                        &lt;li&gt;构建&amp;nbsp;&amp;nbsp;Url&amp;nbsp;：&amp;nbsp;
-                            &lt;a href=&quot;${BUILD_URL}&quot;&gt;${BUILD_URL}&lt;/a&gt;
-                        &lt;/li&gt;
-                        &lt;li&gt;工作目录&amp;nbsp;：&amp;nbsp;
-                            &lt;a href=&quot;${PROJECT_URL}ws&quot;&gt;${PROJECT_URL}ws&lt;/a&gt;
-                        &lt;/li&gt;
-                        &lt;li&gt;项目&amp;nbsp;&amp;nbsp;Url&amp;nbsp;：&amp;nbsp;
-                            &lt;a href=&quot;${PROJECT_URL}&quot;&gt;${PROJECT_URL}&lt;/a&gt;
-                        &lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;Changes Since Last Successful Build:&lt;/font&gt;&lt;/b&gt;
-                    &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;ul&gt;
-                        &lt;li&gt;历史变更记录 : &lt;a href=&quot;${PROJECT_URL}changes&quot;&gt;${PROJECT_URL}changes&lt;/a&gt;&lt;/li&gt;
-                    &lt;/ul&gt;
-                    ${CHANGES_SINCE_LAST_SUCCESS,reverse=true, format=&quot;Changes for Build #%n:&lt;br/&gt;%c&lt;br/&gt;&quot;,showPaths=true,changesFormat=&quot;&lt;pre&gt;[%a]&lt;br/&gt;%m&lt;/pre&gt;&quot;,pathFormat=&quot;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;%p&quot;}
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;b&gt;Failed Test Results&lt;/b&gt;
-                    &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;pre style=&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica,sans-serif&quot;&gt;
-                        $FAILED_TESTS
-                    &lt;/pre&gt;
-                    &lt;br/&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;构建日志 (最后 100行):&lt;/font&gt;&lt;/b&gt;
-                    &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot;/&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;textarea cols=&quot;80&quot; rows=&quot;30&quot; readonly=&quot;readonly&quot;
-                              style=&quot;font-family: Courier New&quot;&gt;
-                        ${BUILD_LOG,maxLines=100}
-                    &lt;/textarea&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/table&gt;
-        &lt;/body&gt;
-        &lt;/html&gt;''', mimeType: 'text/html', subject: '43243214321', to: '875730567@qq.com'
-    }
-}
+    stage<span class="token punctuation">(</span><span class="token string">'send email'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        emailext body: <span class="token string">''</span>'<span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>html<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>head<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>meta <span class="token assign-left variable">charset</span><span class="token operator">=</span><span class="token string">&quot;UTF-8&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>title<span class="token operator">&gt;</span><span class="token variable">${ENV<span class="token operator">,</span> var=&quot;JOB_NAME&quot;}</span>-第<span class="token variable">${BUILD_NUMBER}</span>次构建日志<span class="token operator">&lt;</span>/title<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>/head<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>body <span class="token assign-left variable">leftmargin</span><span class="token operator">=</span><span class="token string">&quot;8&quot;</span> <span class="token assign-left variable">marginwidth</span><span class="token operator">=</span><span class="token string">&quot;0&quot;</span> <span class="token assign-left variable">topmargin</span><span class="token operator">=</span><span class="token string">&quot;8&quot;</span> <span class="token assign-left variable">marginheight</span><span class="token operator">=</span><span class="token string">&quot;4&quot;</span> <span class="token assign-left variable">offset</span><span class="token operator">=</span><span class="token string">&quot;0&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>table <span class="token assign-left variable">width</span><span class="token operator">=</span><span class="token string">&quot;95%&quot;</span> <span class="token assign-left variable">cellpadding</span><span class="token operator">=</span><span class="token string">&quot;0&quot;</span> <span class="token assign-left variable">cellspacing</span><span class="token operator">=</span><span class="token string">&quot;0&quot;</span> <span class="token assign-left variable">style</span><span class="token operator">=</span><span class="token string">&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sansserif&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token punctuation">(</span>本邮件是程序自动下发的，请勿回复！<span class="token punctuation">)</span><span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token operator">&lt;</span>h<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>
+                    <span class="token operator">&lt;</span>font <span class="token assign-left variable">color</span><span class="token operator">=</span><span class="token string">&quot;#0000FF&quot;</span><span class="token operator">&gt;</span>构建结果 - <span class="token variable">${BUILD_STATUS}</span><span class="token operator">&lt;</span>/font<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/h<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token operator">&lt;</span>br/<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>b<span class="token operator">&gt;</span><span class="token operator">&lt;</span>font <span class="token assign-left variable">color</span><span class="token operator">=</span><span class="token string">&quot;#0B610B&quot;</span><span class="token operator">&gt;</span>构建信息<span class="token operator">&lt;</span>/font<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/b<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>hr <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token string">&quot;2&quot;</span> <span class="token assign-left variable">width</span><span class="token operator">=</span><span class="token string">&quot;100%&quot;</span> <span class="token assign-left variable">align</span><span class="token operator">=</span><span class="token string">&quot;center&quot;</span>/<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>ul<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>项目名称<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token variable">${PROJECT_NAME}</span><span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>构建编号<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>第<span class="token variable">${BUILD_NUMBER}</span>次构建<span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>触发原因：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token variable">${CAUSE}</span><span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>构建日志：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>
+                            <span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${BUILD_URL}</span>console&quot;</span><span class="token operator">&gt;</span><span class="token variable">${BUILD_URL}</span>console<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>构建<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>Url<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>
+                            <span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${BUILD_URL}</span>&quot;</span><span class="token operator">&gt;</span><span class="token variable">${BUILD_URL}</span><span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>工作目录<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>
+                            <span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${PROJECT_URL}</span>ws&quot;</span><span class="token operator">&gt;</span><span class="token variable">${PROJECT_URL}</span>ws<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>项目<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>Url<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>：<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>
+                            <span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${PROJECT_URL}</span>&quot;</span><span class="token operator">&gt;</span><span class="token variable">${PROJECT_URL}</span><span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>/ul<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token operator">&lt;</span>b<span class="token operator">&gt;</span><span class="token operator">&lt;</span>font <span class="token assign-left variable">color</span><span class="token operator">=</span><span class="token string">&quot;#0B610B&quot;</span><span class="token operator">&gt;</span>Changes Since Last Successful Build:<span class="token operator">&lt;</span>/font<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/b<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>hr <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token string">&quot;2&quot;</span> <span class="token assign-left variable">width</span><span class="token operator">=</span><span class="token string">&quot;100%&quot;</span> <span class="token assign-left variable">align</span><span class="token operator">=</span><span class="token string">&quot;center&quot;</span>/<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>ul<span class="token operator">&gt;</span>
+                        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>历史变更记录 <span class="token builtin class-name">:</span> <span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${PROJECT_URL}</span>changes&quot;</span><span class="token operator">&gt;</span><span class="token variable">${PROJECT_URL}</span>changes<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/li<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>/ul<span class="token operator">&gt;</span>
+                    <span class="token variable">${CHANGES_SINCE_LAST_SUCCESS<span class="token operator">,</span>reverse=true<span class="token operator">,</span> format=&quot;Changes for Build <span class="token operator">#</span><span class="token operator">%</span>n<span class="token operator">:</span>&lt;br<span class="token operator">/</span>&gt;<span class="token operator">%</span>c&lt;br<span class="token operator">/</span>&gt;&quot;<span class="token operator">,</span>showPaths=true<span class="token operator">,</span>changesFormat=&quot;&lt;pre&gt;<span class="token punctuation">[</span><span class="token operator">%</span>a<span class="token punctuation">]</span>&lt;br<span class="token operator">/</span>&gt;<span class="token operator">%</span>m&lt;<span class="token operator">/</span>pre&gt;&quot;<span class="token operator">,</span>pathFormat=&quot;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<span class="token operator">%</span>p&quot;}</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token operator">&lt;</span>b<span class="token operator">&gt;</span>Failed Test Results<span class="token operator">&lt;</span>/b<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>hr <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token string">&quot;2&quot;</span> <span class="token assign-left variable">width</span><span class="token operator">=</span><span class="token string">&quot;100%&quot;</span> <span class="token assign-left variable">align</span><span class="token operator">=</span><span class="token string">&quot;center&quot;</span>/<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>pre <span class="token assign-left variable">style</span><span class="token operator">=</span><span class="token string">&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica,sans-serif&quot;</span><span class="token operator">&gt;</span>
+                        <span class="token variable">$FAILED_TESTS</span>
+                    <span class="token operator">&lt;</span>/pre<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>br/<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token operator">&lt;</span>b<span class="token operator">&gt;</span><span class="token operator">&lt;</span>font <span class="token assign-left variable">color</span><span class="token operator">=</span><span class="token string">&quot;#0B610B&quot;</span><span class="token operator">&gt;</span>构建日志 <span class="token punctuation">(</span>最后 <span class="token number">100</span>行<span class="token punctuation">)</span>:<span class="token operator">&lt;</span>/font<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/b<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>hr <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token string">&quot;2&quot;</span> <span class="token assign-left variable">width</span><span class="token operator">=</span><span class="token string">&quot;100%&quot;</span> <span class="token assign-left variable">align</span><span class="token operator">=</span><span class="token string">&quot;center&quot;</span>/<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>textarea <span class="token assign-left variable">cols</span><span class="token operator">=</span><span class="token string">&quot;80&quot;</span> <span class="token assign-left variable">rows</span><span class="token operator">=</span><span class="token string">&quot;30&quot;</span> <span class="token assign-left variable">readonly</span><span class="token operator">=</span><span class="token string">&quot;readonly&quot;</span>
+                              <span class="token assign-left variable">style</span><span class="token operator">=</span><span class="token string">&quot;font-family: Courier New&quot;</span><span class="token operator">&gt;</span>
+                        <span class="token variable">${BUILD_LOG<span class="token operator">,</span>maxLines=100}</span>
+                    <span class="token operator">&lt;</span>/textarea<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>/td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>/tr<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>/table<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>/body<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>/html<span class="token operator">&gt;</span><span class="token string">''</span>', mimeType: <span class="token string">'text/html'</span>, subject: <span class="token string">'43243214321'</span>, to: <span class="token string">'875730567@qq.com'</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br></div></div><p>重新构建，其他服务器就会自动拉取了。</p> <blockquote><p>其他服务器一定要有 jenkins 服务器的公钥，构建过程 SSH 不会输出任何信息只会告诉你 EXEC 执行了多久，需要自己去测一下。</p></blockquote> <h2 id="vue-前端使用jenkins部署"><a href="#vue-前端使用jenkins部署" class="header-anchor">#</a> vue 前端使用 Jenkins 部署</h2> <p>1. 首先需要安装 NodeJS 插件<br>
- 2. 到 Manager Jenkins-&gt;Global Tool Configuration-&gt;NodeJS</p> <p><img src="/assets/img/jenkins/506/img_17.png" alt=""></p> <p>3. 创建一个流水线的前端项目，根据脚本把配置补全</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>node {
-    stage('拉取代码') {
-        checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], extensions: [], userRemoteConfigs: [[credentialsId: '80dfe5c5-1684-47b1-a410-6f53ceb3c543', url: 'http://192.168.81.15:3000/biguncle/test_vue.git']]])
-    }
-    stage('打包，部署网站') {
+ 2. 到 Manager Jenkins-&gt;Global Tool Configuration-&gt;NodeJS</p> <p><img src="/assets/img/jenkins/506/img_17.png" alt=""></p> <p>3. 创建一个流水线的前端项目，根据脚本把配置补全</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">node</span> <span class="token punctuation">{</span>
+    stage<span class="token punctuation">(</span><span class="token string">'拉取代码'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        checkout<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token variable">$class</span><span class="token builtin class-name">:</span> <span class="token string">'GitSCM'</span>, branches: <span class="token punctuation">[</span><span class="token punctuation">[</span>name: <span class="token string">'*/${branch}'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>, extensions: <span class="token punctuation">[</span><span class="token punctuation">]</span>, userRemoteConfigs: <span class="token punctuation">[</span><span class="token punctuation">[</span>credentialsId: <span class="token string">'80dfe5c5-1684-47b1-a410-6f53ceb3c543'</span>, url: <span class="token string">'http://192.168.81.15:3000/biguncle/test_vue.git'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    stage<span class="token punctuation">(</span><span class="token string">'打包，部署网站'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         //使用NodeJS的npm进行打包，这个和 以上的 name 保持一致
-        nodejs('nodejs12'){
-            sh '''
-                npm install
-                npm run build
-            '''
-        }
-        //=====以下为远程调用进行项目部署========
-        sshPublisher(publishers: [sshPublisherDesc(configName: 'master_server',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '',execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes:false, patternSeparator: '[, ]+', remoteDirectory: '/usr/share/nginx/html',remoteDirectorySDF: false, removePrefix: 'dist', sourceFiles: 'dist/**')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-    }
-}
+        nodejs<span class="token punctuation">(</span><span class="token string">'nodejs12'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">sh</span> <span class="token string">''</span>'
+                <span class="token function">npm</span> <span class="token function">install</span>
+                <span class="token function">npm</span> run build
+            <span class="token string">''</span>'
+        <span class="token punctuation">}</span>
+        //<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>以下为远程调用进行项目部署<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+        sshPublisher<span class="token punctuation">(</span>publishers: <span class="token punctuation">[</span>sshPublisherDesc<span class="token punctuation">(</span>configName: <span class="token string">'master_server'</span>,transfers: <span class="token punctuation">[</span>sshTransfer<span class="token punctuation">(</span>cleanRemote: false, excludes: <span class="token string">''</span>, execCommand: <span class="token string">''</span>,execTimeout: <span class="token number">120000</span>, flatten: false, makeEmptyDirs: false, noDefaultExcludes:false, patternSeparator: <span class="token string">'[, ]+'</span>, remoteDirectory: <span class="token string">'/usr/share/nginx/html'</span>,remoteDirectorySDF: false, removePrefix: <span class="token string">'dist'</span>, sourceFiles: <span class="token string">'dist/**'</span><span class="token punctuation">)</span><span class="token punctuation">]</span>,usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>从脚本中可以看出，我们需要一个 branch 参数，还要配置 前端项目的 远程 server 地址</p> <blockquote><p>这里没有使用 execCommand 的命令，而是通过 sourceFiles、removePrefix、remoteDirectory，sourceFiles 代表我们 copy 哪个文件，remoteDirectory 远程目录，特就是 copy 到 nginx 所在目录<br>
- 57-62</p></blockquote></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">12/26/2023, 4:34:57 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/jenkins/505/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Jenkins(六) Jenkins项目构建细节</div></a> <a href="/jenkins/507/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Jenkins(八) Jenkins+Docker+SpringCloud微服务持续集成（下）</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+ 57-62</p></blockquote></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">12/26/2023, 5:04:12 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/jenkins/505/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Jenkins(六) Jenkins项目构建细节</div></a> <a href="/jenkins/507/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Jenkins(八) Jenkins+Docker+SpringCloud微服务持续集成（下）</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/jenkins/505/" class="prev">Jenkins(六) Jenkins项目构建细节</a></span> <span class="next"><a href="/jenkins/507/">Jenkins(八) Jenkins+Docker+SpringCloud微服务持续集成（下）</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
@@ -375,6 +375,6 @@ ENTRYPOINT [&quot;java&quot;,&quot;-jar&quot;,&quot;/app.jar&quot;]
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.ef8b8e3c.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/54.b703baf4.js" defer></script>
+    <script src="/assets/js/app.aafabd39.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/54.b90dfb15.js" defer></script>
   </body>
 </html>
