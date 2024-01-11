@@ -11,7 +11,8 @@ export default <Array<NavItem>>[
       {text: 'Java', items: [
           {text: 'JVM', link: '/java/jvm/100/'},
           {text: 'JUC',link: '/java/juc/200/'},
-          {text: 'other',link: '/java/other/300/'},
+          {text: '设计模式',link: '/java/mode/300/'},
+          {text: '其他',link: '/java/other/400/'},
       ]},
       {text: 'Spring', items:[
           {text: 'Spring', link: '/spring/spring/200/'},
