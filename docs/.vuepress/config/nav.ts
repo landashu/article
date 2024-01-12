@@ -65,6 +65,7 @@ export default <Array<NavItem>>[
       {text: 'RabbitMQ', link: '/rabbitmq/1500/',},
       {text: 'Redis', link: '/redis/1600/',},
       {text: 'Nginx', link: '/nginx/1700/',},
+      {text: 'Elasticsearch', link: '/es/1800/',},
     ],
   },
   {
