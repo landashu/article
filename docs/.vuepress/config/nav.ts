@@ -8,9 +8,9 @@ export default <Array<NavItem>>[
     text: '语言',
     items: [
       // 说明：以下所有link的值只是在相应md文件头部定义的永久链接（不是什么特殊编码）。另外，注意结尾是有斜杠的
-      {text: 'JAVA',link: '/language/java/jvm/100/'},
-      {text: '仓颉',link: '/language/cj/100/'},
-      {text: '设计模式', link: '/language/mode/100/'},
+      {text: 'JAVA',link: '/language/java/jvm/1/'},
+      {text: '仓颉',link: '/language/cj/1/'},
+      {text: '设计模式', link: '/language/mode/1/'},
     ],
   },
   {
