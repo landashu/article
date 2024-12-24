@@ -28,7 +28,7 @@ export default <Array<NavItem>>[
       {text: 'Kafka', link: '/kafka/1400/',},
       {text: 'RabbitMQ', link: '/rabbitmq/1500/',},
       {text: 'Redis', link: '/redis/1600/',},
-      {text: 'Nginx', link: '/nginx/1700/',},
+      {text: 'Nginx', link: '/nginx/1/',},
       {text: 'Elasticsearch', link: '/es/1800/',},
     ],
   },
