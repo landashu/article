@@ -16,9 +16,10 @@ export default <Array<NavItem>>[
   {
     text: '框架',
     items: [
-      {text: 'Spring', link: '/spring/spring/200/'},
-      {text: 'Mybatis', link: '/mybatis/mybatis/300/' },
-      {text: 'Maven', link: '/maven/2300/',},
+      {text: 'Spring', link: '/frame/spring/200/'},
+      {text: 'Mybatis', link: '/frame/mybatis/300/' },
+      {text: 'Maven', link: '/frame/maven/2300/',},
+      {text: 'Git', link: '/frame/git/1/',},
     ],
   },
   {
@@ -26,7 +27,7 @@ export default <Array<NavItem>>[
     items: [
       // 说明：以下所有link的值只是在相应md文件头部定义的永久链接（不是什么特殊编码）。另外，注意结尾是有斜杠的
       {text: 'Kafka', link: '/kafka/1400/',},
-      {text: 'RabbitMQ', link: '/rabbitmq/1500/',},
+      {text: 'RabbitMQ', link: '/rabbitmq/1/',},
       {text: 'Redis', link: '/redis/1600/',},
       {text: 'Nginx', link: '/nginx/1/',},
       {text: 'Elasticsearch', link: '/es/1800/',},
