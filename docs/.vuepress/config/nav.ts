@@ -28,6 +28,7 @@ export default <Array<NavItem>>[
       // 说明：以下所有link的值只是在相应md文件头部定义的永久链接（不是什么特殊编码）。另外，注意结尾是有斜杠的
       {text: 'Kafka', link: '/kafka/1400/',},
       {text: 'RabbitMQ', link: '/rabbitmq/1/',},
+      {text: 'RocketMQ', link: '/rocketmq/1/',},
       {text: 'Redis', link: '/redis/1600/',},
       {text: 'Nginx', link: '/nginx/1/',},
       {text: 'Elasticsearch', link: '/es/1800/',},
