@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MySQL 8.x新特性总结 | 技术博客</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="人民万岁">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.12ef6c1f.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/96.13360794.js" as="script">
+    <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo1.png" alt="技术博客" class="logo"> <span class="site-name can-hide">技术博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言" class="dropdown-title"><!----> <span class="title" style="display:;">语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/java/base/1/" class="nav-link">JAVA</a></li><li class="dropdown-item"><!----> <a href="/language/cj/1/" class="nav-link">仓颉</a></li><li class="dropdown-item"><!----> <a href="/language/mode/1/" class="nav-link">设计模式</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><!----> <span class="title" style="display:;">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/spring/200/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/frame/mybatis/300/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/frame/maven/2300/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/frame/git/1/" class="nav-link">Git</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/kafka/1400/" class="nav-link">Kafka</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/1/" class="nav-link">RabbitMQ</a></li><li class="dropdown-item"><!----> <a href="/rocketmq/1/" class="nav-link">RocketMQ</a></li><li class="dropdown-item"><!----> <a href="/redis/1600/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/nginx/1/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/es/1800/" class="nav-link">Elasticsearch</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hadoop/700/" class="nav-link">Hadoop</a></li><li class="dropdown-item"><!----> <a href="/clickhouse/800/" class="nav-link">ClickHouse</a></li><li class="dropdown-item"><!----> <a href="/hbase/900/" class="nav-link">Hbase</a></li><li class="dropdown-item"><!----> <a href="/hive/1000/" class="nav-link">Hive</a></li><li class="dropdown-item"><!----> <a href="/flume/1100/" class="nav-link">Flume</a></li><li class="dropdown-item"><!----> <a href="/flink/1200/" class="nav-link">Flink</a></li><li class="dropdown-item"><!----> <a href="/mysql/1300/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/mongodb/1800/" class="nav-link">MongoDB</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue3/1900/" class="nav-link">VUE3</a></li><li class="dropdown-item"><!----> <a href="/wx/2000/" class="nav-link">微信小程序</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/linux/2300/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/docker/400/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/jenkins/500/" class="nav-link">Jenkins</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/600/" class="nav-link">Kubernetes</a></li></ul></div></div> <a href="https://github.com/landashu?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言" class="dropdown-title"><!----> <span class="title" style="display:;">语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/java/base/1/" class="nav-link">JAVA</a></li><li class="dropdown-item"><!----> <a href="/language/cj/1/" class="nav-link">仓颉</a></li><li class="dropdown-item"><!----> <a href="/language/mode/1/" class="nav-link">设计模式</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><!----> <span class="title" style="display:;">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/spring/200/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/frame/mybatis/300/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/frame/maven/2300/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/frame/git/1/" class="nav-link">Git</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/kafka/1400/" class="nav-link">Kafka</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/1/" class="nav-link">RabbitMQ</a></li><li class="dropdown-item"><!----> <a href="/rocketmq/1/" class="nav-link">RocketMQ</a></li><li class="dropdown-item"><!----> <a href="/redis/1600/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/nginx/1/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/es/1800/" class="nav-link">Elasticsearch</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hadoop/700/" class="nav-link">Hadoop</a></li><li class="dropdown-item"><!----> <a href="/clickhouse/800/" class="nav-link">ClickHouse</a></li><li class="dropdown-item"><!----> <a href="/hbase/900/" class="nav-link">Hbase</a></li><li class="dropdown-item"><!----> <a href="/hive/1000/" class="nav-link">Hive</a></li><li class="dropdown-item"><!----> <a href="/flume/1100/" class="nav-link">Flume</a></li><li class="dropdown-item"><!----> <a href="/flink/1200/" class="nav-link">Flink</a></li><li class="dropdown-item"><!----> <a href="/mysql/1300/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/mongodb/1800/" class="nav-link">MongoDB</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue3/1900/" class="nav-link">VUE3</a></li><li class="dropdown-item"><!----> <a href="/wx/2000/" class="nav-link">微信小程序</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/linux/2300/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/docker/400/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/jenkins/500/" class="nav-link">Jenkins</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/600/" class="nav-link">Kubernetes</a></li></ul></div></div> <a href="https://github.com/landashu?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>mysql</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mysql/1300/" class="sidebar-link">MySQL 索引介绍</a></li><li><a href="/mysql/1301/" class="sidebar-link">MySQL 锁介绍</a></li><li><a href="/mysql/1302/" class="sidebar-link">MySQL 索引优化工具 explain</a></li><li><a href="/mysql/4/" class="sidebar-link">MySQL 主从复制（GTID）</a></li><li><a href="/mysql/5/" class="sidebar-link">MySQL 8安装</a></li><li><a href="/mysql/6/" aria-current="page" class="active sidebar-link">MySQL 8.x新特性总结</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/mysql/6/#账户与安全" class="sidebar-link">账户与安全</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/mysql/6/#用户创建和授权" class="sidebar-link">用户创建和授权</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#认证插件" class="sidebar-link">认证插件</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#密码管理" class="sidebar-link">密码管理</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#角色管理" class="sidebar-link">角色管理</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/mysql/6/#优化器索引" class="sidebar-link">优化器索引</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/mysql/6/#隐藏索引" class="sidebar-link">隐藏索引</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#降序索引" class="sidebar-link">降序索引</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#函数索引" class="sidebar-link">函数索引</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/mysql/6/#通用表表达式" class="sidebar-link">通用表表达式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/mysql/6/#非递归-cte" class="sidebar-link">非递归 CTE</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#递归-cte" class="sidebar-link">递归 CTE</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/mysql/6/#窗口函数" class="sidebar-link">窗口函数</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/mysql/6/#专用窗口函数" class="sidebar-link">专用窗口函数</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#窗口定义" class="sidebar-link">窗口定义</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/mysql/6/#innodb增强" class="sidebar-link">InnoDB增强</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/mysql/6/#集成数据字典" class="sidebar-link">集成数据字典</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#原子ddl操作" class="sidebar-link">原子DDL操作</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#自增列持久化" class="sidebar-link">自增列持久化</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#死锁检查控制" class="sidebar-link">死锁检查控制</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#锁定语句选项" class="sidebar-link">锁定语句选项</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/mysql/6/#json增强" class="sidebar-link">JSON增强</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/mysql/6/#内联路径操作符" class="sidebar-link">内联路径操作符</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#json的聚合函数" class="sidebar-link">JSON的聚合函数</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#json实用函数" class="sidebar-link">JSON实用函数</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#json的合并函数" class="sidebar-link">json的合并函数</a></li><li class="sidebar-sub-header level3"><a href="/mysql/6/#json表函数" class="sidebar-link">JSON表函数</a></li></ul></li></ul></li><li><a href="/mysql/7/" class="sidebar-link">MySQL UDF以及新类型JSON</a></li><li><a href="/mysql/8/" class="sidebar-link">MySQL 高可用MGR(一) 理论</a></li><li><a href="/mysql/9/" class="sidebar-link">MySQL 高可用MGR(二) 搭建</a></li><li><a href="/mysql/10/" class="sidebar-link">MySQL 高可用MGR(三) 测试</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>mongodb</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mongodb/1800/" class="sidebar-link">mongodb</a></li></ul></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="placeholder"></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">MySQL 8.x新特性总结<!----></h1> <!----> <div class="theme-vdoing-content content__default"><h2 id="账户与安全"><a href="#账户与安全" class="header-anchor">#</a> 账户与安全</h2> <h3 id="用户创建和授权"><a href="#用户创建和授权" class="header-anchor">#</a> 用户创建和授权</h3> <p>MySQL8.0 创建用户和用户授权的命令需要分开执行：</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 创建用户</span>
+create user <span class="token string">'账户'</span>@<span class="token string">'%'</span> identified by <span class="token string">'密码'</span><span class="token punctuation">;</span>
+<span class="token comment"># 给用户授权</span>
+grant all privileges on *.* to <span class="token string">'账户'</span>@<span class="token string">'%'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>8.0 中默认的 user 表比 5.7 中多出一个 mysql.infoschema 用户，5.7 中可以使用一条语句及可以创建用户还可以授权</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 5.7 中的语句</span>
+grant all privileges on *.* to <span class="token string">'账户'</span>@<span class="token string">'%'</span> identified by <span class="token string">'密码'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="认证插件"><a href="#认证插件" class="header-anchor">#</a> 认证插件</h3> <p>MySQL8.0 中默认的身份认证插件是  <code>caching_sha2_password</code> ，替代了之前的  <code>mysql_native_password</code> 。我们可以通过 default_authentication_plugin 系统变量，或者是数据库中 mysql.user 表可以看到这个变化。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 使用系统变量查看</span>
+show variables like <span class="token string">'default_authentication%'</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 使用mysql.user表查看，这种可以看到每个所创建的用户用的是什么加密方式</span>
+<span class="token keyword">select</span> user,host,plugin from mysql.user<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>如果是旧版本的客户端在连接 MySQL8.0 可能会出现身份认证错误，即使你输入对的账号密码，如果想解决这个问题，可以升级客户端支持 MySQL8.0，或者修改 MySQL8.0 的身份认证方式。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 修改mysql自带的 /etc/my.cnf，添加如下，并重启</span>
+<span class="token assign-left variable">default_authentication_plugin</span><span class="token operator">=</span>mysql_native_password
+
+<span class="token comment"># 如果不想重启，只想对某个用户做修改，可以使用如下方式</span>
+alter user <span class="token string">'账户'</span>@<span class="token string">'%'</span> identified with mysql_native_password by <span class="token string">'密码'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="密码管理"><a href="#密码管理" class="header-anchor">#</a> 密码管理</h3> <p>MySQL8.0 开始允许限制重复使用以前的密码，也就是我们在修改密码的时候，要求我们不能修改为我们以前使用过的一些密码。变量如下：</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 新密码不能和最近3次使用过的密码相同，0不启用</span>
+<span class="token assign-left variable">password_history</span><span class="token operator">=</span><span class="token number">3</span>
+<span class="token comment"># 新密码不能喝最近90天内使用的密码相同，0不启用</span>
+<span class="token assign-left variable">password_reuse_interval</span><span class="token operator">=</span><span class="token number">90</span>
+<span class="token comment"># 修改密码的时候需要提供用户的当前登录密码，off关闭</span>
+<span class="token assign-left variable">password_require_current</span><span class="token operator">=</span>ON
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>查看默认变量</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>show variables like <span class="token string">'password%'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>修改变量的方式</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 通过修改 /etc/my.cnf 文件，并重启</span>
+<span class="token assign-left variable">password_history</span><span class="token operator">=</span><span class="token number">3</span>
+<span class="token assign-left variable">password_reuse_interval</span><span class="token operator">=</span><span class="token number">90</span>
+<span class="token assign-left variable">password_require_current</span><span class="token operator">=</span>ON
+
+<span class="token comment"># 设置全局变量，这种方式只针对当前进程有效，服务器重启恢复之前</span>
+<span class="token builtin class-name">set</span> global <span class="token assign-left variable">password_history</span><span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
+
+<span class="token comment"># mysql8.0新添加一种方式，这种方式不仅当前进程有效，并且服务器重启任然会生效</span>
+<span class="token builtin class-name">set</span> persist <span class="token assign-left variable">password_history</span><span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 如果只想更改某个用户的限制</span>
+alter user <span class="token string">'账户'</span>@<span class="token string">'%'</span> password <span class="token function">history</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token comment"># 设置完成后可以查看表是否多Password_reuse_history、Password_reuse_time、Password_reuse_current</span>
+desc mysql.user<span class="token punctuation">;</span>
+<span class="token comment"># 以上没有问题，我们可以查看该针对某个用户设置的值，如果全局有设置，则没设置的默认使用全局设置的</span>
+<span class="token keyword">select</span> user,host,Password_reuse_history from mysql.user<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>set persist 方式其实是新添加了一个配置文件 /var/lib/mysql/mysql-auto.cnf</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 通过该语句可以查看文件内容</span>
+<span class="token function">more</span> /var/lib/mysql/mysql-auto.cnf 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>完成后设置后，我们可以通过修改密码来进行测试</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>alter user <span class="token string">'账户'</span>@<span class="token string">'%'</span> identified by <span class="token string">'密码'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>修改密码的记录存在于 mysql.password_history 表中</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token keyword">select</span> * from mysql.password_history
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><blockquote><p>password_require_current=ON 不受 root 用户进行管制，只限制非 root 用户修改的时候才生效。</p></blockquote> <p>password_require_current=ON 非 root 用户修改密码的时候，会提示使用 REPLACE 关键字，整体修改密码语句如下</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># user() 为当前 '账户'@'%'</span>
+alter user user<span class="token punctuation">(</span><span class="token punctuation">)</span> identified by <span class="token string">'新密码'</span> replace <span class="token string">'当前密码'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="角色管理"><a href="#角色管理" class="header-anchor">#</a> 角色管理</h3> <p>MySQL8.0 提供了角色管理的新功能，角色是一组权限的集合。</p> <p><img src="/assets/img/mysql/6/img.png" alt=""></p> <p>在 MySQL8.0 中创建角色，创建的角色会被对应的写到 mysql.user 表中，并且是没有密码的，所以角色相当于一个用户。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 创建角色</span>
+create role <span class="token string">'角色名称'</span><span class="token punctuation">;</span>
+<span class="token comment"># 查看用户信息</span>
+<span class="token keyword">select</span> host,user,authentication_string from mysql.user<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>角色授权，授权可以授权对应的操作权限（），并指定给哪个库，哪些表，* 代表所有表，然后给具体某个角色授权。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>grant select,insert,update,delete on testdb.* to <span class="token string">'角色名称'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>用户授权</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 赋予用户权限</span>
+grant <span class="token string">'角色名称'</span> to <span class="token string">'账户'</span><span class="token punctuation">;</span>
+<span class="token comment"># 查看用户拥有哪些角色</span>
+show grants <span class="token keyword">for</span> <span class="token string">'账户'</span><span class="token punctuation">;</span>
+<span class="token comment"># 查看用户拥有哪些角色和具体的权限</span>
+show grants <span class="token keyword">for</span> <span class="token string">'账户'</span> using <span class="token string">'角色名称'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>用户授权后，我们可以更换用户进行登录，来对我们授权的用户和库进行操作。当被授权用户登录的时候，可能还是没有权限对库进行操作，需要当前用户给自己设置角色才行，类似于启用这个角色。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 查看当前用户所拥有的的角色，没有则为 NONE</span>
+<span class="token keyword">select</span> currnt_role<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment"># 当前用户给自己设置角色</span>
+<span class="token builtin class-name">set</span> role <span class="token string">'角色名称'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>当然每次给用户设置角色后，用户登录都需要自己启用这个角色是相当麻烦的，那我们可以设置默认角色。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 如果要取消，则可角色名称可以为NONE</span>
+<span class="token builtin class-name">set</span> default role <span class="token string">'角色名称'</span> to <span class="token string">'账户'</span><span class="token punctuation">;</span>
+<span class="token comment"># 如果有多个角色想要给某个账户设置</span>
+<span class="token builtin class-name">set</span> default role all to <span class="token string">'账户'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>如果想要查询 mysql 中关于角色相关的一些信息，可以通过 mysql 库中的 default_roles 和 role_edges;</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 会查出有哪些已被设置默认的角色和用户</span>
+<span class="token keyword">select</span> * from mysql.default_roles<span class="token punctuation">;</span>
+<span class="token comment"># 角色授予的信息表，知道那个角色授予哪个用户（角色在mysql中是一种特殊的用户）</span>
+<span class="token keyword">select</span> * from mysql.role_edges<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>对于角色来说，可以赋予角色相关的动作权限，当然也可以移除动作权限</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 移除角色对于testdb库的所有表的增删改权限</span>
+revoke insert,update,delete on testdb.* from <span class="token string">'角色名称'</span><span class="token punctuation">;</span>
+<span class="token comment"># 查看角色动作</span>
+show grants <span class="token keyword">for</span> <span class="token string">'角色名称'</span><span class="token punctuation">;</span>
+<span class="token comment"># 查看用户对应角色和动作权限</span>
+show grants <span class="token keyword">for</span> <span class="token string">'账户名称'</span> using <span class="token string">'角色名称'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="优化器索引"><a href="#优化器索引" class="header-anchor">#</a> 优化器索引</h2> <h3 id="隐藏索引"><a href="#隐藏索引" class="header-anchor">#</a> 隐藏索引</h3> <p>MySQL8.0 开始支持隐藏索引（invisible index），不可见索引。隐藏索引不会被优化器使用，但任然需要进行维护，也就是数据的修改任然需要在后台进行索引的维护，依然有维护成本。隐藏索引多用于以下两个场景：</p> <ul><li>软删除，索引是需要维护成本的，如果某些表不需要索引可以直接删掉，但后期又要加索引，在数据量比较大的时候成本比较高，所以软删除提供隐藏索引，把索引设置为隐藏，这个时候查询优化器并不会使用索引，但依然会进行维护，当最终确定删除的时候，我们在将索引彻底删除。</li> <li>灰度发布，这种方式通常用来做索引测试，在设计之初加上并设置为隐藏，当后期如果索引实际用到，我们则可以打开（加索引也需要成本，尤其数据量大）</li></ul> <p>隐藏缩影的创建语句</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 普通索引创建</span>
+create index <span class="token string">'索引名称'</span> on 表名<span class="token punctuation">(</span>字段<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment"># 隐藏索引则是多了一个关键字 invisible</span>
+create index <span class="token string">'索引名称'</span> on 表名<span class="token punctuation">(</span>字段<span class="token punctuation">)</span> invisible<span class="token punctuation">;</span>
+
+<span class="token comment"># 我们可以通过语句来看索引是否可见，查看关键字 Visible</span>
+show index from 表名<span class="token punctuation">\</span>G
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>我们可以实际测试，并使用 explain select ... 语句来验证。<br>
+通过语句也可以改变索引的可见和不可见。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 设置为可见索引</span>
+alter table 表名 alter index <span class="token string">'索引名'</span> visible<span class="token punctuation">;</span>
+<span class="token comment"># 设置为隐藏索引</span>
+alter table 表名 alter index <span class="token string">'索引名'</span> invisible<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><blockquote><p>主键是不能设置隐藏索引的</p></blockquote> <h3 id="降序索引"><a href="#降序索引" class="header-anchor">#</a> 降序索引</h3> <p>MySQL8.0 之前也可以使用降序索引的定义，但实际上 MySQL 服务会忽略我们这个定义，创建的还是升序索引，但是从 MySQL8.0 开始真正的支持了降序索引（descending index），但目前来说只有 innoDB 存储引擎支持降序索引，只支持 BTREE 降序索引。并且由于降序索引的引入，MySQL8.0 不再对 group by 操作进行隐式排序。</p> <p>创建表并构建降序索引</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 创建 test表 并未c1和c2字段添加升序和降序索引</span>
+create table test<span class="token punctuation">(</span>
+  c1 int ,
+  c2 int,
+  index idx1<span class="token punctuation">(</span>c1 asc,c2 desc<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment"># 查看创建表的索引，发现 c2 后面会多一个 desc 降序索引，asc 升序索引默认不显示</span>
+show create table test<span class="token punctuation">\</span>G
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="函数索引"><a href="#函数索引" class="header-anchor">#</a> 函数索引</h3> <p>具体的函数索引是在 MySQL8.0.13 开始支持在索引中使用函数（表达式）的值，新的函数索引支持降序索引，支持 JSON 数据的索引。函数索引是基于虚拟列功能实现的。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 将列名的大写转换作为索引的值</span>
+create index <span class="token string">'索引名称'</span> on 表名<span class="token punctuation">(</span> <span class="token punctuation">(</span>UPPER<span class="token punctuation">(</span>列名<span class="token punctuation">))</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment"># 通过语句查看，可以通过关键字 Expression 查看</span>
+show index from 表名<span class="token punctuation">\</span>G
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>触发优化器函数索引的语句</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>explain <span class="token keyword">select</span> * from 表名 where upeer<span class="token punctuation">(</span>列名<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">'C'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>函数索引对 JSON 进行索引，先要创建索引</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 创建一个表，字段data为JSON类型，并为其创建一个索引，CAST做类型转换。取json中name节点的值，并把数据转换成char(30)。</span>
+create table test<span class="token punctuation">(</span>
+  data json,
+  index<span class="token punctuation">(</span> <span class="token punctuation">(</span>CAST<span class="token punctuation">(</span>data -<span class="token operator">&gt;&gt;</span><span class="token string">'$.name'</span> as char<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">))</span><span class="token punctuation">)</span> <span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token comment"># 查看该表索引情况</span>
+show index from 表名<span class="token punctuation">\</span>G
+<span class="token comment"># 触发索引语句</span>
+explain <span class="token keyword">select</span> * from <span class="token builtin class-name">test</span> where CAST<span class="token punctuation">(</span>data -<span class="token operator">&gt;&gt;</span><span class="token string">'$.name'</span> as char<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">'aaa'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>如上所说函数索引是基于虚拟列功能实现的，可以理解成一下几步</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 1. 改变表添加一个新字段，值是以旧字段的值并转大写为结果</span>
+alter table 表名 <span class="token function">add</span> <span class="token function">column</span> 新字段 varchar<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> generated always as <span class="token punctuation">(</span>upper<span class="token punctuation">(</span>旧字段<span class="token punctuation">))</span>
+<span class="token comment"># 2. 建立索引</span>
+create index 索引名称 on 表名<span class="token punctuation">(</span>新字段<span class="token punctuation">)</span>
+
+<span class="token comment"># 触发索引，会发现走的是新字段的索引</span>
+explain <span class="token keyword">select</span> * from 表名 where upper<span class="token punctuation">(</span>旧字段<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'AAA'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>我们还可以把 JSON 里面的某个属性提取为一个虚拟列，当 JSON 里该属性的值发生变化，则虚拟列也会更新，然后对虚拟列做上索引，这样就会对查询速度有所提升。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>ALTER TABLE 表名 ADD COLUMN <span class="token string">'虚拟列名称'</span> VARCHAR<span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span> generated always AS <span class="token punctuation">(</span>
+	json_unquote<span class="token punctuation">(</span>
+		json_extract<span class="token punctuation">(</span>
+			<span class="token string">'json字段名'</span>,_utf8mb4<span class="token string">'$.属性'</span>
+		<span class="token punctuation">)</span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">)</span> virtual NULL<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="通用表表达式"><a href="#通用表表达式" class="header-anchor">#</a> 通用表表达式</h2> <h3 id="非递归-cte"><a href="#非递归-cte" class="header-anchor">#</a> 非递归 CTE</h3> <p>MySQL8.0 开始支持通用表表达式（CTE），即 WITH 字句。简单示例如下：</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 以前子查询或派生表</span>
+<span class="token keyword">select</span> * from <span class="token punctuation">(</span>select <span class="token number">1</span><span class="token punctuation">)</span> as <span class="token function">dd</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 通用表表达式</span>
+with <span class="token function">dd</span> as <span class="token punctuation">(</span>select <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">select</span> * from <span class="token function">dd</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 通用表表达式</span>
+with dd<span class="token punctuation">(</span>id<span class="token punctuation">)</span> as <span class="token punctuation">(</span>select <span class="token number">1</span><span class="token punctuation">)</span>,
+  dd2<span class="token punctuation">(</span>id<span class="token punctuation">)</span> as <span class="token punctuation">(</span>select id+1 from <span class="token function">dd</span><span class="token punctuation">)</span>
+  <span class="token keyword">select</span> * from <span class="token function">dd</span> <span class="token function">join</span> dd2<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="递归-cte"><a href="#递归-cte" class="header-anchor">#</a> 递归 CTE</h3> <p>递归 CTE 在查询中引用自己的定义，使用 recursive 表示，示例:</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>with recursive dd<span class="token punctuation">(</span>n<span class="token punctuation">)</span> as<span class="token punctuation">(</span>
+  <span class="token keyword">select</span> <span class="token number">1</span>
+  union all
+  <span class="token keyword">select</span> n+1 from <span class="token function">dd</span> where n <span class="token operator">&lt;</span> <span class="token number">5</span>
+<span class="token punctuation">)</span> <span class="token keyword">select</span> * from <span class="token function">dd</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>递归限制，递归表达式的查询中需要包含个终止递归的条件</p> <ul><li>cte_max_recursion_depth：最大递归的深度，如果没有条件终止，达到这个条件系统会提示错误</li> <li>max_execution_time：SQL 语句的最多执行时间，如果执行语句超过这个时间也会提示错误</li></ul> <p>查看参数</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 查看系统默认深度</span>
+show variables like <span class="token string">'cte_max%'</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 可以修改这个参数，session 为当前会话有效</span>
+<span class="token builtin class-name">set</span> session <span class="token assign-left variable">cte_max_recursion_depth</span><span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 查看系统默认SQl执行时间，默认是0，没有限制，单位s</span>
+show variables like <span class="token string">'max_execution%'</span><span class="token punctuation">;</span>
+
+<span class="token builtin class-name">set</span> session <span class="token assign-left variable">max_execution_time</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>CTE 支持 select，insert，update，delete 等语句。</p> <h2 id="窗口函数"><a href="#窗口函数" class="header-anchor">#</a> 窗口函数</h2> <p>MySQL8.0 支持窗口函数（Window Function），也称为分析函数。窗口函数与分组聚合函数类似，但是每一行数据都生成一个结果。聚合窗口函数：sum/avg/count/max/min 等等都可以作为窗口函数来使用。</p> <div class="language-mysql line-numbers-mode"><pre class="language-text"><code># 创建表
+CREATE TABLE `sales` (
+  `year` int DEFAULT NULL,
+  `country` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profit` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+# 表数据
+INSERT INTO `sales` VALUES(2000,'F','C',1500),
+(2001,'U','C',1200),
+(2001,'F','P',10),
+(2000,'I','Ca',75),
+(2000,'U','T',150),
+(2001,'I','C',1200),
+(2000,'U','Ca',5),
+(2000,'U','C',1500),
+(2000,'F','p',100),
+(2001,'U','Ca',50),
+(2001,'U','C',1500),
+(2000,'I','Ca',75),
+(2001,'U','T',100);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>我们查询每个国家的利润总和，先用聚合函数实现：</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>SELECT country,SUM<span class="token punctuation">(</span>profit<span class="token punctuation">)</span> AS country_profit FROM sales
+GROUP BY country ORDER BY country
+
+country  country_profit  
+-------  ----------------
+F                    <span class="token number">1610</span>
+I                    <span class="token number">1350</span>
+U                    <span class="token number">4505</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>我们用分析函数的写法</p> <div class="language-mysql line-numbers-mode"><pre class="language-text"><code>SELECT YEAR,country,product,profit,
+	# 按照国家分区
+	SUM(profit) over (PARTITION BY country) AS country_profit
+FROM sales
+ORDER BY country,YEAR,product,profit
+
+  year  country  product  profit  country_profit  
+------  -------  -------  ------  ----------------
+  2000  F        C        1500                1610
+  2000  F        p        100                 1610
+  2001  F        P        10                  1610
+  2000  I        Ca       75                  1350
+  2000  I        Ca       75                  1350
+  2001  I        C        1200                1350
+  2000  U        C        1500                4505
+  2000  U        Ca       5                   4505
+  2000  U        T        150                 4505
+  2001  U        C        1200                4505
+  2001  U        C        1500                4505
+  2001  U        Ca       50                  4505
+  2001  U        T        100                 4505
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h3 id="专用窗口函数"><a href="#专用窗口函数" class="header-anchor">#</a> 专用窗口函数</h3> <p>除以上聚合函数也可以用来做窗口函数外，还提供了一些专用窗口函数。</p> <ul><li>ROW_NUMBER () 用于数据排名的排名函数；</li> <li>RANK()</li> <li>DENSE_RANK()</li> <li>PERCENT_RANK()</li> <li>FIRST_VALUE () 用于获取窗口分组内的第一名；</li> <li>LAST_VALUE ()，用于获取窗口分组内的最后一名；</li> <li>LEAD () 用于获取当前的后几名数据；</li> <li>LAG () 用于获取当前的前几名数据；</li> <li>CUME_DIST ()，累计分布，数据累计到现在占了多少；</li> <li>NTH_VALUE ()，排名第几名的函数；</li> <li>NTILE (Num)，传入一个整数，把数据级按照整数分组（分为多少个组）;</li></ul> <p>创建示例表和数据</p> <div class="language-mysql line-numbers-mode"><pre class="language-text"><code># 表
+CREATE TABLE `numbers` (
+  `val` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+
+# 插入语句
+INSERT INTO `numbers`
+VALUES(1),(1),(2),(3),(3),(3),(3),(4),(4),(5);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>对 numbers 表数据进行排名</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>SELECT val,row_number<span class="token punctuation">(</span><span class="token punctuation">)</span> over <span class="token punctuation">(</span>ORDER BY val<span class="token punctuation">)</span> AS <span class="token string">'row_number'</span>
+FROM <span class="token variable"><span class="token variable">`</span>numbers<span class="token variable">`</span></span>
+
+   val  row_number  
+------  ------------
+     <span class="token number">1</span>             <span class="token number">1</span>
+     <span class="token number">1</span>             <span class="token number">2</span>
+     <span class="token number">2</span>             <span class="token number">3</span>
+     <span class="token number">3</span>             <span class="token number">4</span>
+     <span class="token number">3</span>             <span class="token number">5</span>
+     <span class="token number">3</span>             <span class="token number">6</span>
+     <span class="token number">3</span>             <span class="token number">7</span>
+     <span class="token number">4</span>             <span class="token number">8</span>
+     <span class="token number">4</span>             <span class="token number">9</span>
+     <span class="token number">5</span>            <span class="token number">10</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><div class="language-shell line-numbers-mode"><pre class="language-shell"><code>SELECT val,
+	first_value<span class="token punctuation">(</span>val<span class="token punctuation">)</span> over <span class="token punctuation">(</span>ORDER BY val<span class="token punctuation">)</span> AS <span class="token string">'first'</span>,
+	lead<span class="token punctuation">(</span>val,1<span class="token punctuation">)</span> over <span class="token punctuation">(</span>ORDER BY val<span class="token punctuation">)</span> AS <span class="token string">'lead'</span>
+FROM <span class="token variable"><span class="token variable">`</span>numbers<span class="token variable">`</span></span>
+
+   val   first    lead  
+------  ------  --------
+     <span class="token number">1</span>       <span class="token number">1</span>         <span class="token number">1</span>
+     <span class="token number">1</span>       <span class="token number">1</span>         <span class="token number">2</span>
+     <span class="token number">2</span>       <span class="token number">1</span>         <span class="token number">3</span>
+     <span class="token number">3</span>       <span class="token number">1</span>         <span class="token number">3</span>
+     <span class="token number">3</span>       <span class="token number">1</span>         <span class="token number">3</span>
+     <span class="token number">3</span>       <span class="token number">1</span>         <span class="token number">3</span>
+     <span class="token number">3</span>       <span class="token number">1</span>         <span class="token number">4</span>
+     <span class="token number">4</span>       <span class="token number">1</span>         <span class="token number">4</span>
+     <span class="token number">4</span>       <span class="token number">1</span>         <span class="token number">5</span>
+     <span class="token number">5</span>       <span class="token number">1</span>    <span class="token punctuation">(</span>NULL<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><div class="language-shell line-numbers-mode"><pre class="language-shell"><code>SELECT val,
+	ntile<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> over <span class="token punctuation">(</span>ORDER BY val<span class="token punctuation">)</span> AS <span class="token string">'ntile3'</span>
+FROM <span class="token variable"><span class="token variable">`</span>numbers<span class="token variable">`</span></span>
+
+   val  ntile3  
+------  --------
+     <span class="token number">1</span>         <span class="token number">1</span>
+     <span class="token number">1</span>         <span class="token number">1</span>
+     <span class="token number">2</span>         <span class="token number">1</span>
+     <span class="token number">3</span>         <span class="token number">1</span>
+     <span class="token number">3</span>         <span class="token number">2</span>
+     <span class="token number">3</span>         <span class="token number">2</span>
+     <span class="token number">3</span>         <span class="token number">2</span>
+     <span class="token number">4</span>         <span class="token number">3</span>
+     <span class="token number">4</span>         <span class="token number">3</span>
+     <span class="token number">5</span>         <span class="token number">3</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h3 id="窗口定义"><a href="#窗口定义" class="header-anchor">#</a> 窗口定义</h3> <p>窗口和其他函数最大的区别是 over 关键字，over 中可以有多个条件</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>window_function<span class="token punctuation">(</span>expr<span class="token punctuation">)</span> over<span class="token punctuation">(</span>
+  <span class="token comment"># 会对数据先进行分组</span>
+  partition by <span class="token punctuation">..</span>.
+  <span class="token comment"># 对于数据排序</span>
+  order by <span class="token punctuation">..</span>.
+  <span class="token comment"># 会进一步限定窗口</span>
+  frame_clause<span class="token punctuation">..</span>.
+<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>frame_clause 定义了一些常用的关键字，如：</p> <ul><li>current_row，当前行</li> <li>m preceding，如 1 preceding，则表示和当前行的上一行，也就是已经处理过的行，进行计算</li> <li>n following，如 2 following，则表示和当前行往下的两行，还没有被处理的行</li> <li>unbounded preceding，从分区中的第一行开始，延续往下处理所有数据，直到分区最后一行</li> <li>unbounded following，表示分区的最后一行</li></ul> <p><img src="/assets/img/mysql/6/img_1.png" alt=""></p> <p>如图，当前行为 | 2,001 | USA | TV | 150 |，对于当前行的 unbounded preceding 来说是当前行以上的所有数据，对于当前行的  unbounded following 来说是当前行以下的所有数据，而 1 preceding，为当前行的上一行，2 following，则为当前行的下一行。</p> <p>针对以上的 sales 表，按国家进行分区计算利润总和，按照分组内的产品进行排序，并在分区内计算利润累计和</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>SELECT *,
+	SUM<span class="token punctuation">(</span>profit<span class="token punctuation">)</span> over <span class="token punctuation">(</span>
+		PARTITION BY country
+		ORDER BY product
+		ROWS unbounded preceding
+	<span class="token punctuation">)</span> AS <span class="token string">'sum profit'</span>
+FROM <span class="token variable"><span class="token variable">`</span>sales<span class="token variable">`</span></span>
+
+  year  country  product  profit  <span class="token function">sum</span> profit  
+------  -------  -------  ------  ------------
+  <span class="token number">2000</span>  F        C        <span class="token number">1500</span>            <span class="token number">1500</span>
+  <span class="token number">2001</span>  F        P        <span class="token number">10</span>              <span class="token number">1510</span>
+  <span class="token number">2000</span>  F        p        <span class="token number">100</span>             <span class="token number">1610</span>
+  <span class="token number">2001</span>  I        C        <span class="token number">1200</span>            <span class="token number">1200</span>
+  <span class="token number">2000</span>  I        Ca       <span class="token number">75</span>              <span class="token number">1275</span>
+  <span class="token number">2000</span>  I        Ca       <span class="token number">75</span>              <span class="token number">1350</span>
+  <span class="token number">2001</span>  U        C        <span class="token number">1200</span>            <span class="token number">1200</span>
+  <span class="token number">2000</span>  U        C        <span class="token number">1500</span>            <span class="token number">2700</span>
+  <span class="token number">2001</span>  U        C        <span class="token number">1500</span>            <span class="token number">4200</span>
+  <span class="token number">2000</span>  U        Ca       <span class="token number">5</span>               <span class="token number">4205</span>
+  <span class="token number">2001</span>  U        Ca       <span class="token number">50</span>              <span class="token number">4255</span>
+  <span class="token number">2000</span>  U        T        <span class="token number">150</span>             <span class="token number">4405</span>
+  <span class="token number">2001</span>  U        T        <span class="token number">100</span>             <span class="token number">4505</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>针对以上的 sales 表，按国家进行分区计算利润总和，按照分组内的产品进行排序，并在分区内计算<strong>上一行和当前行以及下一行</strong>进行利润加和计算</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>SELECT *,
+	SUM<span class="token punctuation">(</span>profit<span class="token punctuation">)</span> over <span class="token punctuation">(</span>
+		PARTITION BY country
+		ORDER BY product
+		ROWS BETWEEN <span class="token number">1</span> preceding AND <span class="token number">1</span> following
+	<span class="token punctuation">)</span> AS <span class="token string">'sum profit'</span>
+FROM <span class="token variable"><span class="token variable">`</span>sales<span class="token variable">`</span></span>
+
+  year  country  product  profit  <span class="token function">sum</span> profit  
+------  -------  -------  ------  ------------
+  <span class="token number">2000</span>  F        C        <span class="token number">1500</span>            <span class="token number">1510</span>
+  <span class="token number">2001</span>  F        P        <span class="token number">10</span>              <span class="token number">1610</span>
+  <span class="token number">2000</span>  F        p        <span class="token number">100</span>              <span class="token number">110</span>
+  <span class="token number">2001</span>  I        C        <span class="token number">1200</span>            <span class="token number">1275</span>
+  <span class="token number">2000</span>  I        Ca       <span class="token number">75</span>              <span class="token number">1350</span>
+  <span class="token number">2000</span>  I        Ca       <span class="token number">75</span>               <span class="token number">150</span>
+  <span class="token number">2001</span>  U        C        <span class="token number">1200</span>            <span class="token number">2700</span>
+  <span class="token number">2000</span>  U        C        <span class="token number">1500</span>            <span class="token number">4200</span>
+  <span class="token number">2001</span>  U        C        <span class="token number">1500</span>            <span class="token number">3005</span>
+  <span class="token number">2000</span>  U        Ca       <span class="token number">5</span>               <span class="token number">1555</span>
+  <span class="token number">2001</span>  U        Ca       <span class="token number">50</span>               <span class="token number">205</span>
+  <span class="token number">2000</span>  U        T        <span class="token number">150</span>              <span class="token number">300</span>
+  <span class="token number">2001</span>  U        T        <span class="token number">100</span>              <span class="token number">250</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><div class="language-shell line-numbers-mode"><pre class="language-shell"><code>SELECT *,
+	first_value<span class="token punctuation">(</span>profit<span class="token punctuation">)</span> over w AS <span class="token string">'first'</span>,
+	last_value<span class="token punctuation">(</span>profit<span class="token punctuation">)</span> over w AS <span class="token string">'last'</span>
+FROM <span class="token variable"><span class="token variable">`</span>sales<span class="token variable">`</span></span>
+window w AS <span class="token punctuation">(</span>
+	PARTITION BY country 
+	ORDER BY profit
+	ROWS unbounded preceding
+<span class="token punctuation">)</span>
+
+  year  country  product  profit  first   last    
+------  -------  -------  ------  ------  --------
+  <span class="token number">2001</span>  F        P        <span class="token number">10</span>      <span class="token number">10</span>      <span class="token number">10</span>      
+  <span class="token number">2000</span>  F        p        <span class="token number">100</span>     <span class="token number">10</span>      <span class="token number">100</span>     
+  <span class="token number">2000</span>  F        C        <span class="token number">1500</span>    <span class="token number">10</span>      <span class="token number">1500</span>    
+  <span class="token number">2001</span>  I        C        <span class="token number">1200</span>    <span class="token number">1200</span>    <span class="token number">1200</span>    
+  <span class="token number">2000</span>  I        Ca       <span class="token number">75</span>      <span class="token number">1200</span>    <span class="token number">75</span>      
+  <span class="token number">2000</span>  I        Ca       <span class="token number">75</span>      <span class="token number">1200</span>    <span class="token number">75</span>      
+  <span class="token number">2001</span>  U        T        <span class="token number">100</span>     <span class="token number">100</span>     <span class="token number">100</span>     
+  <span class="token number">2001</span>  U        C        <span class="token number">1200</span>    <span class="token number">100</span>     <span class="token number">1200</span>    
+  <span class="token number">2000</span>  U        T        <span class="token number">150</span>     <span class="token number">100</span>     <span class="token number">150</span>     
+  <span class="token number">2000</span>  U        C        <span class="token number">1500</span>    <span class="token number">100</span>     <span class="token number">1500</span>    
+  <span class="token number">2001</span>  U        C        <span class="token number">1500</span>    <span class="token number">100</span>     <span class="token number">1500</span>    
+  <span class="token number">2000</span>  U        Ca       <span class="token number">5</span>       <span class="token number">100</span>     <span class="token number">5</span>       
+  <span class="token number">2001</span>  U        Ca       <span class="token number">50</span>      <span class="token number">100</span>     <span class="token number">50</span>      
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><h2 id="innodb增强"><a href="#innodb增强" class="header-anchor">#</a> InnoDB 增强</h2> <h3 id="集成数据字典"><a href="#集成数据字典" class="header-anchor">#</a> 集成数据字典</h3> <p>MySQL8.0 删除了之前版本的元数据文件，例如 .frm，.opt，关于触发器的一些 trigger 文件等，我们可以在新老版本的 /var/lib/mysql/mysql 下查看文件信息。</p> <p>将系统表（mysql 数据库）和数据字典全部改为 InnoDB 存储引擎，从 8.0 之后，所有的数据字典信息都是用 innoDB 存储引擎进行统一的存储。</p> <p>简化了 information_schema 的实现，提高了访问性能。</p> <h3 id="原子ddl操作"><a href="#原子ddl操作" class="header-anchor">#</a> 原子 DDL 操作</h3> <p>MySQL8.0 开始支持原子 DDL 操作，其中与表相关的原子 DDL 只支持 InnoDB 引擎。一个原子 DDL 操作内容包括：更新数据字典，存储引擎层的操作，在 binlog 中记录 DDL 操作，有了这几个步骤后，如果我们在这个操作出现了服务器崩溃，可以通过相应的恢复机制进行数据的重做或者是数据的回滚来保证我们 DDL 操作的事务原子性。</p> <p>支持与表相关的 DDL：数据库、表空间、表、索引的 create、alter、drop 以及 truncate table。</p> <p>支持其他的 DDL：存储程序、触发器、视图、UDF 的 create、drop 以及 alter 语句。</p> <p>支持账户管理相关的 DDL：用户和用户角色的 create、alter、drop 以及适用的 rename，以及 grant 和 revoke 语句。</p> <p>可以在 5.7 和 8 中使用以下方式进行测试，在 5.7 中删除语句会报错，但 t1 表依然会删除成功，在 8 中，删除失败，但表 t1 依然存在。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 创建表</span>
+create table t1<span class="token punctuation">(</span>id int<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment"># 删除表t1，t2</span>
+drop table t1,t2<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="自增列持久化"><a href="#自增列持久化" class="header-anchor">#</a> 自增列持久化</h3> <p>MySQL5.7 以及早期版本，InnoDB 自增列计数器（auto_invcrement）的值只存储在内存中，当服务器故障或重启，mysql 会扫描自增列，找到当前的最大值，然后基于该值往上自增，在某些场景，初始化的值有可能是以前使用过的值，有可能会重复，通常来说我们使用自增配合主键一起使用，不允许有重复的列。</p> <p>基于以上原因，MySQL8.0 每次变化时将自增计数器的最大值写入 redo log，同时在每次检查点将其写入引擎私有的系统表，如果系统下次重启恢复的时候，他可以通过写入的记录找到我们曾经使用或可能使用过的最大值，避免我们新生成的值和我们之前使用过的值重复的情况。</p> <p>在 5.7 问题存在的演示</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 创建测试表</span>
+create table t<span class="token punctuation">(</span>
+  <span class="token function">id</span> int auto_increment primary key,
+  c1 varchar<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token comment"># 数据插入</span>
+insert into t<span class="token punctuation">(</span>c1<span class="token punctuation">)</span> values<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>,<span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">)</span>,<span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">id</span>       c1
+------  -------
+  <span class="token number">1</span>        a   
+  <span class="token number">2</span>        b   
+  <span class="token number">3</span>        c    
+   
+<span class="token comment"># 删除数据</span>
+delete from t where <span class="token function">id</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+  <span class="token function">id</span>       c1
+------  -------
+  <span class="token number">1</span>        a   
+  <span class="token number">2</span>        b   
+
+<span class="token comment"># 重启数据库，并插入数据</span>
+
+insert into t<span class="token punctuation">(</span>c1<span class="token punctuation">)</span> values<span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">id</span>       c1
+------  -------
+  <span class="token number">1</span>        a   
+  <span class="token number">2</span>        b   
+  <span class="token number">3</span>        d    
+
+<span class="token comment"># 更新值</span>
+update t <span class="token builtin class-name">set</span> <span class="token assign-left variable">id</span><span class="token operator">=</span><span class="token number">5</span> where c1 <span class="token operator">=</span> <span class="token string">'a'</span><span class="token punctuation">;</span>
+
+  <span class="token function">id</span>       c1
+------  -------
+  <span class="token number">2</span>        b   
+  <span class="token number">3</span>        d    
+  <span class="token number">5</span>        a   
+
+<span class="token comment"># 插入新数据</span>
+insert into t<span class="token punctuation">(</span>c1<span class="token punctuation">)</span> values<span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">id</span>       c1
+------  -------
+  <span class="token number">2</span>        b   
+  <span class="token number">3</span>        d    
+  <span class="token number">4</span>        e    
+  <span class="token number">5</span>        a   
+
+<span class="token comment"># 再次插入数据，会报错 Duplicate entry '5' from key 'PRIMARY'</span>
+insert into t<span class="token punctuation">(</span>c1<span class="token punctuation">)</span> values<span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br></div></div><p>以上步骤如果使用 MySQL8.0 操作，你会发现在删除数据后重新启动并插入数据，此时 ID 为以前没被使用过的。如果像以上 update，再生成一条新的记录，则也不会出现主键重复的错误。</p> <p>我们可以通过查看 innodb_autoinc_lock_mode 参数来发现他们的区别，在 5.7 中该值为 1（连续模式），在 8.0 中该值为 2（交叉模式），如果你使用基于语句的复制模式，要使用 1，如果是基于行的复制，使用 2，该方式可以提高性能。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>show variables like <span class="token string">'innodb_autoinc%'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="死锁检查控制"><a href="#死锁检查控制" class="header-anchor">#</a> 死锁检查控制</h3> <p>死锁是两个事务，它都需要进行一些数据的修改，而在修改的过程中，他们都需要等待对方释放某一些数据上的资源，因为他们互相之间没有感知，如果没有外界系统的介入的情况下，他们会一直等待下去，也就是这两个事务形成了一个死锁。</p> <p>在 MySQL8.0 中，在后台会有一个实时监测的程序，它如果发现这种情况，它会让一个事务失败，而让另一个事务能够进行下去。当然，这个死锁检查它需要一定的代价，需要占用一定的系统资源。</p> <p>MySQL8.0（5.7.15）增加了一个新的动态变量（innodb_deadlock_detect），用于控制系统是否执行 InnoDB 死锁检查。对于高并发的系统，禁用死锁检查可以带来性能的提高。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>show variables like <span class="token string">'innodb_deadlock_detect'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>以下提供了测试语句，当发生死锁的时候，会让一个事务进行报错，另一个成功。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 开启第一个窗口</span>
+<span class="token comment"># 创建测试表</span>
+create table t<span class="token punctuation">(</span>
+  item int
+<span class="token punctuation">)</span>
+<span class="token comment"># 数据插入</span>
+insert into t<span class="token punctuation">(</span>item<span class="token punctuation">)</span> values<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 开启事务</span>
+start transaction<span class="token punctuation">;</span>
+
+<span class="token comment"># 获取记录上的共享锁</span>
+<span class="token keyword">select</span> * from t where item <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">for</span> share<span class="token punctuation">;</span>
+
+<span class="token comment"># 切换到第二个窗口，同样开启事务并删除数据，删除数据记录需要相应的排他锁，但第一个窗口已经占用了共享锁，所以下面删除语句会进行等待</span>
+delete from t where item <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 切换到第一个窗口，也键入删除语句，此时这条语句需要以上释放锁才能继续进行下去，固然形成了死锁。</span>
+delete from t where item <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>当我们关闭死锁检查的时候，还有个参数会帮我们进行限制，锁等待超时（innodb_lock_wait_timeout）</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 关闭死锁检查</span>
+<span class="token builtin class-name">set</span> global <span class="token assign-left variable">innodb_deadlock_detect</span><span class="token operator">=</span>off<span class="token punctuation">;</span>
+<span class="token comment"># 查看innodb_lock_wait_timeout默认时间，默认50s</span>
+show variables like <span class="token string">'innodb_lock_wait%'</span><span class="token punctuation">;</span>
+<span class="token comment"># 可以把锁超时时间设置短一些</span>
+<span class="token builtin class-name">set</span> global <span class="token assign-left variable">innodb_lock_wait_timeout</span><span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>进行设置完毕后，我们可以重复上面事务的死锁案例，它会报出如下错误</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Lock wait timeout exceeded；try restarting transaction
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="锁定语句选项"><a href="#锁定语句选项" class="header-anchor">#</a> 锁定语句选项</h3> <p>在 MySQL 中的有两个可以对执行语句加锁的选项，select ... for share（共享锁 - 读锁） 和 select ...for update（排他锁 - 写锁） ，如果所查询的数据在其他事务中已经占用了相应的锁，那我们的语句需要做相应的等待，直到相应的事务释放锁，如果一直没有等待到，它会在等待超时后执行报错。</p> <p>新的 8.0 对对两条加锁语句进行了两个选项</p> <ul><li>nowait 如果请求的行被其他事务锁定时，语句立即返回</li> <li>skip locked 如果对查询的数据有些已经被锁定，跳过这些锁定的行，只返回没有被锁定的数据</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 开第一个会话窗口</span>
+<span class="token comment"># 创建测试表</span>
+create table t<span class="token punctuation">(</span>
+  item int
+<span class="token punctuation">)</span>
+<span class="token comment"># 数据插入</span>
+insert into t<span class="token punctuation">(</span>item<span class="token punctuation">)</span> values<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>,<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>,<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 开启事务</span>
+start transaction<span class="token punctuation">;</span>
+
+<span class="token comment"># 修改语句，会自动添加排他锁，这里不进行commit不会释放锁</span>
+update t <span class="token builtin class-name">set</span> <span class="token assign-left variable">iitem</span><span class="token operator">=</span><span class="token number">0</span> where item <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 切换到第二个窗口，同样开启事务，并执行语句，该语句会被阻塞等待超时</span>
+<span class="token keyword">select</span> * from t where <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">2</span> <span class="token keyword">for</span> update<span class="token punctuation">;</span>
+
+<span class="token comment"># 切换到第三个窗口，同样开启事务，并执行语句，该语句会立即返回报错</span>
+<span class="token keyword">select</span> * from t where <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">2</span> <span class="token keyword">for</span> update nowait<span class="token punctuation">;</span>
+Statement aborted because lock<span class="token punctuation">(</span>s<span class="token punctuation">)</span> could not be acquired immediately and nowait is set.
+
+<span class="token comment"># 切换到第四个窗口，同样开启事务，并执行语句，该语句会立即返回结果.</span>
+<span class="token keyword">select</span> * from t where <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">2</span> <span class="token keyword">for</span> update skip locked<span class="token punctuation">;</span>
+
+item   
+------
+  <span class="token number">1</span>   
+  <span class="token number">3</span>      
+
+<span class="token comment"># 切换到第一个窗口，也键入删除语句，此时这条语句需要以上释放锁才能继续进行下去，固然形成了死锁。</span>
+delete from t where item <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><h2 id="json增强"><a href="#json增强" class="header-anchor">#</a> JSON 增强</h2> <p>JSON 的数据类型在 MySQL5.7 就已经出了，只是到 8.0 得到了一些增强</p> <ul><li>内联路径操作符 -&gt; 它主要是用于获取 JSON 对象在某一些节点或者某些路径上面的一些数据值</li> <li>JSON 的聚合函数 -&gt; 他可以将我们这种表中的列数据聚合成对应的 JSON 数组或者是 JSON 的对象</li> <li>JSON 实用函数 -&gt; json 的实用函数主要是用于美观我们 JSON 对象输出，或是获取 JSON 对象所占用的存储空间</li> <li>JSON 的合并函数 -&gt; 主要是将两个 JSON 对象合并成一个</li> <li>JSON 表函数 -&gt; 它和聚合函数执行相反的操作，是将 JSON 的对象扩展成我们关系型数据库表，按照行和列方式组织数据</li></ul> <h3 id="内联路径操作符"><a href="#内联路径操作符" class="header-anchor">#</a> 内联路径操作符</h3> <p>MySQL8.0 增加了 JSON 操作字符  <code>column -&gt;&gt; path</code> ，等价于：之前版本  <code>JSON_UNQUOTE(column -&gt; path)</code> ，  <code>JSON_UNQUOTE(JSON_EXTRACT(column,path))</code> 。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 方式一 JSON_UNQUOTE使用方式</span>
+WITH doc<span class="token punctuation">(</span>json<span class="token punctuation">)</span> AS <span class="token punctuation">(</span>SELECT json_object<span class="token punctuation">(</span><span class="token string">'id'</span>,3,<span class="token string">'name'</span>,<span class="token string">'zs'</span><span class="token punctuation">))</span>
+SELECT json_unquote<span class="token punctuation">(</span>json -<span class="token operator">&gt;</span> <span class="token string">'$.name'</span><span class="token punctuation">)</span> FROM doc<span class="token punctuation">;</span>
+
+json_unquote<span class="token punctuation">(</span>json -<span class="token operator">&gt;</span> <span class="token string">'$.name'</span><span class="token punctuation">)</span>  
+--------------------------------
+zs                              
+
+<span class="token comment"># 方式二 JSON_UNQUOTE(json_extract())使用方式</span>
+WITH doc<span class="token punctuation">(</span>json<span class="token punctuation">)</span> AS <span class="token punctuation">(</span>SELECT json_object<span class="token punctuation">(</span><span class="token string">'id'</span>,3,<span class="token string">'name'</span>,<span class="token string">'zs'</span><span class="token punctuation">))</span>
+SELECT json_unquote<span class="token punctuation">(</span>json_extract<span class="token punctuation">(</span>json,<span class="token string">'$.name'</span><span class="token punctuation">))</span> FROM doc<span class="token punctuation">;</span>
+
+json_unquote<span class="token punctuation">(</span>json_extract<span class="token punctuation">(</span>json,<span class="token string">'$.name'</span><span class="token punctuation">))</span>  
+-------------------------------------------
+zs                                         
+
+<span class="token comment"># 方式三  -&gt;&gt;</span>
+WITH doc<span class="token punctuation">(</span>json<span class="token punctuation">)</span> AS <span class="token punctuation">(</span>SELECT json_object<span class="token punctuation">(</span><span class="token string">'id'</span>,3,<span class="token string">'name'</span>,<span class="token string">'zs'</span><span class="token punctuation">))</span>
+SELECT json -<span class="token operator">&gt;&gt;</span> <span class="token string">'$.name'</span> FROM doc<span class="token punctuation">;</span>
+
+json -<span class="token operator">&gt;&gt;</span> <span class="token string">'$.name'</span>  
+-------------------
+zs                 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>MySQL8.0 内联路径操作符还扩展了范围操作</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 以前版本</span>
+SELECT json_extract<span class="token punctuation">(</span><span class="token string">'[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]'</span>,<span class="token string">'$[1]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+json_extract<span class="token punctuation">(</span><span class="token string">'[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]'</span>,<span class="token string">'$[1]'</span><span class="token punctuation">)</span>  
+--------------------------------------
+<span class="token string">&quot;b&quot;</span>                                   
+
+<span class="token comment"># 现在版本 支持范围</span>
+WITH dd<span class="token punctuation">(</span>json<span class="token punctuation">)</span> AS <span class="token punctuation">(</span>SELECT <span class="token string">'[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]'</span><span class="token punctuation">)</span>
+SELECT json -<span class="token operator">&gt;&gt;</span> <span class="token string">'$[1 to 3]'</span> FROM <span class="token function">dd</span><span class="token punctuation">;</span>
+
+json -<span class="token operator">&gt;&gt;</span> <span class="token string">'$[last-2 to last]'</span>  
+------------------------------
+<span class="token punctuation">[</span><span class="token string">&quot;a&quot;</span>, <span class="token string">&quot;b&quot;</span>, <span class="token string">&quot;c&quot;</span><span class="token punctuation">]</span>               
+
+
+WITH dd<span class="token punctuation">(</span>json<span class="token punctuation">)</span> AS <span class="token punctuation">(</span>SELECT <span class="token string">'[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]'</span><span class="token punctuation">)</span>
+SELECT json -<span class="token operator">&gt;&gt;</span> <span class="token string">'$[last-2 to last]'</span> FROM <span class="token function">dd</span><span class="token punctuation">;</span>
+
+json -<span class="token operator">&gt;&gt;</span> <span class="token string">'$[last-2 to last]'</span>  
+------------------------------
+<span class="token punctuation">[</span><span class="token string">&quot;a&quot;</span>, <span class="token string">&quot;b&quot;</span>, <span class="token string">&quot;c&quot;</span><span class="token punctuation">]</span>               
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h3 id="json的聚合函数"><a href="#json的聚合函数" class="header-anchor">#</a> JSON 的聚合函数</h3> <p>MySQL8.0 增加了 2 个用于聚合的函数：</p> <ul><li>JSON_ARRAYAGG () -&gt; 用于将多行数据组合成一个 JSON 数组</li> <li>JSON_OBJECTAGG () -&gt; 用于生成一个 JSON 对象</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 创建表</span>
+CREATE TABLE <span class="token variable"><span class="token variable">`</span>t<span class="token variable">`</span></span> <span class="token punctuation">(</span>
+  <span class="token variable"><span class="token variable">`</span><span class="token function">id</span><span class="token variable">`</span></span> int DEFAULT NULL,
+  <span class="token variable"><span class="token variable">`</span>att<span class="token variable">`</span></span> varchar<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  <span class="token variable"><span class="token variable">`</span>value<span class="token variable">`</span></span> varchar<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> COLLATE utf8mb4_unicode_ci DEFAULT NULL
+<span class="token punctuation">)</span> <span class="token assign-left variable">ENGINE</span><span class="token operator">=</span>InnoDB DEFAULT <span class="token assign-left variable">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token assign-left variable">COLLATE</span><span class="token operator">=</span>utf8mb4_unicode_ci
+<span class="token comment"># 新增数据</span>
+INSERT INTO t<span class="token punctuation">(</span>id,att,VALUE<span class="token punctuation">)</span>VALUES
+<span class="token punctuation">(</span><span class="token number">2</span>,<span class="token string">'color'</span>,<span class="token string">'red'</span><span class="token punctuation">)</span>,
+<span class="token punctuation">(</span><span class="token number">2</span>,<span class="token string">'fabric'</span>,<span class="token string">'silk'</span><span class="token punctuation">)</span>,
+<span class="token punctuation">(</span><span class="token number">3</span>,<span class="token string">'color'</span>,<span class="token string">'green'</span><span class="token punctuation">)</span>,
+<span class="token punctuation">(</span><span class="token number">3</span>,<span class="token string">'shape'</span>,<span class="token string">'square'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 转成数组</span>
+SELECT id,json_arrayagg<span class="token punctuation">(</span>att<span class="token punctuation">)</span> AS attributes
+FROM t GROUP BY <span class="token function">id</span>
+
+    <span class="token function">id</span>  attributes           
+------  ---------------------
+     <span class="token number">2</span>  <span class="token punctuation">[</span><span class="token string">&quot;color&quot;</span>, <span class="token string">&quot;fabric&quot;</span><span class="token punctuation">]</span>  
+     <span class="token number">3</span>  <span class="token punctuation">[</span><span class="token string">&quot;color&quot;</span>, <span class="token string">&quot;shape&quot;</span><span class="token punctuation">]</span>   
+
+<span class="token comment"># 转成对象</span>
+SELECT id,json_objectagg<span class="token punctuation">(</span>att,VALUE<span class="token punctuation">)</span> AS attributes
+FROM t GROUP BY <span class="token function">id</span>
+
+    <span class="token function">id</span>  attributes                             
+------  ---------------------------------------
+     <span class="token number">2</span>  <span class="token punctuation">{</span><span class="token string">&quot;color&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;red&quot;</span>, <span class="token string">&quot;fabric&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;silk&quot;</span><span class="token punctuation">}</span>     
+     <span class="token number">3</span>  <span class="token punctuation">{</span><span class="token string">&quot;color&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;green&quot;</span>, <span class="token string">&quot;shape&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;square&quot;</span><span class="token punctuation">}</span>  
+
+<span class="token comment"># 如果有相同属性，只会读取最后一个重复属性的值</span>
+INSERT INTO t<span class="token punctuation">(</span>id,att,VALUE<span class="token punctuation">)</span>VALUES <span class="token punctuation">(</span><span class="token number">3</span>,<span class="token string">'color'</span>,<span class="token string">'yellow'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">id</span>  attributes                             
+------  ---------------------------------------
+     <span class="token number">2</span>  <span class="token punctuation">{</span><span class="token string">&quot;color&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;red&quot;</span>, <span class="token string">&quot;fabric&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;silk&quot;</span><span class="token punctuation">}</span>     
+     <span class="token number">3</span>  <span class="token punctuation">{</span><span class="token string">&quot;color&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;yellow&quot;</span>, <span class="token string">&quot;shape&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;square&quot;</span><span class="token punctuation">}</span>  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br></div></div><h3 id="json实用函数"><a href="#json实用函数" class="header-anchor">#</a> JSON 实用函数</h3> <ul><li>(5.7.22 加入了该函数) JSON_PRETTY ()，在我们输出 JSON 对象内容的时候做一个格式化，一个美化的输出</li> <li>(5.7.22 加入了该函数) JSON_STORAGE_SIZE ()，返回 JSON 数据所占用的存储空间</li> <li>JSON_STORAGE_FREE ()，在更新某些 JSON 的列，计算出字段释放出来的存储空间</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 默认情况下的JSON格式</span>
+SELECT json_object<span class="token punctuation">(</span><span class="token string">'id'</span>,<span class="token string">'3'</span>,<span class="token string">'name'</span>,<span class="token string">'zs'</span><span class="token punctuation">)</span>
+
+json_object<span class="token punctuation">(</span><span class="token string">'id'</span>,<span class="token string">'3'</span>,<span class="token string">'name'</span>,<span class="token string">'zs'</span><span class="token punctuation">)</span>  
+-----------------------------------
+<span class="token punctuation">{</span><span class="token string">&quot;id&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;3&quot;</span>, <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;zs&quot;</span><span class="token punctuation">}</span>          
+
+<span class="token comment">#美化后的JSON输出</span>
+SELECT json_pretty<span class="token punctuation">(</span>json_object<span class="token punctuation">(</span><span class="token string">'id'</span>,<span class="token string">'3'</span>,<span class="token string">'name'</span>,<span class="token string">'zs'</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+
+json_pretty<span class="token punctuation">(</span>json_object<span class="token punctuation">(</span><span class="token string">'id'</span>,<span class="token string">'3'</span>,<span class="token string">'name'</span>,<span class="token string">'zs'</span><span class="token punctuation">))</span>  
+------------------------------------------------
+<span class="token punctuation">{</span>                                               
+  <span class="token string">&quot;id&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;3&quot;</span>,                                    
+  <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;zs&quot;</span>                                  
+<span class="token punctuation">}</span>                                               
+
+<span class="token comment">#查看JSON占用大小，默认字节(B)</span>
+WITH dd<span class="token punctuation">(</span>json<span class="token punctuation">)</span> AS <span class="token punctuation">(</span>SELECT json_pretty<span class="token punctuation">(</span>json_object<span class="token punctuation">(</span><span class="token string">'id'</span>,<span class="token string">'3'</span>,<span class="token string">'name'</span>,<span class="token string">'zs'</span><span class="token punctuation">))</span><span class="token punctuation">)</span>
+SELECT json,json_storage_size<span class="token punctuation">(</span>json<span class="token punctuation">)</span> FROM <span class="token function">dd</span><span class="token punctuation">;</span>
+
+json                             json_storage_size<span class="token punctuation">(</span>json<span class="token punctuation">)</span>  
+-------------------------------  -------------------------
+<span class="token punctuation">{</span>                                                       <span class="token number">30</span>
+  <span class="token string">&quot;id&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;3&quot;</span>,                                              
+  <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;zs&quot;</span>                                            
+<span class="token punctuation">}</span>                                                         
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><h3 id="json的合并函数"><a href="#json的合并函数" class="header-anchor">#</a> json 的合并函数</h3> <ul><li>JSON_MERGE_PATCH ()，将两个 JSON 对象合并成一个对象，如果两个对象当中有相同的节点，它会使用第二个对象中的节点覆盖第一个节点</li> <li>JSON_MERGE_PRESERV ()，将两个 JSON 对象合并成一个对象，如果存在两个相同的节点，会保留两个节点的值</li> <li>JSON_MERGE ()，这个函数和上一个函数相似，但在 8.0 中已经被废弃</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>SELECT json_merge_patch<span class="token punctuation">(</span><span class="token string">'{&quot;a&quot;:1,&quot;b&quot;:2}'</span>,<span class="token string">'{&quot;a&quot;:3,&quot;c&quot;:4}'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+json_merge_patch<span class="token punctuation">(</span><span class="token string">'{&quot;a&quot;:1,&quot;b&quot;:2}'</span>,<span class="token string">'{&quot;a&quot;:3,&quot;c&quot;:4}'</span><span class="token punctuation">)</span>  
+---------------------------------------------------
+<span class="token punctuation">{</span><span class="token string">&quot;a&quot;</span><span class="token builtin class-name">:</span> <span class="token number">3</span>, <span class="token string">&quot;b&quot;</span><span class="token builtin class-name">:</span> <span class="token number">2</span>, <span class="token string">&quot;c&quot;</span><span class="token builtin class-name">:</span> <span class="token number">4</span><span class="token punctuation">}</span>                           
+
+SELECT json_merge_preserve<span class="token punctuation">(</span><span class="token string">'{&quot;a&quot;:1,&quot;b&quot;:2}'</span>,<span class="token string">'{&quot;a&quot;:3,&quot;c&quot;:4}'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+json_merge_preserve<span class="token punctuation">(</span><span class="token string">'{&quot;a&quot;:1,&quot;b&quot;:2}'</span>,<span class="token string">'{&quot;a&quot;:3,&quot;c&quot;:4}'</span><span class="token punctuation">)</span>  
+------------------------------------------------------
+<span class="token punctuation">{</span><span class="token string">&quot;a&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token number">1</span>, <span class="token number">3</span><span class="token punctuation">]</span>, <span class="token string">&quot;b&quot;</span><span class="token builtin class-name">:</span> <span class="token number">2</span>, <span class="token string">&quot;c&quot;</span><span class="token builtin class-name">:</span> <span class="token number">4</span><span class="token punctuation">}</span>                         
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="json表函数"><a href="#json表函数" class="header-anchor">#</a> JSON 表函数</h3> <p>8.0 新增 JSON_TABLE ()，将 JSON 格式的数据转换为关系表格式，返回的结果可以当做一个普通标，使用 SQL 进行查询。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>SELECT * FROM  json_table<span class="token punctuation">(</span>
+	<span class="token comment"># 模拟数据，或某个表的数据</span>
+	<span class="token string">'[{&quot;a&quot;:&quot;1&quot;},{&quot;a&quot;:2},{&quot;b&quot;:3},{&quot;a&quot;:2},{&quot;a&quot;:[1,2,3,4]}]'</span>,
+	<span class="token comment"># 指定json中的那元数据作为一个转换，这里可以通过数组下表匹配，*表示所有数据</span>
+	<span class="token string">&quot;$[*]&quot;</span> <span class="token environment constant">COLUMNS</span><span class="token punctuation">(</span>
+	<span class="token comment"># 指定关系表结构列的定义</span>
+		<span class="token comment"># id列，生成一个数字序列</span>
+		<span class="token function">id</span> FOR ordinality,
+		<span class="token comment"># 定义一个a字段，取json中a这个属性的值，当转换错无的时候显示 -1，当没有相应的属性显示为 -2，这里错误默认值一定不能是字符串</span>
+		a VARCHAR<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> path <span class="token string">&quot;$.a&quot;</span> DEFAULT <span class="token string">'-1'</span> ON error DEFAULT <span class="token string">'-2'</span> ON empty,
+		<span class="token comment"># 定义a属性的JSON字段，为空则显示默认JSON</span>
+		a_j json path <span class="token string">&quot;$.a&quot;</span> DEFAULT <span class="token string">'{&quot;a&quot;:333}'</span> ON empty,
+		<span class="token comment"># 定义一个b字段，用于判断路径是否存在b这个属性</span>
+		b INT EXISTS path <span class="token string">&quot;$.b&quot;</span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">)</span> AS t<span class="token punctuation">;</span>
+
+    <span class="token function">id</span>  a       a_j                b  
+------  ------  ------------  --------
+     <span class="token number">1</span>  <span class="token number">1</span>       <span class="token string">&quot;1&quot;</span>                  <span class="token number">0</span>
+     <span class="token number">2</span>  <span class="token number">2</span>       <span class="token number">2</span>                    <span class="token number">0</span>
+     <span class="token number">3</span>  -2      <span class="token punctuation">{</span><span class="token string">&quot;a&quot;</span><span class="token builtin class-name">:</span> <span class="token number">333</span><span class="token punctuation">}</span>           <span class="token number">1</span>
+     <span class="token number">4</span>  <span class="token number">2</span>       <span class="token number">2</span>                    <span class="token number">0</span>
+     <span class="token number">5</span>  -1      <span class="token punctuation">[</span><span class="token number">1</span>, <span class="token number">2</span>, <span class="token number">3</span>, <span class="token number">4</span><span class="token punctuation">]</span>         <span class="token number">0</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">12/25/2024, 6:47:14 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/mysql/5/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">MySQL 8安装</div></a> <a href="/mysql/7/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">MySQL UDF以及新类型JSON</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/mysql/5/" class="prev">MySQL 8安装</a></span> <span class="next"><a href="/mysql/7/">MySQL UDF以及新类型JSON</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2024
+    <span>
+<!--      <a href='https://doc.xugaoyi.com/' target='_blank'>Theme by Vdoing</a> | <a href='http://doc.aizuda.com/' rel='external nofollow' target='_blank'>Copyright © 2022-2023 AiZuDa</a>-->
+<!--      <br>-->
+<!--      <a href="http://beian.miit.gov.cn/" target="_blank">鲁ICP备2021041554号-1</a>-->
+    </span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.12ef6c1f.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/96.13360794.js" defer></script>
+  </body>
+</html>
