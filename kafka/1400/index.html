@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.86d31c95.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/64.d781fde0.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.90aacb50.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/64.d781fde0.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -31,7 +31,7 @@ Kafka 中偏移量的自动提交是由参数 enable_auto_commit 和 auto_commit
 <span class="token comment"># 必须设置enable.idempotence=true 才有效精确一次</span>
 <span class="token attr-name">enable.idempotence</span><span class="token punctuation">=</span><span class="token attr-value">true</span>
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h4 id="消费-3"><a href="#消费-3" class="header-anchor">#</a> 消费</h4> <p>精确一次必须配置 生产者的精确一次配置，并加如如下</p> <div class="language-properties line-numbers-mode"><pre class="language-properties"><code><span class="token attr-name">processing.guarantee</span><span class="token punctuation">=</span><span class="token attr-value">exact_once</span>
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这样在消费者端，通过消息的 ID 实现精确消费。</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">12/26/2024, 2:11:35 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><!----> <a href="/kafka/1401/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Kafka-2.7.0 搭建及参数解析</div></a></div> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/kafka/1401/">Kafka-2.7.0 搭建及参数解析</a>→
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这样在消费者端，通过消息的 ID 实现精确消费。</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">12/26/2024, 2:12:20 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><!----> <a href="/kafka/1401/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Kafka-2.7.0 搭建及参数解析</div></a></div> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/kafka/1401/">Kafka-2.7.0 搭建及参数解析</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
   Theme by
   <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
@@ -49,6 +49,6 @@ Kafka 中偏移量的自动提交是由参数 enable_auto_commit 和 auto_commit
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.86d31c95.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/64.d781fde0.js" defer></script>
+    <script src="/assets/js/app.90aacb50.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/64.d781fde0.js" defer></script>
   </body>
 </html>
