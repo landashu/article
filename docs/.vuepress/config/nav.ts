@@ -30,6 +30,7 @@ export default <Array<NavItem>>[
       {text: 'RabbitMQ', link: '/rabbitmq/1/',},
       {text: 'RocketMQ', link: '/rocketmq/1/',},
       {text: 'Redis', link: '/redis/1600/',},
+      {text: 'Zookeeper ', link: '/zookeeper/1/',},
       {text: 'Nginx', link: '/nginx/1/',},
       {text: '数据库套件', link: '/mycat/1/',},
     ],
