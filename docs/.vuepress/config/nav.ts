@@ -51,14 +51,6 @@ export default <Array<NavItem>>[
     ],
   },
   {
-    text: '前端',
-    items: [
-      // 说明：以下所有link的值只是在相应md文件头部定义的永久链接（不是什么特殊编码）。另外，注意结尾是有斜杠的
-      {text: 'VUE3', link: '/vue3/1900/',},
-      {text: '微信小程序', link: '/wx/2000/',},
-    ],
-  },
-  {
     text: '运维',
     items: [
       // 说明：以下所有link的值只是在相应md文件头部定义的永久链接（不是什么特殊编码）。另外，注意结尾是有斜杠的
@@ -66,6 +58,14 @@ export default <Array<NavItem>>[
       {text: 'Docker', link: '/docker/400/',},
       {text: 'Jenkins', link: '/jenkins/500/',},
       {text: 'Kubernetes', link: '/kubernetes/600/',},
+    ],
+  },
+  {
+    text: '其他',
+    items: [
+      // 说明：以下所有link的值只是在相应md文件头部定义的永久链接（不是什么特殊编码）。另外，注意结尾是有斜杠的
+      {text: '工具', link: '/cursor/1/',},
+      {text: '前端', link: '/front/1/',},
     ],
   },
 ];
