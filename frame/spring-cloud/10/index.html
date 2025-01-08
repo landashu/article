@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.788088a2.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/47.06c8ff58.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.3dd9a493.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/47.06c8ff58.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -317,7 +317,7 @@
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>@GlobalTransactional 全局事务 (分布式事务注解)</p> <h3 id="启动所有服务"><a href="#启动所有服务" class="header-anchor">#</a> 启动所有服务</h3> <p>服务全部启动成功之后，你会在 nacos 看到如下：</p> <p><img src="/assets/img/spring/cloud/10/img_1.png" alt=""></p> <h2 id="测试"><a href="#测试" class="header-anchor">#</a> 测试</h2> <p>这里直接测试下单异常，会不会出现订单没创建，但是已经扣库存和余额。</p> <p><img src="/assets/img/spring/cloud/10/img_2.png" alt=""></p> <p><img src="/assets/img/spring/cloud/10/img_3.png" alt=""></p> <p>检查数据库数据：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>stock：id=1，num=500，price=5
 account：id=1，amount=2000
 order：
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>没有进行扣除，证明服务调用的分布式事务起作用的。</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">1/8/2025, 4:04:59 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/frame/spring-cloud/9/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">SpringCloud - 分布式事务四（多数据源事务）</div></a> <a href="/frame/mybatis/300/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">核心功能拆解 工作流程</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>没有进行扣除，证明服务调用的分布式事务起作用的。</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">1/8/2025, 4:22:18 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/frame/spring-cloud/9/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">SpringCloud - 分布式事务四（多数据源事务）</div></a> <a href="/frame/mybatis/300/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">核心功能拆解 工作流程</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/frame/spring-cloud/9/" class="prev">SpringCloud - 分布式事务四（多数据源事务）</a></span> <span class="next"><a href="/frame/mybatis/300/">核心功能拆解 工作流程</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="mailto:875730567@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
@@ -337,6 +337,6 @@ order：
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.788088a2.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/47.06c8ff58.js" defer></script>
+    <script src="/assets/js/app.3dd9a493.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/47.06c8ff58.js" defer></script>
   </body>
 </html>
