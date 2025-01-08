@@ -3,7 +3,6 @@
 import {NavItem} from "vuepress/config";
 
 export default <Array<NavItem>>[
-  {text: '首页', link: '/'},
   {
     text: '语言',
     items: [
@@ -64,7 +63,7 @@ export default <Array<NavItem>>[
     text: '其他',
     items: [
       // 说明：以下所有link的值只是在相应md文件头部定义的永久链接（不是什么特殊编码）。另外，注意结尾是有斜杠的
-      {text: '工具', link: '/cursor/1/',},
+      {text: '工具', link: '/tool/1/',},
       {text: '前端', link: '/front/1/',},
     ],
   },
