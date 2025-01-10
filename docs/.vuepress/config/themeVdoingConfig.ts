@@ -63,11 +63,11 @@ export default <VdoingThemeConfig>{
         title: "GitHub",
         link: "https://github.com/landashu?tab=repositories",
       },
-      {
-        iconClass: "icon-youjian",
-        title: "发邮件",
-        link: "mailto:875730567@qq.com",
-      },
+      // {
+      //   iconClass: "icon-youjian",
+      //   title: "发邮件",
+      //   link: "mailto:875730567@qq.com",
+      // },
     ],
   },
   footer: {

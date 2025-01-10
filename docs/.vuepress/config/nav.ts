@@ -47,6 +47,7 @@ export default <Array<NavItem>>[
       {text: 'Hive', link: '/hive/1/',},
       {text: 'Flink', link: '/flink/1/',},
       {text: 'Flume', link: '/flume/1/',},
+      {text: 'SQLite', link: '/sqlite/1/',},
     ],
   },
   {
