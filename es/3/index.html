@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.0cf49cb8.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/105.2cd457c3.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.010049a7.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/105.2cd457c3.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -94,7 +94,7 @@
  任何类型的写操作，包括 index、create、update 和 Delete，都会生成一个_seq_no。<br>
  每个文档在使用 Lucene 的 document 操作接口之前，会获取到一个_seq_no，这个_seq_no 会以系统保留 Field 的名义存储到 Lucene 中，文档写入 Lucene 成功后，会标记该 seq_no 为完成状态，这时候会使用当前 seq_no 更新 local_checkpoint。</p></li> <li><p>_primary_term<br>
   _primary_term 也和_seq_no 一样是一个整数，每当 Primary Shard 发生重新分配时，比如重启，Primary 选举等，_primary_term 会递增 1。<br>
- _primary_term 主要是用来恢复数据时处理当多个文档的_seq_no 一样时的冲突，避免 Primary Shard 上的写入被覆盖。</p></li></ul></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/17/2025, 11:13:56 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/es/2/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">ES 7.8.0（二） 读、写和写索引流程以及文档分析过程</div></a> <a href="/mongodb/1/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">mongodb</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+ _primary_term 主要是用来恢复数据时处理当多个文档的_seq_no 一样时的冲突，避免 Primary Shard 上的写入被覆盖。</p></li></ul></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/18/2025, 3:17:15 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/es/2/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">ES 7.8.0（二） 读、写和写索引流程以及文档分析过程</div></a> <a href="/mongodb/1/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">mongodb</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/es/2/" class="prev">ES 7.8.0（二） 读、写和写索引流程以及文档分析过程</a></span> <span class="next"><a href="/mongodb/1/">mongodb</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
@@ -114,6 +114,6 @@
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.0cf49cb8.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/105.2cd457c3.js" defer></script>
+    <script src="/assets/js/app.010049a7.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/105.2cd457c3.js" defer></script>
   </body>
 </html>
