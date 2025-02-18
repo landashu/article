@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.010049a7.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/44.30cb2d51.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.f42ea2bf.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/44.d8069d8e.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -167,7 +167,7 @@
 <span class="token keyword">let</span> k <span class="token operator">=</span> key
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="malformed-utf-8-data"><a href="#malformed-utf-8-data" class="header-anchor">#</a> Malformed UTF-8 data</h2> <p>整个问题还是比较奇怪的，在 idea 运行的时候没有问题，把前端打包的文件放到后端整合并打成 jar 包后就出现了，找到一篇文档说是启动 jar 的时候加入 -Dfile.encoding=UTF-8 即可</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>java <span class="token string">&quot;-Dfile.encoding=UTF-8&quot;</span> -jar tool-boot-0.0.1-SNAPSHOT.jar
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>但如果你是 tomcat，需要在 catalina.bat 中设置</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>set &quot;JAVA_OPTS=%JAVA_OPTS% %LOGGING_CONFIG% -Dfile.encoding=UTF-8&quot;
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="ecurityexception-jce-cannot-authenticate-the-provider-bc"><a href="#ecurityexception-jce-cannot-authenticate-the-provider-bc" class="header-anchor">#</a> ecurityException: JCE cannot authenticate the provider BC</h2> <p>出现这里错误是由于 jdk 验签问题，oracle 的 jdk 大部分人再用，但是现在更推荐 openjdk，换成 openjdk 就不会再出现这类问题</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/18/2025, 3:17:15 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/frame/spring-boot/206/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Spring Boot 集成 FastDFS</div></a> <a href="/frame/spring-boot/1/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Spring Boot logback.xml 配置</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="ecurityexception-jce-cannot-authenticate-the-provider-bc"><a href="#ecurityexception-jce-cannot-authenticate-the-provider-bc" class="header-anchor">#</a> ecurityException: JCE cannot authenticate the provider BC</h2> <p>出现这里错误是由于 jdk 验签问题，oracle 的 jdk 大部分人再用，但是现在更推荐 openjdk，换成 openjdk 就不会再出现这类问题</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/18/2025, 4:04:05 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/frame/spring-boot/206/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Spring Boot 集成 FastDFS</div></a> <a href="/frame/spring-boot/1/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Spring Boot logback.xml 配置</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/frame/spring-boot/206/" class="prev">Spring Boot 集成 FastDFS</a></span> <span class="next"><a href="/frame/spring-boot/1/">Spring Boot logback.xml 配置</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
@@ -187,6 +187,6 @@
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.010049a7.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/44.30cb2d51.js" defer></script>
+    <script src="/assets/js/app.f42ea2bf.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/44.d8069d8e.js" defer></script>
   </body>
 </html>

@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.010049a7.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/136.14877e70.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.f42ea2bf.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/136.14877e70.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -43,7 +43,7 @@
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>在严格模式下，用户在运行如下查询的时候会报错：</p> <ul><li>分区表的查询语句没有使用分区字段来限制</li> <li>使用了 order by 但没有使用 limit 语句。（如果不使用 limit，会对查询结果进行全局排序，消耗时间长）</li> <li>产生了笛卡尔积</li></ul> <h2 id="关闭推测执行机制"><a href="#关闭推测执行机制" class="header-anchor">#</a> 关闭推测执行机制</h2> <p>因为在测试环境下我们都把应用程序跑通了，如果还加上推测执行，如果有一个数据分片本来就会发生数据倾斜，执行事时间就是比其他的时间长，那么 hive 就会把这个执行时间长的 job 当作运行失败，继而又产生一个相同的 job 去运行，后果可想而知，可以通过如下设置关闭推测执行机制。该机制默认时开启的。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token builtin class-name">set</span> mapreduce.map.speculative<span class="token operator">=</span>false<span class="token punctuation">;</span>
 <span class="token builtin class-name">set</span> mapreduce.reduce.speculative<span class="token operator">=</span>false<span class="token punctuation">;</span>
 <span class="token builtin class-name">set</span> hive.mapred.reduce.tasks.speculative.execution<span class="token operator">=</span>false<span class="token punctuation">;</span>
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/18/2025, 3:17:15 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/hive/4/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Hive 函数 MySQL联合</div></a> <a href="/hive/56/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Hive Sqoop安装及指令</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/18/2025, 4:04:05 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/hive/4/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Hive 函数 MySQL联合</div></a> <a href="/hive/56/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Hive Sqoop安装及指令</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/hive/4/" class="prev">Hive 函数 MySQL联合</a></span> <span class="next"><a href="/hive/56/">Hive Sqoop安装及指令</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
@@ -63,6 +63,6 @@
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.010049a7.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/136.14877e70.js" defer></script>
+    <script src="/assets/js/app.f42ea2bf.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/136.14877e70.js" defer></script>
   </body>
 </html>

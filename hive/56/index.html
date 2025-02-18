@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.010049a7.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/137.6f2e11be.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.f42ea2bf.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/137.6f2e11be.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -30,7 +30,7 @@
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>查看指定数据库下的所有表</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>sqoop list-tables --connect jdbc:mysql://node113:3306/hive?useSSL<span class="token operator">=</span>false -username root -password Admin@123
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>将关系型数据库（test 库，test_01 表）导入到 HDFS 的 '/sqoop/test_01'  目录下，并以 ' ' 空格分割列，sqoop 会在 hadoop 自动创建目录和文件</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>sqoop <span class="token function">import</span> --connect jdbc:mysql://node113:3306/test?useSSL<span class="token operator">=</span>false -username root -password Admin@123 --table test_01 --target-dir <span class="token string">'/sqoop/test_01'</span> --fields-terminated-by <span class="token string">' '</span> -m <span class="token number">1</span><span class="token punctuation">;</span>
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>将 HDFS 数据导入导出到关系型数据库，sqoop 只能导出数据，不能自动建表，所以在导出之前表就要建好。</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>sqoop <span class="token builtin class-name">export</span> --connect jdbc:mysql://node113:3306/test?useSSL<span class="token operator">=</span>false -username root -password Admin@123 --export-dir <span class="token string">'/sqoop/test_01/part-m-00000'</span> --table test_02 -m <span class="token number">1</span> --fields-terminated-by <span class="token string">' '</span>
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/18/2025, 3:17:15 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/hive/5/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Hive 数据倾斜和优化</div></a> <a href="/flink/1/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Flink 介绍及安装</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/18/2025, 4:04:05 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/hive/5/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Hive 数据倾斜和优化</div></a> <a href="/flink/1/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Flink 介绍及安装</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/hive/5/" class="prev">Hive 数据倾斜和优化</a></span> <span class="next"><a href="/flink/1/">Flink 介绍及安装</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
@@ -50,6 +50,6 @@
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.010049a7.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/137.6f2e11be.js" defer></script>
+    <script src="/assets/js/app.f42ea2bf.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/137.6f2e11be.js" defer></script>
   </body>
 </html>
