@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.d785b0f6.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/134.ce3936d6.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.815b82bb.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/134.ce3936d6.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -35,7 +35,7 @@ test2,200
 1 zl 25
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>把外部数据创建到 hive 里，terminated by '\t' 为列分隔符（必须），terminated by ',' key-value 分隔符</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>create external table table_name<span class="token punctuation">(</span>t1 struct<span class="token operator">&lt;</span>id:int,name:string,age:int<span class="token operator">&gt;</span><span class="token punctuation">)</span> row <span class="token function">format</span> delimited collection items terminated by <span class="token string">' '</span> location <span class="token string">'/a2'</span>
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>查看 ls 的年龄</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token keyword">select</span> t1.age from table_name y1.name <span class="token operator">=</span> <span class="token string">'ls'</span><span class="token punctuation">;</span>
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/18/2025, 5:29:24 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/hive/2/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Hive 内外部表、分区表、分桶表概念及hiveSQL命令</div></a> <a href="/hive/4/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Hive 函数 MySQL联合</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/19/2025, 11:15:21 AM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/hive/2/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Hive 内外部表、分区表、分桶表概念及hiveSQL命令</div></a> <a href="/hive/4/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Hive 函数 MySQL联合</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/hive/2/" class="prev">Hive 内外部表、分区表、分桶表概念及hiveSQL命令</a></span> <span class="next"><a href="/hive/4/">Hive 函数 MySQL联合</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
@@ -55,6 +55,6 @@ test2,200
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.d785b0f6.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/134.ce3936d6.js" defer></script>
+    <script src="/assets/js/app.815b82bb.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/134.ce3936d6.js" defer></script>
   </body>
 </html>

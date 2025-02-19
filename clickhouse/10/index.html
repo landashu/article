@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.d785b0f6.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/116.fb6a9a63.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.815b82bb.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/116.23130bff.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -42,7 +42,7 @@ select * from visits_v1 WHERE StartDate = '2014-03-17' limit 100 settings max_th
 
 # final 查询
 select * from visits_v1 final WHERE StartDate = '2014-03-17' limit 100 settings max_final_threads = 2;
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>可以通过查看以上语法的执行计划，会发现使用 final 关键字后，在分区的的数据查询时，会是单线程执行，即使设置了线程数为 2.</p> <blockquote><p>最终使用哪种方式保证数据一致性，可以用第 2 或第 3 种对已有的数据进行测试后在决定，在不同的数据量，不同的情况，两者性能存在着差异。</p></blockquote></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/18/2025, 5:29:24 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/clickhouse/9/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">ClickHouse 查询优化</div></a> <a href="/clickhouse/11/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">ClickHouse 物化视图</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>可以通过查看以上语法的执行计划，会发现使用 final 关键字后，在分区的的数据查询时，会是单线程执行，即使设置了线程数为 2.</p> <blockquote><p>最终使用哪种方式保证数据一致性，可以用第 2 或第 3 种对已有的数据进行测试后在决定，在不同的数据量，不同的情况，两者性能存在着差异。</p></blockquote></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/19/2025, 11:15:21 AM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/clickhouse/9/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">ClickHouse 查询优化</div></a> <a href="/clickhouse/11/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">ClickHouse 物化视图</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/clickhouse/9/" class="prev">ClickHouse 查询优化</a></span> <span class="next"><a href="/clickhouse/11/">ClickHouse 物化视图</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
@@ -62,6 +62,6 @@ select * from visits_v1 final WHERE StartDate = '2014-03-17' limit 100 settings 
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.d785b0f6.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/116.fb6a9a63.js" defer></script>
+    <script src="/assets/js/app.815b82bb.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/116.23130bff.js" defer></script>
   </body>
 </html>
