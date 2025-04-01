@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.815b82bb.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/109.c90aef64.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.6dd25365.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/109.44eedb8d.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -21,7 +21,7 @@
 3.4. 客户端用输入流，根据元数据信息去找指定的 datanode 读取文件块 (按 blockid 顺序读取)</li> <li>文件下载完成后关闭。</li></ol> <h2 id="上传文件流程"><a href="#上传文件流程" class="header-anchor">#</a> 上传文件流程</h2> <p><img src="/assets/img/hadoop/3/img_1.png" alt=""></p> <ol><li>客户端发起 create file，目的是获取 HDFS 文件的输出流。namenode 收到请求后会检测路径的合法性，以及权限。原生 hadoop 管理是很不完善的，工作中中用的是 CDH (商业版 hadoop)。如果检测通过，namenode 会为这个文件生成块的元数据，比如：</li></ol> <ul><li>为文件切块</li> <li>分配块 id</li> <li>分配每个块存在哪个 datanode 上<br>
 然后将元数据封装到输出流中，返回给客户端。<br>
 2.3. client 拿到输出流之后，采用 PipeLine（数据流管道）机制做数据的上传（发送），这样设计的目的在于利用每台服务器的带宽，最小化推送数据的延迟，减少 client 带宽的发送。线性模式下，每台机器所有的出口带宽用于以最快的速度传输数据，而不是在多个接收者之间分配带宽。packet，是客户端把文件块打散成一个个的数据包发送。用的是全双通信，边收边发。<br>
-4.5. 每台 datanode 收到 packet 后，会向上游 datanode 做 ack 确认，如果接收失败，会进行重发（重发机制）</li></ul> <ol start="6"><li>当一个文件上传完之后，关闭流。</li></ol> <h2 id="删除文件流程"><a href="#删除文件流程" class="header-anchor">#</a> 删除文件流程</h2> <p><img src="/assets/img/hadoop/3/img_2.png" alt=""></p> <ol><li>当客户端发起一个删除指令，这个指令会传给 namenode</li> <li>namenode 收到指令，做路径和权限校验，如果检验通过，会将对应的文件信息从内存里删除。此时，文件数据并不是马上就从集群被删除。</li> <li>datanode 向 namenode 发送心跳时 (默认时 3s 周期)，会领取删除指令没然后从磁盘上将文件删除。</li></ol></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/19/2025, 11:15:21 AM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/hadoop/2/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Hadoop 指令</div></a> <a href="/hadoop/4/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Hadoop SpringBoot集成</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+4.5. 每台 datanode 收到 packet 后，会向上游 datanode 做 ack 确认，如果接收失败，会进行重发（重发机制）</li></ul> <ol start="6"><li>当一个文件上传完之后，关闭流。</li></ol> <h2 id="删除文件流程"><a href="#删除文件流程" class="header-anchor">#</a> 删除文件流程</h2> <p><img src="/assets/img/hadoop/3/img_2.png" alt=""></p> <ol><li>当客户端发起一个删除指令，这个指令会传给 namenode</li> <li>namenode 收到指令，做路径和权限校验，如果检验通过，会将对应的文件信息从内存里删除。此时，文件数据并不是马上就从集群被删除。</li> <li>datanode 向 namenode 发送心跳时 (默认时 3s 周期)，会领取删除指令没然后从磁盘上将文件删除。</li></ol></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">4/1/2025, 5:03:02 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/hadoop/2/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Hadoop 指令</div></a> <a href="/hadoop/4/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Hadoop SpringBoot集成</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/hadoop/2/" class="prev">Hadoop 指令</a></span> <span class="next"><a href="/hadoop/4/">Hadoop SpringBoot集成</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
@@ -41,6 +41,6 @@
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.815b82bb.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/109.c90aef64.js" defer></script>
+    <script src="/assets/js/app.6dd25365.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/109.44eedb8d.js" defer></script>
   </body>
 </html>

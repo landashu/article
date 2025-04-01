@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.815b82bb.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/65.0d7dec2f.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.6dd25365.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/65.a7a67d54.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -134,7 +134,7 @@ bin/kafka-server-start.sh -daemon config/server.properties
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="阿里云中部署注意事项"><a href="#阿里云中部署注意事项" class="header-anchor">#</a> 阿里云中部署注意事项</h2> <p>阿里云中的端口开放需要如下方式，使用 iptables 根本无效</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">2181</span>/tcp --permanent
 firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">9092</span>/tcp --permanent
 firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">3306</span>/tcp --permanent
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>配置 IP 需要注意，zookeeper 可以直接走内网，加到 zookeeper 链接超时时间<br> <img src="/assets/img/kafka/1401/img_2.png" alt=""></p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/19/2025, 11:15:21 AM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/kafka/1400/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">kafka-2.7.0 基本概念</div></a> <a href="/kafka/1402/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">kafka-2.7.0 spring boot 集成 kafka</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>配置 IP 需要注意，zookeeper 可以直接走内网，加到 zookeeper 链接超时时间<br> <img src="/assets/img/kafka/1401/img_2.png" alt=""></p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">4/1/2025, 5:03:02 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/kafka/1400/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">kafka-2.7.0 基本概念</div></a> <a href="/kafka/1402/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">kafka-2.7.0 spring boot 集成 kafka</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/kafka/1400/" class="prev">kafka-2.7.0 基本概念</a></span> <span class="next"><a href="/kafka/1402/">kafka-2.7.0 spring boot 集成 kafka</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
@@ -154,6 +154,6 @@ firewall-cmd --zone<span class="token operator">=</span>public --add-port<span c
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.815b82bb.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/65.0d7dec2f.js" defer></script>
+    <script src="/assets/js/app.6dd25365.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/65.a7a67d54.js" defer></script>
   </body>
 </html>
