@@ -10,6 +10,7 @@ export default <Array<NavItem>>[
       {text: 'JAVA',link: '/language/java/base/1/'},
       {text: '仓颉',link: '/language/cj/1/'},
       {text: '设计模式', link: '/language/mode/1/'},
+      {text: '人工智能', link: '/language/python/1/'},
     ],
   },
   {
