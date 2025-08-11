@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.606a4b13.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/73.9ac6b9d9.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.8e3e5ff2.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/73.9ac6b9d9.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -147,7 +147,7 @@ broker-a.properties  broker-b.properties  broker-trace.properties
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>看到如下定位启动成功</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token number">2021</span>-02-01 <span class="token number">10</span>:41:14 INFO brokerOutApi_thread_1 - register broker<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>to name server node102:9876 OK
 <span class="token number">2021</span>-02-01 <span class="token number">10</span>:41:14 INFO brokerOutApi_thread_2 - register broker<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>to name server node100:9876 OK
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><blockquote><p>集群一旦成功，在 100 的 mqadmin topiclist 中也会看到 102 的 topic，这并非同步。</p></blockquote> <h4 id="rocketmq-console-注意"><a href="#rocketmq-console-注意" class="header-anchor">#</a> rocketmq-console 注意</h4> <ol><li>在本机 hosts 添加</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>10.240.30.100 node100
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="2"><li>发现在 rocketmq.config.namesrvAddr=10.240.30.102:9876 只写一个 ip，依然可以读到集群信息，所以没必要在添加 100</li></ol> <p><img src="/assets/img/rocketmq/2/img_1.png" alt=""></p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/11/2025, 4:10:30 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/rocketmq/1/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">RocketMQ 基础概念</div></a> <a href="/rocketmq/3/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">RocketMQ 整合spring boot</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="2"><li>发现在 rocketmq.config.namesrvAddr=10.240.30.102:9876 只写一个 ip，依然可以读到集群信息，所以没必要在添加 100</li></ol> <p><img src="/assets/img/rocketmq/2/img_1.png" alt=""></p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">8/11/2025, 1:38:26 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/rocketmq/1/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">RocketMQ 基础概念</div></a> <a href="/rocketmq/3/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">RocketMQ 整合spring boot</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/rocketmq/1/" class="prev">RocketMQ 基础概念</a></span> <span class="next"><a href="/rocketmq/3/">RocketMQ 整合spring boot</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
@@ -167,6 +167,6 @@ broker-a.properties  broker-b.properties  broker-trace.properties
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.606a4b13.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/73.9ac6b9d9.js" defer></script>
+    <script src="/assets/js/app.8e3e5ff2.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/73.9ac6b9d9.js" defer></script>
   </body>
 </html>
