@@ -9,7 +9,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.173828bd.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/79.4add3fb4.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.61c7fd29.js" as="script"><link rel="preload" href="/assets/js/11.5871899e.js" as="script"><link rel="preload" href="/assets/js/79.d63695b9.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -56,7 +56,7 @@ redisson 中有一个 watchdog 的概念，翻译过来就是看门狗，它会�
  这样的话，就算一直持有锁也不会出现 key 过期了，其他线程获取到锁的问题了。</li> <li>redisson 的 “看门狗” 逻辑保证了没有死锁发生。<br>
 如果机器宕机了，看门狗也就没了。此时就不会延长 key 的过期时间，到了 30s 之后就会自动过期了，其他线程可以获取到锁)</li></ul> <h2 id="对于redis的分布式锁而言-它有以下缺点"><a href="#对于redis的分布式锁而言-它有以下缺点" class="header-anchor">#</a> 对于 redis 的分布式锁而言，它有以下缺点：</h2> <ul><li>它获取锁的方式简单粗暴，获取不到锁直接不断尝试获取锁，比较消耗性能。</li> <li>另外来说的话，redis 的设计定位决定了它的数据并不是强一致性的 (<a href="https://www.jianshu.com/p/f1d388744379" target="_blank" rel="noopener noreferrer">redis 一直性问题看这里<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>)，在某些极端情况下，可能会出现问题。锁的模型不够健壮</li> <li>即便使用 redlock 算法来实现，在某些复杂场景下，也无法保证其实现 100% 没有问题，关于 redlock 的讨论可以看 How to do distributed locking</li> <li>redis 分布式锁，其实需要自己不断去尝试获取锁，比较消耗性能。</li></ul> <p>但是另一方面使用 redis 实现分布式锁在很多企业中非常常见，而且大部分情况下都不会遇到所谓的 “极端复杂场景”</p> <p>所以使用 redis 作为分布式锁也不失为一种好的方案，最重要的一点是 redis 的性能很高，可以支撑高并发的获取、释放锁操作。</p> <p>spring boot 整合 redisson 的两种方式：<br>
 自己配置方式：https://www.cnblogs.com/yangzhilong/p/7605807.html<br>
-spring boot starter 方式：https://blog.csdn.net/a1058926697/article/details/116670391</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">8/12/2025, 11:28:51 AM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/redis/1601/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Redis 命令介绍</div></a> <a href="/Redis/1603/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Redis 事务介绍</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+spring boot starter 方式：https://blog.csdn.net/a1058926697/article/details/116670391</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">8/18/2025, 1:08:20 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/redis/1601/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Redis 命令介绍</div></a> <a href="/Redis/1603/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Redis 事务介绍</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/redis/1601/" class="prev">Redis 命令介绍</a></span> <span class="next"><a href="/Redis/1603/">Redis 事务介绍</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
@@ -76,6 +76,6 @@ spring boot starter 方式：https://blog.csdn.net/a1058926697/article/details/1
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.173828bd.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/79.4add3fb4.js" defer></script>
+    <script src="/assets/js/app.61c7fd29.js" defer></script><script src="/assets/js/11.5871899e.js" defer></script><script src="/assets/js/79.d63695b9.js" defer></script>
   </body>
 </html>
