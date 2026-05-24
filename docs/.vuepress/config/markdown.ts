@@ -1,6 +1,5 @@
-// 配置说明 https://v1.vuepress.vuejs.org/zh/config/#markdown
-
 import { MarkdownConfig } from "vuepress/config";
+import mathjax3 from "markdown-it-mathjax3";
 
 export default <MarkdownConfig>{
   lineNumbers: true,
@@ -9,15 +8,15 @@ export default <MarkdownConfig>{
     "markdown-it-sup",
     "markdown-it-footnote",
     "markdown-it-task-lists",
-    "markdown-it-attrs",
+    ["markdown-it-attrs", { allowedAttributes: ["id", "class", /^data-.*$/] }],
     "markdown-it-imsize",
-    "markdown-it-mathjax3",
     "markdown-it-abbr",
     "markdown-it-ins",
     "markdown-it-multimd-table-ext",
   ],
   extendMarkdown: (md) => {
     md.set({ breaks: true });
+    md.use(mathjax3);
   },
-  extractHeaders: ["h2", "h3", "h4", "h5", "h6"], // 提取标题到侧边栏的级别，默认['h2', 'h3']
+  extractHeaders: ["h2", "h3", "h4", "h5", "h6"],
 };

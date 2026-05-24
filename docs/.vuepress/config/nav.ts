@@ -10,7 +10,7 @@ export default <Array<NavItem>>[
       {text: 'JAVA',link: '/language/java/base/1/'},
       {text: '仓颉',link: '/language/cj/1/'},
       {text: '设计模式', link: '/language/mode/1/'},
-      {text: '人工智能', link: '/language/python/1/'},
+      {text: '人工智能', link: '/language/ai/base/1/'},
     ],
   },
   {
@@ -67,7 +67,6 @@ export default <Array<NavItem>>[
       // 说明：以下所有link的值只是在相应md文件头部定义的永久链接（不是什么特殊编码）。另外，注意结尾是有斜杠的
       {text: '工具', link: '/tool/1/',},
       {text: '前端', link: '/front/1/',},
-      {text: 'AI', link: '/ai/1/',},
     ],
   },
 ];
