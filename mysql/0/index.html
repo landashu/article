@@ -11,7 +11,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.e9f2388f.js" as="script"><link rel="preload" href="/assets/js/11.bf364137.js" as="script"><link rel="preload" href="/assets/js/96.cf467eb1.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.385da645.js" as="script"><link rel="preload" href="/assets/js/11.bf364137.js" as="script"><link rel="preload" href="/assets/js/96.5f6ef650.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -44,7 +44,7 @@
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>ID 线程 ID（唯一标识），用于 KILL 命令终止线程（如 KILL 12345;）。</li> <li>USER 执行该线程的用户（如 root、app_user）。</li> <li>HOST 客户端主机名或 IP 地址（如 localhost、192.168.1.1:56789）。</li> <li>DB 当前线程操作的数据库名（若未指定则为 NULL）。</li> <li>COMMAND 线程当前执行的命令类型：・Query：正在执行 SQL 查询。・Sleep：空闲等待。・Connect：正在连接数据库。・Execute：正在执行预处理语句。</li> <li>TIME 线程已持续执行的时间（秒）。若值很大，可能是慢查询或事务未提交。</li> <li>STATE 线程当前状态（如 Sorting result、Copying to tmp table），指示查询执行到哪一步。</li> <li>INFO 正在执行的 SQL 语句（可能被截断，使用 SHOW FULL PROCESSLIST 可查看完整语句）。</li></ul></li></ul> <p><code>SELECT * FROM information_schema.PROCESSLIST WHERE Command != 'Sleep';</code>  语句能方便的看到当前有哪个 sql 正在占有锁，可以看他的执行时间，如果太长，需要考虑是否优化，也可以立马 kill 这个线程，如果 kill 不起作用，需要重启 mysql。</p> <h2 id="行大小过大"><a href="#行大小过大" class="header-anchor">#</a> 行大小过大</h2> <p>Row size too large. The maximum row size forthe used table type, not counting BLOBs, is 8126. Thisincludes storage overhead, check the manual. You have tochange some columns to TEXT Or BLOBS.</p> <p>这是因为 MyISAM 表存储引擎对行大小有限制，MyISAM 引擎的限制为 8192 字节，但需扣除「存储开销」（如字段描述、校验信息等），最终实际可用的行内长度约为 8126 字节；<br>
 InnoDB 存储引擎的限制为 65535 字节（同样需扣除存储开销，但实际可用接近此值）；<br>
 所谓行大小限制，就是你给字段设置的大小，比如 a 字段为 varchar (30), 那么他就占总行的 30 字节，所有字段所占字节的总和超过限制则会报错。<br>
-这种情况可以给某些字段设置 TEXT 或 BLOB，这样这些字段的数据将不再保存在行中，而是保存在数据库中，行大小将不会受限制，也就是若数据较短 (&lt;768 字节在行内)，若数据较长 (&gt;768 字节在行外，即行内存的是指针占 20 个字节)，</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/24/2026, 2:25:13 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><!----> <a href="/mysql/1/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">MySQL 索引介绍</div></a></div> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/mysql/1/">MySQL 索引介绍</a>→
+这种情况可以给某些字段设置 TEXT 或 BLOB，这样这些字段的数据将不再保存在行中，而是保存在数据库中，行大小将不会受限制，也就是若数据较短 (&lt;768 字节在行内)，若数据较长 (&gt;768 字节在行外，即行内存的是指针占 20 个字节)，</p></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/24/2026, 2:55:39 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><!----> <a href="/mysql/1/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">MySQL 索引介绍</div></a></div> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/mysql/1/">MySQL 索引介绍</a>→
       </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
   Theme by
   <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
@@ -62,6 +62,6 @@ InnoDB 存储引擎的限制为 65535 字节（同样需扣除存储开销，但
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.e9f2388f.js" defer></script><script src="/assets/js/11.bf364137.js" defer></script><script src="/assets/js/96.cf467eb1.js" defer></script>
+    <script src="/assets/js/app.385da645.js" defer></script><script src="/assets/js/11.bf364137.js" defer></script><script src="/assets/js/96.5f6ef650.js" defer></script>
   </body>
 </html>

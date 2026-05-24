@@ -11,7 +11,7 @@
     <meta name="description" content="人民万岁">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     
-    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.e9f2388f.js" as="script"><link rel="preload" href="/assets/js/11.bf364137.js" as="script"><link rel="preload" href="/assets/js/196.ec86396c.js" as="script">
+    <link rel="preload" href="/assets/css/1.styles.014bf4fe.css" as="style"><link rel="preload" href="/assets/js/app.385da645.js" as="script"><link rel="preload" href="/assets/js/11.bf364137.js" as="script"><link rel="preload" href="/assets/js/196.936e1029.js" as="script">
     <link rel="stylesheet" href="/assets/css/1.styles.014bf4fe.css">
   </head>
   <body class="theme-mode-light">
@@ -37,7 +37,7 @@ chart<span class="token punctuation">.</span><span class="token function">setOpt
   2. 6张图6个id，各自请求sse接口
   3. 根据事件推送对应显示图的数据
   4. 增加帧率减少数据，从左往右顺时针推送，前端使用append追加，达到容量后替换数据
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div>结论：改为 sse 还没 ws 稳定，但各自一个 id 开一个 ws 会话，虽然对服务器造成一定负担，但明显 ws 并没有并发错误，可渲染依然慢，所以跟后端关系不大 纯前端问题。但又有个新问题就是，后端推的块，前端处理慢，会造成浏览器缓存数据，直到因浏览器缓存饱满 ws 报错，所以需要注意后端推送频次。(想改为前端消费一帧，请求 ws，然后 ws 推，但效率会更慢，最好的方案测好前端帧率，固定推，但各个机器性能不一样依然会有问题)</li></ul></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/24/2026, 2:25:13 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/front/1/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">VUE3知识点</div></a> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div>结论：改为 sse 还没 ws 稳定，但各自一个 id 开一个 ws 会话，虽然对服务器造成一定负担，但明显 ws 并没有并发错误，可渲染依然慢，所以跟后端关系不大 纯前端问题。但又有个新问题就是，后端推的块，前端处理慢，会造成浏览器缓存数据，直到因浏览器缓存饱满 ws 报错，所以需要注意后端推送频次。(想改为前端消费一帧，请求 ws，然后 ws 推，但效率会更慢，最好的方案测好前端帧率，固定推，但各个机器性能不一样依然会有问题)</li></ul></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/24/2026, 2:55:39 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/front/1/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">VUE3知识点</div></a> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/front/1/" class="prev">VUE3知识点</a></span> <!----></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://gitee.com/dashboard" title="gitee" target="_blank" class="iconfont icon-gitee"></a><a href="https://github.com/landashu?tab=repositories" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
   Theme by
@@ -56,6 +56,6 @@ chart<span class="token punctuation">.</span><span class="token function">setOpt
         </li><li class="iconfont icon-yuedu">
           阅读模式
         </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.e9f2388f.js" defer></script><script src="/assets/js/11.bf364137.js" defer></script><script src="/assets/js/196.ec86396c.js" defer></script>
+    <script src="/assets/js/app.385da645.js" defer></script><script src="/assets/js/11.bf364137.js" defer></script><script src="/assets/js/196.936e1029.js" defer></script>
   </body>
 </html>
